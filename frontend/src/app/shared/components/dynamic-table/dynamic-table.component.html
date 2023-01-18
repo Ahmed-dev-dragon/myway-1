@@ -1,1 +1,452 @@
-<p>dynamic-table works!</p>
+<p-table
+  #dt
+  *ngIf="cols.length && captionConfig"
+  [columns]="selectedColumns"
+  [value]="data"
+  [rows]="rows"
+  responsiveLayout="scroll"
+  [paginator]="true"
+  [showCurrentPageReport]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [rowsPerPageOptions]="[
+    demiRows,
+    rows,
+    rows * 2,
+    rows * 3,
+    rows * 4,
+    rows * 5
+  ]"
+  dataKey="_id"
+  [resizableColumns]="true"
+  columnResizeMode="fit"
+  [styleClass]="grid ? 'p-datatable-gridlines' : ''"
+  [reorderableColumns]="true"
+  [(selection)]="selectedItems"
+  [selectionMode]="captionConfig.selectionType == 'single' ? 'single' : ''"
+  [globalFilterFields]="globalFilterFields"
+>
+  <ng-template
+    pTemplate="caption"
+    *ngIf="
+      captionConfig.addButton ||
+      captionConfig.actions?.delete ||
+      captionConfig.clearTable ||
+      captionConfig.globalFilter ||
+      captionConfig.displayedColumns ||
+      speedDialItems.length
+    "
+  >
+    <div class="d-flex position-relative">
+      <!-- <button
+        type="button"
+        *ngIf="captionConfig.addButton"
+        style="height: fit-content; margin-block: auto"
+        pButton
+        pRipple
+        icon="pi pi-plus"
+        class="me-2 p-button-success"
+        (click)="onAdd()"
+      ></button> -->
+      <button
+        type="button"
+        *ngIf="captionConfig.addButton && !captionConfig.addButton.menuItem"
+        style="height: fit-content; margin-block: auto"
+        pButton
+        pRipple
+        icon="pi pi-plus"
+        class="me-2 p-button-success"
+        (click)="onAdd()"
+      ></button>
+
+      <button
+        #btn
+        type="button"
+        *ngIf="captionConfig.addButton && captionConfig.addButton.menuItem"
+        style="height: fit-content; margin-block: auto"
+        pButton
+        pRipple
+        icon="pi pi-plus"
+        class="me-2 p-button-success"
+        (click)="menu.toggle($event)"
+      ></button>
+      <p-tieredMenu
+        #menu
+        [model]="captionConfig.addButton.menuItem"
+        [popup]="true"
+        [appendTo]="'body'"
+      ></p-tieredMenu>
+
+      <button
+        type="button"
+        *ngIf="captionConfig.actions?.delete"
+        style="height: fit-content; margin-block: auto"
+        pButton
+        pRipple
+        icon="pi pi-trash"
+        class="p-button-danger"
+        (click)="showUndoDialog()"
+        [disabled]="selectedItems.map ? !selectedItems.length : !selectedItems"
+      ></button>
+
+      <button
+        type="button"
+        *ngIf="captionConfig.clearTable"
+        style="height: fit-content; margin-block: auto"
+        pButton
+        [label]="'button.clear' | translate | titlecase"
+        class="p-button-outlined ms-auto"
+        icon="pi pi-filter-slash"
+        (click)="clear(dt)"
+      ></button>
+
+      <span
+        *ngIf="captionConfig.globalFilter"
+        class="p-input-icon-left ms-2"
+        style="height: fit-content; margin-block: auto"
+      >
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          type="text"
+          (input)="dt.filterGlobal($any($event).target.value, 'contains')"
+          [placeholder]="'Search keyword' | translate | titlecase"
+        />
+      </span>
+
+      <p-multiSelect
+        [appendTo]="'body'"
+        *ngIf="captionConfig.displayedColumns"
+        [options]="columns"
+        [(ngModel)]="selectedColumns"
+        [ngStyle]="{ marginBlock: 'auto' }"
+        optionLabel="header"
+        selectedItemsLabel="{0} columns selected"
+        [style]="{ minWidth: '200px' }"
+        placeholder="Choose Columns"
+        (onChange)="test($event)"
+      >
+      </p-multiSelect>
+
+      <p-speedDial
+        *ngIf="speedDialItems.length"
+        [model]="speedDialItems"
+        [style]="{ position: 'static' }"
+        [direction]="'left'"
+      ></p-speedDial>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th
+        class="text-center"
+        *ngIf="
+          captionConfig.selectionType === 'multiple' || captionConfig.expanded
+        "
+      >
+        <p-tableHeaderCheckbox
+          *ngIf="captionConfig.selectionType === 'multiple'"
+        ></p-tableHeaderCheckbox>
+      </th>
+      <ng-container *ngFor="let col of columns">
+        <th
+          *ngIf="!col.sort"
+          pResizableColumn
+          pReorderableColumn
+          class="text-center"
+        >
+          {{ col.header | translate | titlecase }}
+          <p-columnFilter
+            *ngIf="col.filter"
+            type="text"
+            [field]="col.field"
+            display="menu"
+          ></p-columnFilter>
+        </th>
+
+        <th
+          *ngIf="col.sort"
+          pResizableColumn
+          pReorderableColumn
+          pSortableColumn="{{ col.field }}"
+          class="text-center"
+        >
+          {{ col.header | translate | titlecase }}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+
+          <p-columnFilter
+            *ngIf="
+              col.filter &&
+              !['etatObjet', 'etatDeCreation'].includes(col.filterType)
+            "
+            [type]="col.filterType"
+            [field]="col.field"
+            display="menu"
+          >
+          </p-columnFilter>
+
+          <p-columnFilter
+            [field]="col.field"
+            matchMode="equals"
+            display="menu"
+            *ngIf="
+              col.filter &&
+              ['etatObjet', 'etatDeCreation'].includes(col.filterType)
+            "
+          >
+            <ng-template
+              pTemplate="filter"
+              let-value
+              let-filter="filterCallback"
+            >
+              <p-dropdown
+                [appendTo]="'body'"
+                [ngModel]="value"
+                [options]="col.filterData"
+                (onChange)="filter($event.value)"
+                placeholder="Any"
+              >
+                <ng-template let-option pTemplate="item">
+                  <span [class]="'etat-objet-badge etat-' + option">{{
+                    option | translate | titlecase
+                  }}</span>
+                </ng-template>
+              </p-dropdown>
+            </ng-template>
+          </p-columnFilter>
+        </th>
+      </ng-container>
+      <th
+        class="text-center"
+        *ngIf="
+          captionConfig.actions?.clone ||
+          captionConfig.actions?.detail ||
+          captionConfig.actions?.edit
+        "
+      >
+        {{ "action" | translate | titlecase }}
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template
+    pTemplate="body"
+    let-rowData
+    let-ri="rowIndex"
+    let-columns="columns"
+    let-expanded="expanded"
+  >
+    <tr
+      [pSelectableRow]="rowData"
+      [ngClass]="rowData.cloned ? 'clonedElement' : ''"
+    >
+      <td
+        class="text-center"
+        *ngIf="
+          columns.length &&
+          (captionConfig.selectionType === 'multiple' || captionConfig.expanded)
+        "
+      >
+        <div
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <button
+            *ngIf="captionConfig.expanded"
+            type="button"
+            pButton
+            pRipple
+            [pRowToggler]="rowData"
+            class="p-button-text p-button-rounded p-button-plain"
+            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+          ></button>
+
+          <p-tableCheckbox
+            *ngIf="captionConfig.selectionType === 'multiple'"
+            [value]="rowData"
+          ></p-tableCheckbox>
+        </div>
+      </td>
+
+      <td *ngFor="let col of columns" class="text-center">
+        <ng-container *ngIf="col.filterType == 'file'">
+          <img
+            [lazyLoad]="rowData[col.field]"
+            [defaultImage]="rowData[col.default]"
+          />
+        </ng-container>
+        <ng-container *ngIf="col.filterType == 'chips'">
+          <div class="dynamic-table-chips-container">
+            <span
+              *ngFor="let item of rowData | readDataTable : col.field"
+              [class]="item | dynamicTableCellColor : col.colorize"
+              [style]="item | dynamicTableCellColorStyle : col.colorizeStyle"
+            >
+              {{ item | translate | genericPipe : col.pipes }}
+            </span>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!['file', 'chips'].includes(col.filterType)">
+          <span
+            [class]="
+              rowData
+                | readDataTable : col.field
+                | dynamicTableCellColor : col.colorize
+            "
+            [style]="
+              rowData
+                | readDataTable : col.field
+                | dynamicTableCellColorStyle : col.colorizeStyle
+            "
+          >
+            {{
+              rowData
+                | readDataTable : col.field
+                | translate
+                | genericPipe : col.pipes
+            }}
+          </span>
+        </ng-container>
+      </td>
+
+      <td
+        class="text-center"
+        *ngIf="
+          columns.length &&
+          (captionConfig.actions?.clone ||
+            captionConfig.actions?.detail ||
+            captionConfig.actions?.edit)
+        "
+      >
+        <div>
+          <button
+            type="button"
+            *ngIf="captionConfig.actions?.clone && !rowData.cloned"
+            pButton
+            type="button"
+            icon="pi pi-copy"
+            class="p-button-rounded me-2 mb-2 p-button-sm p-button-success action-button"
+            (click)="onClone(ri)"
+          ></button>
+
+          <button
+            type="button"
+            *ngIf="captionConfig.actions?.detail"
+            pButton
+            type="button"
+            icon="pi pi-eye"
+            class="p-button-rounded me-2 mb-2 p-button-sm action-button"
+            (click)="onDetail(ri)"
+          ></button>
+
+          <button
+            type="button"
+            *ngIf="captionConfig.actions?.edit"
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-rounded me-2 mb-2 p-button-warning p-button-sm action-button"
+            (click)="onEdit(ri)"
+          ></button>
+
+          <button
+            *ngFor="let button of captionConfig.buttons"
+            type="button"
+            [label]="button.label || ''"
+            [icon]="button.icon || ''"
+            [class]="
+              'action-button ' +
+              (button.class || 'p-button-rounded p-button-sm')
+            "
+            [ngStyle]="button.style || null"
+            (click)="button?.command?.(ri,rowData)"
+            pButton
+          ></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="rowexpansion" let-rowData>
+    <ng-container *ngIf="expandedRow">
+      <ng-container
+        *ngTemplateOutlet="expandedRow; context: { $implicit: rowData }"
+      ></ng-container>
+    </ng-container>
+
+    <tr *ngIf="!expandedRow">
+      <td
+        [colSpan]="
+          selectedColumns.length +
+          (columns.length
+            ? (captionConfig.actions?.clone ||
+              captionConfig.actions?.detail ||
+              captionConfig.actions?.edit
+                ? 1
+                : 0) +
+              (captionConfig.selectionType === 'multiple' ||
+              captionConfig.expanded
+                ? 1
+                : 0)
+            : 0)
+        "
+      >
+        <app-dynamic-table
+          [data]="
+            $any(captionConfig)?.expanded?.dataField
+              ? (rowData
+                | readDataTable : $any(captionConfig).expanded.dataField)
+              : [rowData]
+          "
+          [cols]="$any(captionConfig)?.expanded?.headers"
+          [captionConfig]="$any(captionConfig)?.expanded?.captionConfig"
+        ></app-dynamic-table>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td
+        [colSpan]="
+          selectedColumns.length +
+          (columns.length
+            ? (captionConfig.actions?.clone ||
+              captionConfig.actions?.detail ||
+              captionConfig.actions?.edit
+                ? 1
+                : 0) +
+              (captionConfig.selectionType === 'multiple' ||
+              captionConfig.expanded
+                ? 1
+                : 0)
+            : 0)
+        "
+      >
+        {{ "No data found." | translate | titlecase }}
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="summary" *ngIf="captionConfig.summary?.enabled">
+    <div class="flex align-items-center justify-content-between">
+      {{
+        $any(captionConfig).summary?.message?.replace(
+          regex,
+          data ? data.length : 0
+        )
+          | translate
+          | titlecase
+      }}
+    </div>
+  </ng-template>
+</p-table>
+
+<div class="w-100 d-flex footer mt-4" *ngIf="captionConfig.actions?.close">
+  <button
+    type="button"
+    class="ms-auto me-2 my-auto"
+    label="save selected items"
+    (click)="saveSelectedItems()"
+    pButton
+  ></button>
+</div>

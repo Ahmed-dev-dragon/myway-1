@@ -1,0 +1,114 @@
+<div class="add-container">
+  <form *ngIf="user">
+    <div #ic class="image-container">
+      <div class="upload-container" style="grid-row-end: span 3; max-width: 100%; overflow: auto">
+        <div class="card-body dropzone-custom p-0 mx-auto">
+          <div class="dropzone dropzone-primary d-flex">
+            <div class="dz-message needsclick m-auto">
+              <div *ngIf="user.photo">
+                <img [lazyLoad]="user.photo" [defaultImage]="user.photo" class="img-fluid rounded-circle"
+                  style="max-width: 190px; max-height: 250px" id="image" alt="" title="" />
+              </div>
+              <i class="bi bi-cloud-arrow-up-fill"></i>
+              <h4 class="mb-0 f-w-600">
+                {{ "upload logo" | translate | titlecase }}
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infos-container">
+      <div class="">
+        <span class="p-float-label">
+          <p-dropdown [appendTo]="'body'" [readonly]="true" [options]="salutation" [style]="{ width: '100%' }"
+            [autoDisplayFirst]="true">
+          </p-dropdown>
+          <label>{{ "salutation" | translate | titlecase }}</label>
+
+        </span>
+        <span class="p-float-label">
+          <input [readonly]="true" id="fonction" type="text" [value]="user.fonction.translations.designation"
+            pInputText />
+          <label for="fonction">{{ "fonction" | translate | titlecase }}</label>
+        </span>
+      </div>
+      <div class="">
+        <span class="p-float-label">
+          <input [readonly]="true" id="nom" type="text" [value]="user.translations.nom" pInputText />
+          <label for="nom">{{ "nom" | translate | titlecase }}</label>
+        </span>
+        <span class="p-float-label">
+          <input [readonly]="true" id="prenom" type="text" [value]="user.translations.prenom" pInputText />
+          <label for="prenom">{{ "prenom" | translate | titlecase }}</label>
+        </span>
+      </div>
+      <div class="">
+        <span class="p-float-label">
+          <input [readonly]="true" id="pseudo" [value]="user.pseudo || ''" type="text" pInputText />
+          <label for="pseudo">{{ "pseudo" | translate | titlecase }}</label>
+        </span>
+
+        <span class="p-float-label">
+          <input [readonly]="true" id="email" [value]="user.email" type="text" pInputText />
+          <label for="email">{{ "email" | translate }}</label>
+        </span>
+      </div>
+    </div>
+
+    <div class="other-infos">
+      <span class="p-float-label p-input-icon-left">
+        <i class="pi pi-mobile"></i>
+        <input [readonly]="true" id="gsm" [value]="user.gsm || ''" type="text" pInputText />
+        <label for="gsm">{{ "gsm" | translate }}</label>
+      </span>
+      <span class="p-float-label p-input-icon-left">
+        <i class="pi pi-phone"></i>
+        <input [readonly]="true" id="telFix" [value]="user.telFix || ''" type="text" pInputText />
+        <label for="telFix">{{ "fix" | translate }}</label>
+      </span>
+
+      <span class="p-float-label p-input-icon-left">
+        <i class="pi pi-users"></i>
+        <input [readonly]="true" id="group" [value]="user.group.translations.nom" type="text" pInputText />
+        <label for="group">{{ "fix" | translate }}</label>
+      </span>
+      <span class="p-float-label">
+        <p-dropdown [appendTo]="'body'" [options]="user.responsable ? [user.responsable] : []" [autoDisplayFirst]="true"
+          [style]="{ width: '100%' }">
+          <ng-template pTemplate="selectedItem">
+            <div class="country-item country-item-value d-flex justify-content-space-between align-items-center">
+              <img class="flag" [lazyLoad]="user.responsable ? user.responsable.photo : ''" />
+              <div>
+                {{ user.responsable ? user.responsable.translations.nom : "" }}
+                {{
+                user.responsable ? user.responsable.translations.prenom : ""
+                }}
+              </div>
+            </div>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <div class="country-item d-flex justify-content-space-between align-items-center">
+              <img *ngIf="item.photo" [lazyLoad]="item?.photo" />
+
+              <div>
+                {{ item?.translations?.nom }} {{ item?.translations?.prenom }}
+              </div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+
+        <label>
+          {{ "Responsable" | translate | titlecase }}
+        </label>
+      </span>
+      <span style="display: flex; align-items: center">
+        <label class="me-2">{{
+          "is Responsable" | translate | titlecase
+          }}</label>
+        <p-inputSwitch [falseValue]="false" [trueValue]="true" [readonly]="true" [(ngModel)]="user.isResponsable"
+          [ngModelOptions]="{ standalone: true }"></p-inputSwitch>
+      </span>
+    </div>
+  </form>
+</div>

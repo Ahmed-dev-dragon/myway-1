@@ -1,1 +1,359 @@
-<p>gestion-menu works!</p>
+<div class="card">
+  <h5>&nbsp;</h5>
+
+  <div class="grid mx-3">
+    <div class="col-5">
+      <form
+        [formGroup]="menuItem"
+        (ngSubmit)="addMenuItem()"
+        class="gridForm p-fluid col-12"
+      >
+        <div class="field">
+          <span class="p-float-label">
+            <p-dropdown
+              formControlName="etatObjet"
+              class="p-inputtext-sm"
+              styleClass=""
+              [options]="etatObjetOptions"
+              [style]="{ width: '100%' }"
+              [autoDisplayFirst]="false"
+              [filter]="true"
+              [appendTo]="'body'"
+              [ngClass]="
+                menuItem.get('etatObjet')?.invalid &&
+                menuItem.get('etatObjet')?.touched
+                  ? 'ng-invalid ng-dirty'
+                  : ''
+              "
+            >
+            </p-dropdown>
+            <label>{{ "etat Objet" | translate | titlecase }}</label>
+          </span>
+
+          <span
+            *ngIf="menuItem.get('etatObjet')?.errors?.['required'] && (
+                                          menuItem.get('etatObjet')?.dirty ||
+                                          menuItem.get('etatObjet')?.touched
+
+                                        )"
+            class="text-danger"
+          >
+            {{ "validation.required" | translate | titlecase }}
+          </span>
+        </div>
+
+        <div class="field">
+          <span class="p-float-label">
+            <input
+              formControlName="title"
+              pInputText
+              [ngClass]="
+                menuItem.get('title')?.invalid && menuItem.get('title')?.touched
+                  ? 'ng-invalid ng-dirty'
+                  : ''
+              "
+              id="title"
+              type="text"
+            />
+            <label for="title">
+              {{ "title" | translate | titlecase }}
+            </label>
+          </span>
+
+          <span
+            *ngIf="menuItem.get('title')?.errors?.['required'] && (
+                                        menuItem.get('title')?.dirty ||
+                                        menuItem.get('title')?.touched
+
+                                      )"
+            class="text-danger"
+          >
+            {{ "validation.required" | translate | titlecase }}
+          </span>
+        </div>
+
+        <div class="field-checkbox">
+          <p-checkbox
+            formControlName="planPrincipal"
+            [binary]="true"
+            inputId="plan"
+          ></p-checkbox>
+
+          <label for="plan">
+            {{ "plan principal" | translate | titlecase }}
+          </label>
+        </div>
+
+        <div class="field-checkbox">
+          <p-checkbox
+            formControlName="megaMenu"
+            [binary]="true"
+            inputId="mega"
+          ></p-checkbox>
+
+          <label for="mega">{{ "mega Menu" | translate | titlecase }}</label>
+        </div>
+
+        <div class="field" *ngIf="!menuItem.get('planPrincipal')?.value">
+          <span class="p-float-label">
+            <p-dropdown
+              formControlName="parent"
+              class="p-inputtext-sm"
+              styleClass=""
+              [options]="parentOptions"
+              [optionLabel]="'translations.title'"
+              filterBy="translations.title"
+              [style]="{ width: '100%' }"
+              [autoDisplayFirst]="false"
+              [filter]="true"
+              dataKey="_id"
+              [appendTo]="'body'"
+              [ngClass]="
+                menuItem.get('parent')?.invalid &&
+                menuItem.get('parent')?.touched
+                  ? 'ng-invalid ng-dirty'
+                  : ''
+              "
+            >
+            </p-dropdown>
+            <label>{{ "parent" | translate | titlecase }}</label>
+          </span>
+
+          <span
+            *ngIf="menuItem.get('parent')?.errors?.['required'] && (
+                                  menuItem.get('parent')?.dirty ||
+                                  menuItem.get('parent')?.touched
+
+                                )"
+            class="text-danger"
+          >
+            {{ "validation.required" | translate | titlecase }}
+          </span>
+        </div>
+
+        <ng-container
+          class="field"
+          *ngIf="menuItem.get('megaMenu')?.value == false && taxonomies"
+          formArrayName="taxonomies"
+        >
+          <div
+            *ngFor="let taxonomie of taxonomies?.controls; index as i"
+            class="field"
+          >
+            <span class="p-float-label">
+              <p-dropdown
+                [formControl]="$any(taxonomies).controls[i]"
+                class="p-inputtext-sm"
+                styleClass=""
+                [options]="taxonomiesOptions[i]"
+                filterBy="espace"
+                [style]="{ width: '100%' }"
+                [optionLabel]="'espace'"
+                [autoDisplayFirst]="false"
+                [filter]="true"
+                dataKey="_id"
+                [appendTo]="'body'"
+                [ngClass]="
+                  taxonomie?.invalid && taxonomie?.touched
+                    ? 'ng-invalid ng-dirty'
+                    : ''
+                "
+                (onChange)="getOptions($event, i)"
+              >
+                <ng-template pTemplate="selectedItem">
+                  <div *ngIf="taxonomie?.value">
+                    <div>{{ taxonomie?.value.espace | translate }}</div>
+                  </div>
+                </ng-template>
+                <ng-template let-item pTemplate="item">
+                  <div>{{ item.espace | translate }}</div>
+                </ng-template>
+              </p-dropdown>
+              <label>{{ "taxonomie" + i | translate | titlecase }}</label>
+            </span>
+            <ng-container *ngIf="taxonomie?.invalid && taxonomie?.touched">
+              <span *ngIf="taxonomie?.errors?.['required']" class="text-danger">
+                {{ "validation.required" | translate | titlecase }}
+              </span>
+            </ng-container>
+          </div>
+        </ng-container>
+
+        <div class="field">
+          <span class="p-float-label">
+            <p-dropdown
+              #iconsDropdown
+              formControlName="icon"
+              class="p-inputtext-sm"
+              optionValue="title"
+              optionLabel="title"
+              filterBy="title"
+              [options]="iconOptions"
+              [style]="{ width: '100%' }"
+              [autoDisplayFirst]="false"
+              [resetFilterOnHide]="true"
+              [showClear]="true"
+              [filter]="true"
+              [appendTo]="'body'"
+              [ngClass]="
+                menuItem.get('icon')?.invalid &&
+                (menuItem.get('icon')?.touched || menuItem.get('icon')?.dirty)
+                  ? 'ng-invalid ng-dirty'
+                  : ''
+              "
+              (onShow)="onIconsDropdownPanelShow($event)"
+              (onHide)="onIconsDropdownPanelHide()"
+              (onChange)="onIconsDropdownChange($event)"
+              (onFilter)="onIconsDropdownFilter($event)"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  *ngIf="menuItem.get('icon')?.value"
+                  class="d-flex justify-content-space-between align-items-center"
+                >
+                  <i class="{{ menuItem.get('icon')?.value }}"></i>
+                  <div>&nbsp;{{ menuItem.get("icon")?.value }}</div>
+                </div>
+              </ng-template>
+              <ng-template let-item pTemplate="item">
+                <div
+                  class="d-flex justify-content-space-between align-items-center"
+                >
+                  <i class="{{ item.title }}"></i>
+                  <div>&nbsp;{{ item.title }}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            <label>{{ "icon" | translate | titlecase }}</label>
+          </span>
+
+          <ng-container
+            *ngIf="
+              menuItem.get('icon')?.invalid &&
+              (menuItem.get('icon')?.dirty || menuItem.get('icon')?.touched)
+            "
+          >
+            <span
+              *ngIf="menuItem.get('icon')?.errors?.['required']"
+              class="text-danger"
+            >
+              {{ "this field is required" | translate | titlecase }}
+            </span>
+          </ng-container>
+        </div>
+
+        <div class="field">
+          <span class="p-float-label">
+            <p-inputNumber
+              inputId="ordre"
+              formControlName="ordre"
+              mode="decimal"
+              [showButtons]="true"
+              [step]="1"
+              [min]="0"
+            ></p-inputNumber>
+            <label for="ordre">{{ "ordre" | translate | titlecase }}</label>
+          </span>
+        </div>
+
+        <div class="field">
+          <span class="p-float-label">
+            <p-inputNumber
+              inputId="priorite"
+              formControlName="priorite"
+              mode="decimal"
+              [showButtons]="true"
+              [step]="1"
+              [min]="0"
+            ></p-inputNumber>
+            <label for="priorite">{{
+              "priorite" | translate | titlecase
+            }}</label>
+          </span>
+        </div>
+
+        <div class="formButton">
+          <p-button type="submit" styleClass="p-button-success" *ngIf="!id">
+            <i class="pi pi-save me-2">
+              {{ "save" | translate | titlecase }}
+            </i>
+          </p-button>
+
+          <p-button type="submit" styleClass="p-button-warning" *ngIf="id">
+            <i class="pi pi-pencil me-2">
+              {{ "edit" | translate | titlecase }}
+            </i>
+          </p-button>
+
+          <p-button type="button" (click)="resetForm()">
+            <i class="pi pi-times me-2">
+              {{ "cancel" | translate | titlecase }}
+            </i>
+          </p-button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-1">
+      <p-divider layout="vertical">
+        <b></b>
+      </p-divider>
+    </div>
+
+    <div class="col-6 flex">
+      <p-treeTable [value]="menuItems">
+        <ng-template pTemplate="caption">
+          <p-button icon="pi pi-refresh" (click)="getMenuItems()"></p-button>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+          <tr [ngClass]="{ archive: rowData.etatObjet?.includes('archive') }">
+            <td>
+              <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+              <i class="{{ rowData.icon }}"></i>
+              {{ rowData.translations.title }}
+            </td>
+
+            <!-- <td>
+
+              {{rowData.etatObjet | translate }}
+            </td> -->
+
+            <td class="d-flex justify-content-end">
+              <p-button
+                icon="pi pi-pencil"
+                styleClass="p-button-rounded p-button-warning me-2"
+                (click)="editItem(rowNode)"
+              >
+              </p-button>
+
+              <p-button
+                *ngIf="rowData.etatObjet.includes('active')"
+                icon="pi pi-trash"
+                styleClass="p-button-rounded p-button-danger me-2"
+                (click)="changeState(rowData, 'etatObjet.archive')"
+              >
+              </p-button>
+
+              <button
+                *ngIf="rowData.etatObjet.includes('archive')"
+                pButton
+                pRipple
+                icon="pi pi-check"
+                class="p-button-rounded p-button-success me-2"
+                (click)="changeState(rowData, 'etatObjet.active')"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-treeTable>
+    </div>
+  </div>
+</div>
+
+<!-- (click)="op.toggle($event)" -->
+<!-- <p-overlayPanel #op>
+  <ng-template pTemplate>
+    <p-button icon="pi pi-refresh" (click)="getMenuItems()"></p-button>
+  </ng-template>
+</p-overlayPanel> -->

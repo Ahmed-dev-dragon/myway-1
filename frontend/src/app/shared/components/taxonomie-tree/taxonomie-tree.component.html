@@ -1,1 +1,237 @@
-<p>taxonomie-tree works!</p>
+<span class="p-float-label">
+  <p-treeSelect
+    *ngIf="options.length"
+    #treeSelect
+    [scrollHeight]="scrollHeight"
+    [panelClass]="panelClass"
+    [options]="options"
+    [metaKeySelection]="false"
+    [selectionMode]="selectionMode"
+    [emptyMessage]="emptyMessage | translate | titlecase"
+    [filter]="true"
+    [filterBy]="'label'"
+    [filterMode]="'lenient'"
+    [filterPlaceholder]="filterPlaceholder | translate | titlecase"
+    [resetFilterOnHide]="true"
+    [style]="{ width: '100%' }"
+    [appendTo]="'body'"
+    [formControl]="control"
+    (onNodeSelect)="onNodeSelect($event)"
+    [ngClass]="control.invalid && control.touched ? 'ng-invalid ng-dirty' : ''"
+    [showClear]="true"
+  ></p-treeSelect>
+
+  <label [ngClass]="control.invalid && control.touched ? 'text-danger' : ''">
+    {{ $any(label)?.data?.value || label | translate | titlecase }}
+  </label>
+
+  <span
+    *ngIf="control.invalid && control.errors?.['required'] && (
+                                  control.dirty ||
+                                  control.touched)"
+    class="error-span"
+  >
+    {{ "code_29" | translate | titlecase }}
+  </span>
+
+  <!-- <div
+    #overlayContainer
+    id="overlayContainer"
+    class=""
+    style="position: static; bottom: 0; left: 0; width: 100%; z-index: 1000000"
+  ></div> -->
+</span>
+
+<p-dialog
+  *ngIf="displayAddTaxonomieDialog"
+  header="Title"
+  [draggable]="false"
+  [modal]="true"
+  [appendTo]="'body'"
+  [(visible)]="displayAddTaxonomieDialog"
+  [style]="{ width: '80vw' }"
+>
+  <ng-template pTemplate="header">
+    <div class="text-secondary">
+      <h5>
+        {{ "add taxonomie" | translate | titlecase }}
+      </h5>
+    </div>
+  </ng-template>
+
+  <form
+    class="modal-body"
+    style="
+      display: grid;
+      gap: 45px 25px;
+      grid-template-columns: repeat(2, 1fr);
+      padding-block: 1.5rem;
+    "
+    [formGroup]="form"
+  >
+    <div class="upload-container" style="grid-row-end: span 3">
+      <div class="card-body dropzone-custom p-0 mx-auto">
+        <div
+          class="dropzone dropzone-primary d-flex"
+          [dropzone]="dropZoneConfig"
+          (success)="onUploadSuccess($event)"
+          (removedFile)="onDeleteSuccess($event)"
+        >
+          <div class="dz-message needsclick m-auto">
+            <i class="bi bi-cloud-arrow-up-fill"></i>
+            <h4 class="mb-0 f-w-600">
+              {{ "upload logo" | translate | titlecase }}
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <span class="p-float-label" *ngIf="parentTaxonomies.length">
+      <p-dropdown
+        [appendTo]="'body'"
+        [ngClass]="
+          form.get('parent')?.invalid && form.get('parent')?.touched
+            ? 'ng-invalid ng-dirty'
+            : ''
+        "
+        [options]="parentTaxonomies"
+        formControlName="parent"
+        optionLabel="translations.designation"
+        optionValue=""
+        [filter]="true"
+        filterBy="translations.designation"
+        [readonly]="true"
+        [autoDisplayFirst]="false"
+        [emptyMessage]="emptyMessage | translate | titlecase"
+        [style]="{ width: '100%' }"
+      >
+        <ng-template pTemplate="selectedItem">
+          <div
+            class="country-item country-item-value d-flex justify-content-space-between align-items-center"
+            *ngIf="form.get('parent')?.value"
+          >
+            <img
+              *ngIf="form.get('parent')?.value?.logo"
+              class="flag"
+              src="{{ form.get('parent')?.value?.logo }}"
+            />
+            <div>
+              {{ form.get("parent")?.value?.translations.designation }}
+            </div>
+          </div>
+        </ng-template>
+        <ng-template let-item pTemplate="item">
+          <div
+            class="country-item d-flex justify-content-space-between align-items-center"
+          >
+            <img *ngIf="item.logo" src="{{ item?.logo }}" />
+
+            <div>{{ item?.translations.designation }}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+
+      <span
+        *ngIf="form.get('parent')?.errors?.['required'] && (
+              form.get('parent')?.dirty ||
+              form.get('parent')?.touched
+
+            )"
+        class="text-danger"
+        style="position: absolute; left: 0; bottom: -24px"
+      >
+        {{ "validation.required" | translate | titlecase }}
+      </span>
+
+      <label>
+        {{ "parent" | translate | titlecase }}
+      </label>
+    </span>
+    <span class="p-float-label">
+      <p-dropdown
+        [appendTo]="'body'"
+        [options]="domainOptions"
+        optionLabel="translations.designation"
+        optionValue="_id"
+        formControlName="domain"
+        [autoDisplayFirst]="false"
+        [style]="{ width: '100%' }"
+        [ngClass]="
+          form.get('domain')?.invalid && form.get('domain')?.touched
+            ? 'ng-invalid ng-dirty'
+            : ''
+        "
+      >
+      </p-dropdown>
+
+      <label>
+        {{ "domain" | translate | titlecase }}
+      </label>
+      <span
+        *ngIf="form.get('domain')?.errors?.['required'] && (
+              form.get('domain')?.dirty ||
+              form.get('domain')?.touched
+
+            )"
+        class="text-danger"
+        style="position: absolute; left: 0; bottom: -24px"
+      >
+        {{ "validation.required" | translate | titlecase }}
+      </span>
+    </span>
+    <span class="p-float-label" formGroupName="translations">
+      <input
+        style="width: 100%"
+        [ngClass]="
+          form.get('translations.designation')?.invalid &&
+          form.get('translations.designation')?.touched
+            ? 'ng-invalid ng-dirty'
+            : ''
+        "
+        type="text"
+        formControlName="designation"
+        pInputText
+      />
+
+      <label> {{ "designation" | translate | titlecase }} </label
+      ><span
+        *ngIf="form.get('translations.designation')?.errors?.['required'] && (
+              form.get('translations.designation')?.dirty ||
+              form.get('translations.designation')?.touched
+
+            )"
+        class="text-danger"
+        style="position: absolute; left: 0; bottom: -24px"
+      >
+        {{ "validation.required" | translate | titlecase }}
+      </span>
+    </span>
+    <span
+      class="p-float-label"
+      formGroupName="translations"
+      style="grid-column-end: span 2"
+    >
+      <textarea
+        type="text"
+        style="width: 100%"
+        pInputTextarea
+        formControlName="description"
+      ></textarea>
+
+      <label>
+        {{ "description" | translate | titlecase }}
+      </label>
+    </span>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      class="p-button-success p-button-sm"
+      type="button"
+      label="save"
+      (click)="addTaxonomie()"
+    ></button>
+  </ng-template>
+</p-dialog>

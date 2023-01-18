@@ -1,0 +1,12 @@
+<div style="padding: 2rem 2.5rem">
+  <app-dynamic-table
+    [cols]="headers"
+    [data]="members"
+    [captionConfig]="captionConfig"
+    (onEditClick)="onEditClick($event)"
+    (onDetailClick)="onDetailClick($event)"
+    (onCloneClick)="onCloneClick($event)"
+    (onAddClick)="onAddClick()"
+    (onDelete)="changeState($event)"
+  ></app-dynamic-table>
+</div>

@@ -1,0 +1,14 @@
+.clonedElement {
+  background-color: #c8e6c9 !important;
+  color: #256029 !important;
+}
+
+.dynamic-table-chips-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  span {
+    margin-block: 0.2rem;
+    margin-inline-end: 0.2rem;
+  }
+}

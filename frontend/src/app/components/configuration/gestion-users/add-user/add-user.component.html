@@ -1,0 +1,610 @@
+<div class="add-container">
+  <form [formGroup]="addForm" (ngSubmit)="addUser()" #a="ngForm">
+    <div #ic class="image-container">
+      <div
+        class="upload-container"
+        style="grid-row-end: span 3; max-width: 100%; overflow: auto"
+      >
+        <div class="card-body dropzone-custom p-0 mx-auto">
+          <div
+            class="dropzone dropzone-primary d-flex"
+            [dropzone]="config"
+            (error)="onUploadError($event)"
+            (success)="onUploadSuccess($event)"
+            (removedFile)="onDeleteSuccess()"
+          >
+            <div class="dz-message needsclick m-auto">
+              <div *ngIf="addForm.get('photo')?.value">
+                <img
+                  [lazyLoad]="addForm.get('photo')?.value"
+                  [defaultImage]="addForm.get('photo')?.value"
+                  class="img-fluid rounded-circle"
+                  style="max-width: 190px; max-height: 250px"
+                  id="image"
+                  alt=""
+                  title=""
+                />
+              </div>
+              <i class="bi bi-cloud-arrow-up-fill"></i>
+              <h4 class="mb-0 f-w-600">
+                {{ "upload logo" | translate | titlecase }}
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="infos-container">
+      <div class="">
+        <span class="p-float-label">
+          <p-dropdown
+            [appendTo]="'body'"
+            formControlName="salutation"
+            styleClass=""
+            [options]="salutationOptions"
+            filterBy="translations.label"
+            [showClear]="true"
+            [style]="{ width: '100%' }"
+            [autoDisplayFirst]="false"
+            [ngClass]="
+              addForm.get('salutation')?.invalid &&
+              addForm.get('salutation')?.touched
+                ? 'ng-invalid ng-dirty'
+                : ''
+            "
+          >
+          </p-dropdown>
+          <label>{{ "salutation" | translate | titlecase }}</label>
+          <span
+            *ngIf="addForm.get('salutation')?.errors?.['required'] && (
+              addForm.get('salutation')?.dirty ||
+              addForm.get('salutation')?.touched
+
+            )"
+            class="text-danger"
+            style="position: absolute; left: 0; bottom: -24px"
+          >
+            {{ "this field is required" | translate | titlecase }}
+          </span>
+        </span>
+        <span class="">
+          <app-taxonomie-input
+            [control]="$any(addForm.get('fonction'))"
+            [domain]="fonctions"
+            [taxonomie]="domains?.['fonction']?.taxonomies"
+            [selectionMode]="'single'"
+            [taxonomieType]="'single'"
+            [label]="'fonction'"
+          ></app-taxonomie-input>
+        </span>
+      </div>
+      <div class="" formGroupName="translations">
+        <span class="p-float-label">
+          <input
+            id="nom"
+            formControlName="nom"
+            type="text"
+            pInputText
+            [ngClass]="
+              addForm.get('translations.nom')?.invalid &&
+              addForm.get('translations.nom')?.touched
+                ? 'ng-invalid ng-dirty'
+                : ''
+            "
+          />
+          <label for="nom">{{ "nom" | translate }}</label>
+          <span
+            *ngIf="addForm.get('translations.nom')?.errors?.['required'] && (
+              addForm.get('translations.nom')?.dirty ||
+              addForm.get('translations.nom')?.touched
+
+            )"
+            class="text-danger"
+            style="position: absolute; left: 0; bottom: -24px"
+          >
+            {{ "this field is required" | translate | titlecase }}
+          </span>
+        </span>
+        <span class="p-float-label">
+          <input
+            id="prenom"
+            type="text"
+            formControlName="prenom"
+            pInputText
+            [ngClass]="
+              addForm.get('translations.prenom')?.invalid &&
+              addForm.get('translations.prenom')?.touched
+                ? 'ng-invalid ng-dirty'
+                : ''
+            "
+          />
+          <label for="prenom">{{ "prenom" | translate }}</label>
+          <span
+            *ngIf="addForm.get('translations.prenom')?.errors?.['required'] && (
+              addForm.get('translations.prenom')?.dirty ||
+              addForm.get('translations.prenom')?.touched
+
+            )"
+            class="text-danger"
+            style="position: absolute; left: 0; bottom: -24px"
+          >
+            {{ "this field is required" | translate | titlecase }}
+          </span>
+        </span>
+      </div>
+      <div class="">
+        <span class="p-float-label">
+          <input id="pseudo" formControlName="pseudo" type="text" pInputText />
+          <label for="pseudo">{{ "pseudo" | translate }}</label>
+        </span>
+        <span class="p-float-label">
+          <input
+            id="email"
+            formControlName="email"
+            type="text"
+            pInputText
+            [ngClass]="
+              isExist ||
+              (addForm.get('email')?.invalid && addForm.get('email')?.touched)
+                ? 'ng-invalid ng-dirty'
+                : ''
+            "
+          />
+          <label for="email">{{ "email" | translate }}</label>
+          <span
+            *ngIf="addForm.get('email')?.errors?.['required'] && (
+              addForm.get('email')?.dirty ||
+              addForm.get('email')?.touched
+
+            )"
+            class="text-danger"
+            style="position: absolute; left: 0; bottom: -24px"
+          >
+            {{ "this field is required" | translate | titlecase }}
+          </span>
+          <span
+            *ngIf="addForm.get('email')?.errors?.['email'] && (
+                          addForm.get('email')?.dirty ||
+                          addForm.get('email')?.touched
+
+                        )"
+            class="text-danger"
+            style="position: absolute; left: 0; bottom: -24px"
+          >
+            {{ "invalid email" | translate | titlecase }}
+          </span>
+          <span
+            *ngIf="isExist"
+            class="text-danger"
+            style="position: absolute; left: 0; bottom: -24px"
+          >
+            {{ " email already used" | translate | titlecase }}
+          </span>
+        </span>
+        <ng-container *ngIf="!id">
+          <span class="p-float-label">
+            <p-password
+              id="password"
+              mediumRegex="^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})."
+              strongRegex="^(?=^.{8,20}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+              [toggleMask]="true"
+              formControlName="password"
+              tooltipPosition="bottom"
+              [pTooltip]="'toolTips.passwordPattern' | translate"
+              [ngClass]="
+                addForm.get('password')?.invalid &&
+                addForm.get('password')?.touched
+                  ? 'ng-invalid ng-dirty'
+                  : ''
+              "
+            >
+            </p-password>
+            <label for="password">{{ "password" | translate }}</label>
+            <span
+              *ngIf="addForm.get('password')?.errors?.['required'] && (
+              addForm.get('password')?.dirty ||
+              addForm.get('password')?.touched
+
+            )"
+              class="text-danger"
+              style="position: absolute; left: 0; bottom: -24px"
+            >
+              {{ "this field is required" | translate | titlecase }}
+            </span>
+            <span
+              *ngIf="addForm.get('password')?.errors?.['pattern'] && (
+                        addForm.get('password')?.dirty ||
+                        addForm.get('password')?.touched
+
+                      )"
+              class="text-danger"
+              style="position: absolute; left: 0; bottom: -24px"
+            >
+              {{ "invalid password" | translate | titlecase }}
+            </span>
+          </span>
+
+          <span class="p-float-label p-input-icon-right">
+            <i
+              class="pi pi-eye"
+              #eye
+              (click)="
+                eye.classList.toggle('pi-eye');
+                eye.classList.toggle('pi-eye-slash')
+              "
+            ></i>
+            <input
+              id="confirmPassword"
+              #cp
+              [pTooltip]="
+              addForm.get('confirmPassword')?.errors?.['pattern'] && (
+                addForm.get('confirmPassword')?.dirty ||
+                addForm.get('confirmPassword')?.touched
+
+              ) ? ('toolTips.cPasswordError' | translate) : ''
+              "
+              tooltipPosition="bottom"
+              formControlName="confirmPassword"
+              [type]="eye.classList.contains('slash') ? 'text' : 'password'"
+              [ngClass]="
+              addForm.get('confirmPassword')?.errors?.['pattern'] && (
+                addForm.get('confirmPassword')?.dirty ||
+                addForm.get('confirmPassword')?.touched
+
+              )
+              "
+              pInputText
+            />
+            <label for="confirmPassword">{{ "cPassword" | translate }}</label>
+            <span
+              *ngIf="addForm.get('confirmPassword')?.errors?.['required'] && (
+                        addForm.get('confirmPassword')?.dirty ||
+                        addForm.get('confirmPassword')?.touched
+
+                      )"
+              class="text-danger"
+              style="position: absolute; left: 0; bottom: -24px"
+            >
+              {{ "this field is required" | translate | titlecase }}
+            </span>
+            <span
+              *ngIf="addForm.get('confirmPassword')?.errors?.['pattern'] && (
+              addForm.get('confirmPassword')?.dirty ||
+              addForm.get('confirmPassword')?.touched)"
+              class="text-danger"
+              style="position: absolute; left: 0; bottom: -24px"
+            >
+              {{
+                "password and confirm password not match"
+                  | translate
+                  | titlecase
+              }}
+            </span>
+          </span>
+        </ng-container>
+      </div>
+
+      <div *ngIf="id" class="password-side">
+        <p-checkbox
+          value="val1"
+          class=""
+          [pTooltip]="'toolTips.changePasswordC' | translate"
+          (click)="updatePasswords = !updatePasswords"
+        ></p-checkbox>
+        <span class="p-float-label p-input-icon-right" *ngIf="updatePasswords">
+          <i
+            class="pi pi-eye"
+            #eye
+            (click)="
+              eye.classList.toggle('pi-eye');
+              eye.classList.toggle('pi-eye-slash')
+            "
+          ></i>
+          <input
+            id="password"
+            tooltipPosition="bottom"
+            formControlName="password"
+            [type]="
+              eye.classList.contains('pi-eye-slash') ? 'text' : 'password'
+            "
+            class="p-inputtext-sm"
+            pInputText
+          />
+          <label for="password">{{ "labels.oldPassword" | translate }}</label>
+        </span>
+        <span class="p-float-label" *ngIf="updatePasswords">
+          <p-password
+            id="newPassword"
+            class="p-inputtext-sm"
+            mediumRegex="^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})."
+            strongRegex="^(?=^.{8,20}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+            [toggleMask]="true"
+            formControlName="newPassword"
+            tooltipPosition="bottom"
+            [pTooltip]="'toolTips.passwordPattern' | translate"
+            [ngClass]="
+              addForm.get('newPassword')?.errors &&
+              addForm.get('newPassword')?.touched
+                ? 'ng-invalid ng-dirty'
+                : ''
+            "
+          >
+          </p-password>
+          <label for="password">{{ "newPassword" | translate }}</label>
+          <span
+            *ngIf="addForm.get('newPassword')?.errors?.['required'] && (
+                                            addForm.get('newPassword')?.dirty ||
+                                            addForm.get('newPassword')?.touched
+
+                                          )"
+            class="text-danger"
+            style="position: absolute; left: 0; bottom: -24px"
+          >
+            {{ "this field is required" | translate | titlecase }}
+          </span>
+          <span
+            *ngIf="addForm.get('newPassword')?.errors?.['pattern'] && (
+                                                      addForm.get('newPassword')?.dirty ||
+                                                      addForm.get('newPassword')?.touched
+
+                                                    )"
+            class="text-danger"
+            style="position: absolute; left: 0; bottom: -24px"
+          >
+            {{ "invalid newPassword" | translate | titlecase }}
+          </span>
+        </span>
+        <span class="p-float-label p-input-icon-right" *ngIf="updatePasswords">
+          <i
+            class="pi pi-eye"
+            [ngStyle]="{ color: addForm.get('confirmPassword')?.errors?.['pattern'] && (
+              addForm.get('confirmPassword')?.dirty ||
+              addForm.get('confirmPassword')?.touched
+
+            ) ? '#6c757d' : '#e24c4c' }"
+            #eye
+            (click)="
+              eye.classList.toggle('pi-eye');
+              eye.classList.toggle('pi-eye-slash')
+            "
+          ></i>
+          <input
+            id="confirmPassword"
+            #cp
+            [pTooltip]="
+              addForm.get('confirmPassword')?.errors?.['pattern'] && (
+                addForm.get('confirmPassword')?.dirty ||
+                addForm.get('confirmPassword')?.touched
+
+              ) ? ('toolTips.cPasswordError' | translate) : ''
+            "
+            tooltipPosition="bottom"
+            formControlName="confirmPassword"
+            [type]="
+              eye.classList.contains('pi-eye-slash') ? 'text' : 'password'
+            "
+            class="p-inputtext-sm"
+            pInputText
+          />
+          <label for="confirmPassword">{{ "cPassword" | translate }}</label>
+          <span
+            *ngIf="addForm.get('confirmPassword')?.errors?.['required'] && (
+                                                      addForm.get('confirmPassword')?.dirty ||
+                                                      addForm.get('confirmPassword')?.touched
+
+                                                    )"
+            class="text-danger"
+            style="position: absolute; left: 0; bottom: -24px"
+          >
+            {{ "this field is required" | translate | titlecase }}
+          </span>
+          <span
+            *ngIf="addForm.get('confirmPassword')?.errors?.['pattern'] && (
+              addForm.get('confirmPassword')?.dirty ||
+              addForm.get('confirmPassword')?.touched
+
+            )"
+            class="text-danger"
+            style="position: absolute; left: 0; bottom: -24px"
+          >
+            {{ "password match error" | translate | titlecase }}
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="other-infos">
+      <span class="p-float-label p-input-icon-left">
+        <i class="pi pi-mobile"></i>
+        <input
+          id="gsm"
+          formControlName="gsm"
+          type="text"
+          pInputText
+          [ngClass]="
+            addForm.get('gsm')?.invalid && addForm.get('gsm')?.touched
+              ? 'ng-invalid ng-dirty'
+              : ''
+          "
+        />
+        <label for="gsm">{{ "gsm" | translate }}</label>
+        <span
+          *ngIf="addForm.get('gsm')?.errors?.['pattern'] && (
+                        addForm.get('gsm')?.dirty ||
+                        addForm.get('gsm')?.touched
+
+                      )"
+          class="text-danger"
+          style="position: absolute; left: 0; bottom: -24px"
+        >
+          {{ "invalid phone number" | translate | titlecase }}
+        </span>
+      </span>
+      <span class="p-float-label p-input-icon-left">
+        <i class="pi pi-phone"></i>
+        <input
+          id="telFix"
+          formControlName="telFix"
+          type="text"
+          pInputText
+          [ngClass]="
+            addForm.get('telFix')?.invalid && addForm.get('telFix')?.touched
+              ? 'ng-invalid ng-dirty'
+              : ''
+          "
+        />
+        <label for="telFix">{{ "fix" | translate }}</label>
+        <span
+          *ngIf="addForm.get('telFix')?.errors?.['pattern'] && (
+                        addForm.get('telFix')?.dirty ||
+                        addForm.get('telFix')?.touched
+
+                      )"
+          class="text-danger"
+          style="position: absolute; left: 0; bottom: -24px"
+        >
+          {{ "invalid phone number" | translate | titlecase }}
+        </span>
+      </span>
+
+      <span class="p-float-label">
+        <p-dropdown
+          [appendTo]="'body'"
+          [ngClass]="
+            addForm.get('group')?.invalid && addForm.get('group')?.touched
+              ? 'ng-invalid ng-dirty'
+              : ''
+          "
+          [options]="groups"
+          [autoDisplayFirst]="false"
+          [style]="{ width: '100%' }"
+          formControlName="group"
+          optionValue="_id"
+          optionLabel="translations.nom"
+          [showClear]="true"
+        >
+        </p-dropdown>
+
+        <label>
+          {{ "group" | translate | titlecase }}
+        </label>
+        <span
+          *ngIf="addForm.get('group')?.invalid && addForm.get('group')?.errors?.['required'] && (
+                              addForm.get('group')?.pristine ||
+                              addForm.get('group')?.touched)"
+          class="text-danger"
+          style="position: absolute; left: 0; bottom: -24px"
+        >
+          {{ "this field is required" | translate | titlecase }}
+        </span>
+      </span>
+      <span class="p-float-label">
+        <p-inputNumber
+          [ngStyle]="{ width: '100%' }"
+          formControlName="pid"
+          [showButtons]="true"
+          inputId="pid"
+          [ngClass]="
+            addForm.get('pid')?.invalid && addForm.get('pid')?.touched
+              ? 'ng-invalid ng-dirty'
+              : ''
+          "
+        >
+        </p-inputNumber>
+
+        <label>
+          {{ "pid" | translate | titlecase }}
+        </label>
+        <span
+          *ngIf="addForm.get('pid')?.invalid && addForm.get('pid')?.errors?.['required'] && (
+                              addForm.get('pid')?.pristine ||
+                              addForm.get('pid')?.touched)"
+          class="text-danger"
+          style="position: absolute; left: 0; bottom: -24px"
+        >
+          {{ "this field is required" | translate | titlecase }}
+        </span>
+      </span>
+
+      <span class="p-float-label">
+        <p-dropdown
+          [appendTo]="'body'"
+          [showClear]="true"
+          [ngClass]="
+            addForm.get('responsable')?.invalid &&
+            addForm.get('responsable')?.touched
+              ? 'ng-invalid ng-dirty'
+              : ''
+          "
+          [options]="listResponsable"
+          [autoDisplayFirst]="false"
+          [style]="{ width: '100%' }"
+          formControlName="responsable"
+          dataKey="'_id'"
+        >
+          <ng-template pTemplate="selectedItem">
+            <div
+              class="country-item country-item-value d-flex justify-content-space-between align-items-center"
+              *ngIf="addForm.get('responsable')?.value"
+            >
+              <img
+                *ngIf="addForm.get('responsable')?.value?.photo"
+                class="flag"
+                src="{{ addForm.get('responsable')?.value?.photo }}"
+              />
+              <div>
+                {{ addForm.get("responsable")?.value?.translations.nom }}
+                {{ addForm.get("responsable")?.value?.translations.prenom }}
+              </div>
+            </div>
+          </ng-template>
+          <ng-template let-item pTemplate="item">
+            <div
+              class="country-item d-flex justify-content-space-between align-items-center"
+            >
+              <img *ngIf="item.photo" src="{{ item?.photo }}" />
+
+              <div>
+                {{ item?.translations.nom }} {{ item?.translations.prenom }}
+              </div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+
+        <label>
+          {{ "Responsable" | translate | titlecase }}
+        </label>
+        <span
+          *ngIf="addForm.get('responsable')?.errors?.['required'] && (
+                    addForm.get('responsable')?.dirty ||
+                    addForm.get('responsable')?.touched
+
+                  )"
+          class="text-danger"
+          style="position: absolute; left: 0; bottom: -24px"
+        >
+          {{ "this field is required" | translate | titlecase }}
+        </span>
+      </span>
+      <span *ngIf="addForm.controls['isResponsable']">
+        <label class="me-2">{{
+          "is Responsable" | translate | titlecase
+        }}</label>
+        <p-inputSwitch
+          [falseValue]="false"
+          [trueValue]="true"
+          formControlName="isResponsable"
+        ></p-inputSwitch>
+      </span>
+    </div>
+    <div class="form-footer">
+      <button
+        pButton
+        type="submit"
+        class="p-button-success ms-auto p-button-sm"
+        iconPos="right"
+        icon="pi pi-plus"
+        [label]="'global.add' | translate"
+      ></button>
+    </div>
+  </form>
+</div>

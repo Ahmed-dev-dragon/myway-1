@@ -1,1 +1,378 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/style.scss";
+a {
+  text-decoration: none;
+}
+.etat-badge {
+  border-radius: 5px;
+  padding: 0.4rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+.etatObjet-active,
+.etatCreation-terminer,
+.etatCreation-cloturer,
+.etatCreation-valider {
+  background: #c8e6c9;
+  color: #256029;
+}
+.etatCreation-validation {
+  background: #7bc37d;
+  color: #256029;
+}
+.etatObjet-archive,
+.etatCreation-creation {
+  background: #feedaf;
+  color: #8a5340;
+}
+.etatCreation-creation {
+  background: #feedaf;
+  color: #8a5340;
+}
+// #region colorize style
+.table-cell-badge {
+  border-radius: 5px;
+  padding: 0.4rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+.green-badge {
+  background-color: #c8e6c9;
+  color: #256029;
+}
+.brown-badge {
+  background-color: #ffd8b2;
+  color: #805b36;
+}
+.red-badge {
+  background-color: #ffcdd2;
+  color: #c63737;
+}
+.yellow-badge {
+  background-color: #feedaf;
+  color: #8a5340;
+}
+.orange-badge {
+  background-color: #fed7aa;
+  color: #ea580c;
+}
+.lime-badge {
+  background-color: #d9f99d;
+  color: #3f6212;
+}
+.teal-badge {
+  background-color: #b4fdef;
+  color: #08766e;
+}
+.indigo-badge {
+  background-color: #e0e7ff;
+  color: #4338ca;
+}
+.blue-badge {
+  background-color: #b3e5fc;
+  color: #23547b;
+}
+.purple-badge {
+  background-color: #efd7ff;
+  color: #6d28d9;
+}
+.gray-badge {
+  background-color: #d7d7d7;
+  color: #424242;
+}
+// #endregion
+.p-panelmenu .p-panelmenu-header>a {
+  padding: 0.8rem 1rem !important;
+}
+span {
+  span.error-span {
+    position: absolute;
+    left: 0.6rem;
+    bottom: -1.5625rem;
+    width: max-content;
+    color: rgba(var(--bs-danger-rgb), 1);
+  }
+  &.p-input-icon-left span.error-span {
+    left: 2.4rem;
+  }
+}
+.p-inputnumber-input,
+.p-inputnumber,
+.p-treeselect,
+.p-autocomplete,
+.p-calendar {
+  width: 100%;
+}
+.p-datatable .p-datatable-tbody>tr>td>img {
+  aspect-ratio: 1;
+  width: 2rem;
+  border-radius: 0.3rem;
+  object-fit: cover;
+}
+.dropzone-custom {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  &.viewMode .dropzone {
+    border: none;
+    height: 228px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    box-shadow: 0rem 0.0625rem 1.0625rem -0.25rem rgb(0 0 0 / 25%);
+  }
+  .dropzone {
+    width: 100%;
+    height: 100%;
+    min-height: 13.5625rem;
+    border-radius: 1rem;
+    text-align: center;
+    border-style: dashed;
+    align-items: center;
+    overflow-x: auto;
+    .bi-cloud-arrow-up-fill {
+      font-size: 50px;
+      color: #062e40;
+    }
+    h4 {
+      font-size: 18px;
+    }
+    .dz-preview {
+      z-index: 8;
+      border-radius: 0.3125rem;
+      margin: auto;
+      margin-inline: auto;
+      +.dz-preview {
+        margin-inline-start: 1rem;
+      }
+      .dz-image {
+        border-radius: 0.3125rem;
+        border: none;
+      }
+    }
+  }
+  .dz-image {
+    margin: auto;
+  }
+}
+.p-datatable .p-datatable-tbody>tr>td .action-button {
+  margin-inline-end: 0.5rem;
+  padding: 0px;
+  font-size: 0.1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.p-toast .p-toast-message .p-toast-message-content .p-toast-message-icon {
+  font-size: 1.6rem !important;
+}
+.p-component {
+  font-size: 0.9rem !important;
+}
+.country-item {
+  img {
+    width: 50px;
+    margin-inline-end: 1rem;
+  }
+}
+.country-item-value {
+  img {
+    width: 20px;
+    margin-inline-end: 1rem;
+  }
+}
+.pretty-print {
+  font-family: dejavu sans mono, monospace;
+  user-select: text;
+  line-height: 20px;
+  span {
+    &.object-key {
+      font-weight: 700;
+      color: rgba(136, 20, 135, 255);
+    }
+    &.object-value-string {
+      white-space: pre;
+      unicode-bidi: -webkit-isolate;
+      color: rgba(201, 1, 8, 255);
+    }
+    &.object-value-number-boolean {
+      white-space: pre;
+      unicode-bidi: -webkit-isolate;
+      color: rgba(40, 34, 169, 255);
+    }
+  }
+}
+.dropzone-label {
+  position: absolute;
+  pointer-events: none;
+  margin-top: -0.5rem;
+  line-height: 1;
+  top: -0.75rem;
+  font-size: 12px;
+}
+.slider-value {
+  position: absolute;
+  top: -19px;
+  background-color: rgb(70, 81, 87);
+  color: rgb(255, 255, 255);
+  border-radius: 9px;
+  padding: 2px 6px;
+  transform: translateX(-50%);
+  left: 51%;
+  z-index: 1200;
+  &::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background-color: rgb(70 81 87);
+    position: absolute;
+    display: block;
+    bottom: -22%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+.dynamic-form {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .form-grid-container {
+    flex-grow: 1;
+    margin-top: 0.9rem;
+    container-type: inline-size;
+    .form-grid {
+      $grid-row-gap: 30px;
+      $grid-columns: 1;
+      display: grid;
+      gap: 50px $grid-row-gap;
+      grid-template-columns: repeat($grid-columns,
+          calc(calc(100% - calc(calc($grid-columns - 1) * $grid-row-gap)) / $grid-columns ));
+      .input-container {
+        grid-column-end: span $grid-columns;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin-inline: auto;
+        .input-switch-container {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          margin-top: 0.5rem;
+          label {
+            margin-inline-end: 3rem;
+          }
+        }
+        .input-rating-container {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 0.5rem;
+          padding-inline-start: 12px;
+          label {
+            margin-block: 0 0.8rem;
+            margin-inline: 0rem auto;
+            font-size: 12px;
+            line-height: 12px;
+          }
+        }
+        label {
+          color: #6c757d;
+          margin-inline-end: 0.8rem;
+        }
+        >span {
+          width: 100%;
+        }
+      }
+      @for $i from 1 through 5 {
+        .row-span-#{$i} {
+          grid-row-end: span $i;
+        }
+      }
+      &.grid-cols- {
+        @container (min-width: 650px) {
+          &5,
+          &4,
+          &3,
+          &2 {
+            $grid-columns: 2;
+            grid-template-columns: repeat($grid-columns,
+                calc(calc(100% - calc(calc($grid-columns - 1) * $grid-row-gap)) / $grid-columns ));
+            .column-span- {
+              &5,
+              &4,
+              &3,
+              &2 {
+                grid-column-end: span $grid-columns;
+              }
+            }
+          }
+        }
+        @container (min-width: 1024px) {
+          &5,
+          &4,
+          &3 {
+            $grid-columns: 3;
+            grid-template-columns: repeat($grid-columns,
+                calc(calc(100% - calc(calc($grid-columns - 1) * $grid-row-gap)) / $grid-columns ));
+            .column-span- {
+              &5,
+              &4,
+              &3 {
+                grid-column-end: span $grid-columns;
+              }
+            }
+          }
+        }
+        @container (min-width: 1300px) {
+          &5,
+          &4 {
+            $grid-columns: 4;
+            grid-template-columns: repeat($grid-columns,
+                calc(calc(100% - calc(calc($grid-columns - 1) * $grid-row-gap)) / $grid-columns ));
+            .column-span- {
+              &5,
+              &4 {
+                grid-column-end: span $grid-columns;
+              }
+            }
+          }
+        }
+        @container (min-width: 1550px) {
+          &5 {
+            $grid-columns: 5;
+            grid-template-columns: repeat($grid-columns,
+                calc(calc(100% - calc(calc($grid-columns - 1) * $grid-row-gap)) / $grid-columns ));
+            .column-span- {
+              &5 {
+                grid-column-end: span $grid-columns;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .form-footer {
+    display: flex;
+    margin-top: 2rem;
+    grid-column-end: -1;
+    button {
+      width: fit-content;
+      margin-block: 1rem 0.5rem;
+      // &.prev-tab-button {}
+      &.next-tab-button {
+        margin-inline-start: auto;
+      }
+      &.submit-button {
+        margin-inline-start: auto;
+        &~button.next-tab-button {
+          margin-inline-start: 2rem;
+        }
+      }
+    }
+  }
+}

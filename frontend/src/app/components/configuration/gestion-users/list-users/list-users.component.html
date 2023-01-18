@@ -1,0 +1,140 @@
+<!-- <app-table [listItems]="listUsers" [globalFilterFields]="[
+    'translations.nom',
+    'translations.prenom',
+    'email',
+    'pseudo',
+    'gsm',
+    'telFix',
+    'group.translations.nom',
+    'etatObjet'
+  ]" exportFileName="users" [exportFilterFields]="[]" [service]="this.userService">
+  <ng-template #headerTemplate>
+    <tr>
+      <th class="text-center">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th class="text-center">{{ "image" | translate | titlecase }}</th>
+      <th pSortableColumn="translations.nom">
+        <div class="d-flex justify-content-center align-items-center">
+          {{ "nom" | translate | titlecase }}
+          <p-sortIcon field="translations.nom" class=""></p-sortIcon>
+          <p-columnFilter type="text" field="translations.nom" display="menu"></p-columnFilter>
+        </div>
+      </th>
+      <th pSortableColumn="translations.prenom">
+        <div class="d-flex justify-content-center align-items-center">
+          {{ "prenom" | translate | titlecase }}
+          <p-sortIcon field="translations.prenom" class=""></p-sortIcon>
+          <p-columnFilter type="text" field="translations.prenom" display="menu"></p-columnFilter>
+        </div>
+      </th>
+
+      <th pSortableColumn="pseudo">
+        <div class="d-flex justify-content-center align-items-center">
+          {{ "pseudo" | translate | titlecase }}
+          <p-sortIcon field="pseudo" class=""></p-sortIcon>
+          <p-columnFilter type="text" field="pseudo" display="menu"></p-columnFilter>
+        </div>
+      </th>
+      <th pSortableColumn="email">
+        <div class="d-flex justify-content-center align-items-center">
+          {{ "email" | translate | titlecase }}
+          <p-sortIcon field="email" class=""></p-sortIcon>
+          <p-columnFilter field="email" type="text" display="menu">
+          </p-columnFilter>
+        </div>
+      </th>
+      <th pSortableColumn="gsm">
+        <div class="d-flex justify-content-center align-items-center">
+          {{ "gsm" | translate | uppercase }}
+          <p-sortIcon field="gsm"></p-sortIcon>
+          <p-columnFilter type="text" field="gsm" display="menu"></p-columnFilter>
+        </div>
+      </th>
+      <th pSortableColumn="telFix">
+        <div class="d-flex justify-content-center align-items-center">
+          {{ "fix" | translate | titlecase }}
+          <p-sortIcon field="telFix"></p-sortIcon>
+          <p-columnFilter type="text" field="telFix" display="menu"></p-columnFilter>
+        </div>
+      </th>
+      <th pSortableColumn="group.translations.nom">
+        <div class="d-flex justify-content-center align-items-center">
+          {{ "group" | translate | titlecase }}
+          <p-sortIcon field="group.translations.nom" class=""></p-sortIcon>
+          <p-columnFilter field="group.translations.nom" type="text" display="menu">
+          </p-columnFilter>
+        </div>
+      </th>
+      <th pSortableColumn="etatObjet">
+        <div class="d-flex justify-content-center align-items-center">
+          {{ "etatObjetS" | translate | titlecase }}
+          <p-sortIcon field="etatObjet" class=""></p-sortIcon>
+          <p-columnFilter field="etatObjet" type="text" display="menu">
+          </p-columnFilter>
+        </div>
+      </th>
+      <th class="text-center">
+        {{ "actions" | translate | titlecase }}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template #bodyTemplate let-user>
+    <tr>
+      <td class="text-center">
+        <p-tableCheckbox [value]="user"></p-tableCheckbox>
+      </td>
+      <td class="text-center">
+        <img [lazyLoad]="user.photo" [defaultImage]="
+            'https://avatars.dicebear.com/api/personas/' +
+            user?.translations.nom +
+            user?.translations.prenom +
+            '.svg'
+          " />
+      </td>
+      <td class="text-center">{{ user?.translations.nom }}</td>
+      <td class="text-center">{{ user?.translations.prenom }}</td>
+      <td class="text-center">
+        {{ user?.pseudo }}
+      </td>
+      <td class="text-center">
+        {{ user?.email }}
+      </td>
+      <td class="text-center">
+        {{ user?.gsm }}
+      </td>
+      <td class="text-center">
+        {{ user?.telFix }}
+      </td>
+      <td class="text-center">
+        {{ user?.group?.translations.nom }}
+      </td>
+      <td class="text-center">
+        <span [class]="'etat-objet-badge etat-' + user?.etatObjet?.replaceAll('.','-')" *ngIf="user?.etatObjet?.replaceAll('.','-')">
+          {{ user?.etatObjet | translate }}
+        </span>
+      </td>
+      <td class="text-center">
+        <div style="display: flex; align-items: center">
+          <button pButton type="submit" icon="pi pi-eye" class="p-button-rounded me-2 mb-2 p-button-sm action-button"
+            [routerLink]="['detail',user._id]"></button>
+
+          <button pButton type="button" icon="pi pi-pencil"
+            class="p-button-rounded me-2 mb-2 p-button-warning p-button-sm action-button" [routerLink]="['edit']"
+            [state]="{ id: user._id }"></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</app-table> -->
+<app-dynamic-table
+  [data]="listUsers"
+  [captionConfig]="captionConfig"
+  (onEditClick)="onEditClick($event)"
+  (onDetailClick)="onDetailClick($event)"
+  (onCloneClick)="onCloneClick($event)"
+  (onAddClick)="onAddClick()"
+  (onDelete)="changeState($event)"
+  [cols]="headers"
+>
+</app-dynamic-table>

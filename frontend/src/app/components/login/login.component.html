@@ -1,1 +1,224 @@
-<p>login works!</p>
+<div class="login-wrapper">
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
+    <i class="center-img bi bi-person"></i>
+    <span class="p-float-label p-input-icon-left">
+      <i
+        class="pi pi-at"
+        [ngClass]="{
+          'text-danger':
+            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+        }"
+      ></i>
+      <input
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+        }"
+        id="float-input-email"
+        class="p-inputtext-sm"
+        type="email"
+        formControlName="email"
+        pInputText
+      />
+      <label for="float-input-email">{{
+        "email" | translate | titlecase
+      }}</label>
+      <span
+        *ngIf="
+          loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+        "
+        class="text-danger error-span"
+      >
+        {{ "you must insert email address" | translate | titlecase }}
+      </span>
+    </span>
+
+    <span
+      class="p-float-label p-input-icon-left p-input-icon-right"
+      [ngStyle]="{
+        marginTop:
+          loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+            ? '2.5rem'
+            : '1.5rem'
+      }"
+    >
+      <i
+        class="pi pi-lock"
+        [ngClass]="{
+          'text-danger':
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+        }"
+      ></i>
+      <input
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+        }"
+        id="float-input-password"
+        class="p-inputtext-sm"
+        [type]="eye.classList.contains('pi-eye-slash') ? 'password' : 'text'"
+        [feedback]="false"
+        [autocomplete]="false"
+        pPassword
+        formControlName="password"
+      />
+      <label for="float-input-password">{{
+        "password" | translate | titlecase
+      }}</label>
+      <i
+        #eye
+        class="pi pi-eye-slash"
+        style="cursor: pointer"
+        [ngClass]="{
+          'text-danger':
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+        }"
+        (click)="
+          eye.classList.contains('pi-eye-slash')
+            ? eye.classList.replace('pi-eye-slash', 'pi-eye')
+            : eye.classList.replace('pi-eye', 'pi-eye-slash')
+        "
+      ></i>
+      <span
+        *ngIf="
+          loginForm.get('password')?.invalid &&
+          loginForm.get('password')?.touched
+        "
+        class="text-danger"
+        style="position: absolute; left: 13px; bottom: -25px"
+      >
+        {{ "you must insert the password" | translate | titlecase }}
+      </span>
+    </span>
+
+    <div class="sign-in-container">
+      <span class="password-reset-container">
+        <a href="javascript:void(0)" (click)="resetPassword()" tabindex="-1">{{
+          "forgot password ?" | translate | titlecase
+        }}</a>
+      </span>
+
+      <button
+        pButton
+        type="submit"
+        icon="pi pi-sign-in"
+        class="p-button-sm sign-in"
+        label="Login"
+        iconPos="right"
+      ></button>
+    </div>
+  </form>
+
+  <form
+    [formGroup]="passwordResetForm"
+    #lgForm="ngForm"
+    class="password-reset-form"
+  >
+    <div class="email-verification-container">
+      <i class="pi pi-times close-reset-form" (click)="returnToLogin()"></i>
+      <span class="p-float-label p-input-icon-left">
+        <i
+          class="pi pi-at"
+          [ngClass]="{
+            'text-danger':
+              passwordResetForm.get('email')?.invalid &&
+              passwordResetForm.get('email')?.touched
+          }"
+        ></i>
+        <input
+          type="email"
+          class="p-inputtext-sm"
+          [ngClass]="{
+            'ng-dirty ng-invalid':
+              passwordResetForm.get('email')?.invalid &&
+              passwordResetForm.get('email')?.touched
+          }"
+          id="reset-password-email"
+          pInputText
+          formControlName="email"
+          tabindex="-1"
+        />
+        <label for="reset-password-email">{{
+          "email" | translate | titlecase
+        }}</label>
+
+        <span
+          *ngIf="
+            passwordResetForm.get('email')?.invalid &&
+            passwordResetForm.get('email')?.touched
+          "
+          class="text-danger"
+          style="position: absolute; left: 13px; bottom: -30px"
+        >
+          {{ "this field is required" | translate | titlecase }}
+        </span>
+      </span>
+
+      <button
+        class="next-btn p-button-sm"
+        iconPos="right"
+        label="next"
+        icon="pi pi-chevron-right"
+        pButton
+        tabindex="-1"
+        (click)="nextStep()"
+      ></button>
+    </div>
+
+    <div class="email-verification-message-container hide">
+      <p class="email-verification-message">
+        {{
+          "an email to change your password is sent to your email address please check your email address"
+            | translate
+            | titlecase
+        }}
+      </p>
+
+      <button
+        class="return-to-login-btn p-button-sm"
+        iconPos="right"
+        label="return to login"
+        icon="pi pi-chevron-right"
+        tabindex="-1"
+        (click)="returnToLogin()"
+        pButton
+      ></button>
+    </div>
+  </form>
+
+  <div
+    #loadingModal
+    class="loading-modal"
+    style="
+      top: 0;
+      left: 0;
+      width: 0vw;
+      height: 0vh;
+      cursor: wait;
+      z-index: 222222;
+      position: absolute;
+    "
+  ></div>
+</div>
+
+<p-dialog
+  [(visible)]="authService.loginError.showErrorDialog"
+  [transitionOptions]="'250ms'"
+  [modal]="true"
+  [style]="{ width: '100%', maxWidth: '500px' }"
+>
+  <ng-template pTemplate="header"> Error </ng-template>
+  {{ authService.loginError.errorDialogText }}
+  <ng-template pTemplate="footer">
+    <button
+      type="button"
+      label="ok"
+      pButton
+      autofocus
+      (click)="authService.loginError.showErrorDialog = false"
+    ></button>
+  </ng-template>
+</p-dialog>

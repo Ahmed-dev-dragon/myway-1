@@ -1,9 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { APIService } from "./api.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class TraceService {
+  traceUrl = "/trace";
 
-  constructor() { }
+  constructor(private apiService: APIService) {}
+
+  getTraces() {
+    return this.apiService.get(this.traceUrl);
+  }
+
+  getTraceById(id: string) {
+    return this.apiService.get(`${this.traceUrl}/${id}`);
+  }
 }

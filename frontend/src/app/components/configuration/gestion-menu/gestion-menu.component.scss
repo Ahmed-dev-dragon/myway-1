@@ -1,0 +1,13 @@
+.gridForm{
+      display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        margin-top: 2rem;
+        gap: 20px;
+}
+.formButton{
+  display: flex;
+  justify-content : space-evenly
+}
+.archive {
+ color: rgb(216, 0, 0) !important;
+}

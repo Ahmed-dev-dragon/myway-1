@@ -1,0 +1,18 @@
+.not-found-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  width: 100%;
+  height: calc(100vh - 10rem);
+
+  .not-found-error {
+    font-size: 100px;
+  }
+  .not-found {
+    font-size: 90px;
+  }
+}

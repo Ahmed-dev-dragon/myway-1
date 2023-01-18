@@ -1,0 +1,10 @@
+<app-dynamic-table
+  [captionConfig]="captionConfig"
+  [cols]="headers"
+  [data]="listGroups"
+  (onEditClick)="onEditClick($event)"
+  (onDetailClick)="onDetailClick($event)"
+  (onCloneClick)="onCloneClick($event)"
+  (onAddClick)="onAddClick()"
+  (onDelete)="changeState($event)"
+></app-dynamic-table>

@@ -1,1 +1,23 @@
-<p>breadcrumb works!</p>
+<div class="breadcrumb-container" *ngIf="showBreadcrumbComp">
+  <h1 class="page-title">
+    {{ title | translate | titlecase}}
+  </h1>
+  <div class="breadcrumb" *ngIf="showBreadcrumb">
+    <ul class="breadcrumb-list">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/']">
+          <i class="bi bi-house"></i>
+        </a>
+      </li>
+      <li class="breadcrumb-item" *ngFor="let br of breadcrumb; let i = index">
+        <a [routerLink]="
+            breadcrumb.length - 1 != i && breadcrumbURLs[i]
+              ? [breadcrumbURLs[i]]
+              : null
+          ">
+          {{ br | translate }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

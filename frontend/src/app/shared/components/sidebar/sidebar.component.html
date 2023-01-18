@@ -1,0 +1,6 @@
+<aside class="sidebar" id="sidebar" [ngClass]="showSidebar ? 'open' : ''">
+  <nav class="sidebar-nav">
+    <p-panelMenu *ngIf="sidebarNavItems.length" [model]="sidebarNavItems" [style]="{ width: '280px' }"
+      [multiple]="false"></p-panelMenu>
+  </nav>
+</aside>
