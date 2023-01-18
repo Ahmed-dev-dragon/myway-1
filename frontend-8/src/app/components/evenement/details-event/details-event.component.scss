@@ -1,0 +1,20 @@
+.article-details {
+  display: inline-block;
+}
+.date-container {
+  display: flex;
+}
+.bold {
+  font-weight: 600;
+}
+.acteur-div {
+  display: flex;
+  align-items: center;
+  img {
+    max-height: 100px;
+    margin-inline-end: 1em;
+  }
+}
+.img-event {
+  max-height: 300px;
+}

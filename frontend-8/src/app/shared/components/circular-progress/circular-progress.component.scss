@@ -1,0 +1,25 @@
+.circular-element {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: rgb(175, 175, 175);
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+
+  div.side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    span {
+      height: 50%;
+      width: 100%;
+      overflow: hidden;
+    }
+    .colored {
+      background-color: rgb(48, 48, 128);
+    }
+  }
+}

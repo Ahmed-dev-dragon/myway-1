@@ -1,0 +1,220 @@
+.fa-calendar {
+  padding-right: 5px;
+}
+
+.socialMedia {
+  padding-right: 10px;
+  color: rgb(61, 61, 61);
+}
+
+.poste {
+  margin-bottom: 13px;
+}
+
+.socialMedia1 {
+  list-style: none;
+  display: flex;
+  padding-left: 0px;
+  margin-bottom: -5px;
+  justify-content: flex-end;
+}
+
+.criteres-offres {
+  font-weight: bold;
+  color: black;
+}
+
+.fiche1 {
+  margin-left: 3px;
+}
+
+:host ::ng-deep .tabview-custom {
+  i,
+  span {
+    vertical-align: middle;
+  }
+
+  span {
+    margin: 0 0.5rem;
+  }
+}
+
+:host ::ng-deep .p-button {
+  margin-right: 0.25rem;
+}
+
+:host ::ng-deep .p-tabview p {
+  line-height: 1.5;
+  margin: 0;
+}
+
+.details {
+  padding-left: 20px;
+}
+
+.form1 {
+  padding-top: 20px;
+}
+
+.p-float-label {
+  padding-left: 5px;
+}
+
+.p-field {
+  margin-bottom: 30px;
+}
+
+.test {
+  font-size: 50px;
+}
+
+@media (max-width: 700px) {
+  .test {
+    font-size: 30px;
+  }
+}
+
+.offre-critere-label {
+  font-weight: 600;
+}
+.sub_li {
+  display: flex;
+}
+.li-one {
+  display: flex;
+  gap: 5px;
+}
+
+// .top-t {
+//   font-weight: 900;
+//   font-size: 50px;
+//   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+//     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+// }
+
+// .top-ctiy {
+//   margin-top: 100px;
+//   color: rgb(199, 199, 199);
+// }
+.li_one_init_h {
+  font-weight: 900;
+  margin-right: 20px;
+  margin-left: 20px;
+  color: rgb(58, 58, 58);
+}
+// .education_descriptionli {
+//   padding: 20px;
+//   padding-inline-start: 70px;
+// }
+// .education_description {
+//   color: rgb(86, 86, 86);
+//   font-family: random($limit: 1);
+// }
+.d-flexx {
+  display: flex;
+  flex-direction: column;
+}
+// .ed-sub-t {
+//   font-weight: 500;
+//   font-size: 25px;
+//   color: rgb(76, 76, 76);
+//   padding: 20px;
+// }
+// .sub_li_d {
+//   font-weight: 300;
+//   font-size: 20px;
+//   color: rgb(76, 76, 76);
+//   padding-bottom: 20px;
+// }
+.none_list {
+  text-decoration: none;
+  list-style: none;
+}
+
+.btnn {
+  padding: 4px;
+  font-size: 13px;
+}
+
+.img_profile {
+  border-radius: 5%;
+
+  max-height: 250px;
+  object-fit: contain;
+}
+.name_deplom {
+  font-size: 20px;
+}
+
+.lista {
+  margin-left: 20px;
+  width: 400px;
+}
+
+.skills_titale {
+  font-size: 25px;
+  color: rgb(82, 82, 82);
+  font-weight: 500;
+}
+.li_skils {
+  margin-left: 10px;
+  line-height: 0.8;
+  margin-top: 20px;
+}
+
+.textarea {
+  height: 164px;
+}
+
+.AAA {
+  color: rgb(104, 103, 103);
+  text-decoration: none;
+}
+.lili {
+  margin: auto;
+}
+.d-flexV {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 10px;
+
+  justify-content: space-around;
+  margin: 30px;
+}
+.CLAS {
+  width: 50px;
+  height: 60px;
+}
+.h11 {
+  font-weight: 700;
+  margin-right: auto;
+  font-size: 25px;
+  margin-left: -30px;
+}
+.label-info {
+  width: 100px;
+}
+.img-frame {
+  max-height: 350px;
+}
+.iframeContainer {
+  position: relative;
+}
+
+.absoluteDiv {
+  position: absolute;
+
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 12%;
+}
+
+.fullScreen {
+  height: 400px;
+}
+.iframe-modal {
+  height: 85vh;
+  width: 100%;
+}

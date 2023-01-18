@@ -1,0 +1,227 @@
+<div class="section-recruteur mb-3">
+  <h4>{{ 'globale.avis_Entreprise' | translate }}</h4>
+</div>
+<div class="section-recruteur">
+  <p-tabView>
+    <p-tabPanel header="{{ 'globale.parcourir_avis' | translate }}">
+      <h4 class="my-3">
+        {{ 'globale.list_temoignage' | translate }}
+      </h4>
+      <div class="" *ngIf="comments.length == 0">
+        <p>Auncun Comments trouvés</p>
+      </div>
+
+      <div *ngIf="comments.length > 0">
+        <div class="mb-3" *ngFor="let comment of comments">
+          <app-card-temoignage
+            [image]="comment.img"
+            [nom]="comment.nom_ou_pseudo"
+            [fonction]="comment.fonction"
+            [commentaire]="comment.commentaire_intervenent"
+            [date]="comment.date"
+          ></app-card-temoignage>
+        </div>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="{{ 'globale.donner_avis' | translate }}">
+      <form
+        id="contactForm"
+        (ngSubmit)="sendAvis()"
+        [formGroup]="avisForm"
+        #form2
+      >
+        <h4 class="">{{ 'globale.donner_avis' | translate }}</h4>
+
+        <div class="row">
+          <!-- Name input -->
+
+          <div class="mb-3 col-md-6">
+            <label class="form-label" for="name">
+              {{ 'form.nom' | translate }}
+            </label>
+            <input
+              class="form-control"
+              id="name"
+              type="text"
+              placeholder="{{ 'form.exp_nom' | translate }}"
+              [ngClass]="{
+                'is-invalid':
+                  avisForm.get('name')?.touched && avisForm.get('name')?.invalid
+              }"
+              formControlName="name"
+              name="name"
+            />
+            <div
+              *ngIf="
+                avisForm.get('name')?.touched && avisForm.get('name')?.invalid
+              "
+              class="invalid-feedback mb-2"
+            >
+              <div *ngIf="avisForm.get('name')?.errors?.['required']">
+                {{ 'form.champ_oblig' | translate }}
+              </div>
+              <div *ngIf="avisForm.get('name')?.errors?.['minlength']">
+                {{ 'form.champ_3' | translate }}
+              </div>
+              <div *ngIf="avisForm.get('name')?.errors?.['maxlength']">
+                {{ 'form.champ_30' | translate }}
+              </div>
+              <div *ngIf="avisForm.get('name')?.errors?.['pattern']">
+                {{ 'form.champ_lettre' | translate }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Prenom input -->
+          <div class="mb-3 col-md-6">
+            <label class="form-label" for="prenom">
+              {{ 'form.prenom' | translate }}
+            </label>
+            <input
+              class="form-control"
+              id="prenom"
+              type="prenom"
+              placeholder=" {{ 'form.exp_pre' | translate }}"
+              formControlName="prenom"
+              name="prenom"
+              [ngClass]="{
+                'is-invalid':
+                  avisForm.get('prenom')?.touched &&
+                  avisForm.get('prenom')?.invalid
+              }"
+            />
+            <div
+              *ngIf="
+                avisForm.get('prenom')?.touched &&
+                avisForm.get('prenom')?.invalid
+              "
+              class="invalid-feedback mb-2"
+            >
+              <div *ngIf="avisForm.get('prenom')?.errors?.['required']">
+                {{ 'form.champ_oblig' | translate }}
+              </div>
+              <div *ngIf="avisForm.get('prenom')?.errors?.['minlength']">
+                {{ 'form.champ_3' | translate }}
+              </div>
+              <div *ngIf="avisForm.get('prenom')?.errors?.['maxlength']">
+                {{ 'form.champ_30' | translate }}
+              </div>
+              <div *ngIf="avisForm.get('prenom')?.errors?.['pattern']">
+                {{ 'form.champ_lettre' | translate }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Telephone + email address input -->
+        <div class="row">
+          <div class="mb-3 col-md-6">
+            <label class="form-label" for="telephone">
+              {{ 'form.telephone' | translate }}
+            </label>
+            <input
+              class="form-control"
+              id="telephone"
+              type="texte"
+              placeholder=" {{ 'form.exp_tel' | translate }}"
+              formControlName="telephone"
+              name="telephone"
+              [ngClass]="{
+                'is-invalid':
+                  avisForm.get('telephone')?.touched &&
+                  avisForm.get('telephone')?.invalid
+              }"
+            />
+            <div
+              *ngIf="
+                avisForm.get('telephone')?.touched &&
+                avisForm.get('telephone')?.invalid
+              "
+              class="invalid-feedback"
+            >
+              <div *ngIf="avisForm.get('telephone')?.errors?.['required']">
+                {{ 'form.champ_oblig' | translate }}
+              </div>
+              <div *ngIf="avisForm.get('telephone')?.errors?.['pattern']">
+                {{ 'form.tel_valid' | translate }}
+              </div>
+              <div *ngIf="avisForm.get('telephone')?.errors?.['minlength']">
+                {{ 'form.champ_10' | translate }}
+              </div>
+            </div>
+          </div>
+          <!-- Email  input -->
+          <div class="mb-3 col-md-6">
+            <label class="form-label" for="emailAddress">
+              {{ 'form.email' | translate }}
+            </label>
+            <input
+              class="form-control"
+              id="emailAddress"
+              type="email"
+              placeholder=" {{ 'form.exp_email' | translate }}"
+              formControlName="email"
+              name="email"
+              [ngClass]="{
+                'is-invalid':
+                  avisForm.get('email')?.touched &&
+                  avisForm.get('email')?.invalid
+              }"
+            />
+            <div
+              *ngIf="
+                avisForm.get('email')?.touched && avisForm.get('email')?.invalid
+              "
+              class="invalid-feedback"
+            >
+              <div *ngIf="avisForm.get('email')?.errors?.['required']">
+                {{ 'form.champ_oblig' | translate }}
+              </div>
+              <div *ngIf="avisForm.get('email')?.errors?.['email']">
+                {{ 'form.mail_valid' | translate }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3 col-md-12">
+            <label class="form-label" for="avis">
+              {{ 'form.avis' | translate }}
+            </label>
+            <textarea
+              class="form-control"
+              id="avis"
+              type="texte"
+              placeholder=" {{ 'form.exp_tel' | translate }}"
+              formControlName="avis"
+              name="avis"
+              [ngClass]="{
+                'is-invalid':
+                  avisForm.get('avis')?.touched && avisForm.get('avis')?.invalid
+              }"
+            ></textarea>
+            <div
+              *ngIf="
+                avisForm.get('avis')?.touched && avisForm.get('avis')?.invalid
+              "
+              class="invalid-feedback"
+            >
+              <div *ngIf="avisForm.get('avis')?.errors?.['required']">
+                {{ 'form.champ_oblig' | translate }}
+              </div>
+
+              <div *ngIf="avisForm.get('avis')?.errors?.['minlength']">
+                {{ 'form.champ_3' | translate }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Form submit button -->
+        <div class="mt-5 text-center">
+          <button class="btn btn-outline-dark" type="submit">
+            {{ 'form.Envoyer' | translate }}
+          </button>
+        </div>
+      </form>
+    </p-tabPanel>
+  </p-tabView>
+</div>

@@ -1,0 +1,28 @@
+<div class="progress-wrapper">
+  <div class="circular-element">
+    <div class="side">
+      <span class="element-4" [class.colored]="niveau == 'niveau4'"></span>
+      <span
+        class="element-3"
+        [class.colored]="niveau == 'niveau3' || niveau == 'niveau4'"
+      ></span>
+    </div>
+    <div class="side">
+      <span
+        class="element-1"
+        [class.colored]="
+          niveau == 'niveau1' ||
+          niveau == 'niveau2' ||
+          niveau == 'niveau3' ||
+          niveau == 'niveau4'
+        "
+      ></span>
+      <span
+        class="element-2"
+        [class.colored]="
+          niveau == 'niveau2' || niveau == 'niveau3' || niveau == 'niveau4'
+        "
+      ></span>
+    </div>
+  </div>
+</div>

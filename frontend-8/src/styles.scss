@@ -1,0 +1,299 @@
+// // Custom Theming for Angular Material
+// // For more information: https://material.angular.io/guide/theming
+// @use '@angular/material' as mat;
+// // Plus imports for other components in your app.
+
+// // Include the common styles for Angular Material. We include this here so that you only
+// // have to load a single css file for Angular Material in your app.
+// // Be sure that you only ever include this mixin once!
+// @include mat.core();
+
+// // Define the palettes for your theme using the Material Design palettes available in palette.scss
+// // (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// // hue. Available color palettes: https://material.io/design/color/
+// $frontend-primary: mat.define-palette(mat.$indigo-palette);
+// $frontend-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// // The warn palette is optional (defaults to red).
+// $frontend-warn: mat.define-palette(mat.$red-palette);
+
+// // Create the theme object. A theme consists of configurations for individual
+// // theming systems such as "color" or "typography".
+// $frontend-theme: mat.define-light-theme(
+//   (
+//     color: (
+//       primary: $frontend-primary,
+//       accent: $frontend-accent,
+//       warn: $frontend-warn,
+//     ),
+//   )
+// );
+
+// // Include theme styles for core and each component used in your app.
+// // Alternatively, you can import and @include the theme mixins for each component
+// // that you are using.
+// @include mat.all-component-themes($frontend-theme);
+
+/* You can add global styles to this file, and also import other style files */
+// @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+// @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';  
+*body {
+  background-color: #f6f6f9;
+}
+.section-recruteur {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+.p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem
+  .p-menuitem-link:not(.p-disabled):focus {
+  box-shadow: none !important;
+}
+.p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem:not(.p-highlight):not(.p-disabled):hover
+  .p-menuitem-link {
+  background: #ffffff;
+  border-color: #3f1c92 !important;
+  color: #1a578d !important;
+}
+
+.p-accordion .p-accordion-content {
+  color: #000 !important;
+}
+.p-tabview .p-tabview-panels {
+  color: #000 !important;
+}
+.p-accordion-header-text {
+  font-size: 18px !important;
+  color: #000 !important;
+  font-weight: 600 !important;
+}
+
+.ellipsis-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.transparent-bg > .modal-content {
+  background-color: #fefefe00 !important;
+  border: none !important;
+}
+a {
+  text-decoration: none;
+}
+.pull-right {
+  float: right;
+}
+
+.card-img {
+  height: 200px;
+}
+.card-container {
+  border: 0.1rem solid #dcdada;
+  border-radius: 0.2rem;
+  padding: 1rem;
+  // margin-bottom: 1em;
+}
+
+.p-calendar .p-inputtext {
+  width: 600px !important;
+  height: 55px !important;
+  border-radius: 0.375rem !important;
+  min-width: fit-content !important;
+  margin-top: -3px !important;
+}
+
+.sidebar-offre {
+  width: 50px;
+  white-space: nowrap;
+  h4,
+  button {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .close {
+    width: 300px;
+  }
+  button::after {
+    display: block;
+  }
+  .listFilte1 {
+    margin-top: 0 !important;
+  }
+  .filtreee {
+    display: none;
+  }
+  &:hover {
+    width: 300px;
+    .accordion-button {
+      padding: 1.25rem 1rem !important;
+    }
+
+    .listFilte1 {
+      margin-top: 20px !important;
+    }
+    .filtreee {
+      display: block;
+    }
+    button::after {
+      display: block;
+    }
+  }
+}
+* {
+  transition: all 0.35s ease-in-out;
+}
+
+.sidebar-offre {
+  width: 50px;
+  white-space: nowrap;
+  h4,
+  button {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  button::after {
+    display: none;
+  }
+  &.open {
+    width: 300px;
+    .accordion-button {
+      padding: 1.25rem 1rem !important;
+    }
+
+    .listFilte1 {
+      margin-top: 20px !important;
+    }
+    .filtreee {
+      display: block;
+    }
+    button::after {
+      display: block;
+    }
+  }
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #000 !important;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent
+  .mat-radio-ripple
+  .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: #000 !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+.no-style-list {
+  list-style: none;
+}
+.spacing-inline-end {
+  margin-inline-end: 1em;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Mukta', sans-serif;
+}
+
+.favoris-container {
+  display: flex;
+  background-color: #a9a9a985;
+  padding: 5px;
+  border-radius: 5px;
+  margin-inline-start: 0.5em;
+}
+.spacing-article-divider {
+  padding: 20px 0;
+  &:not(:first-child) {
+    border-top: 1px solid #ccc;
+  }
+}
+.card-custom-title {
+  height: max-content;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.truncate {
+  height: max-content;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+}
+.truncate-1-line {
+  -webkit-line-clamp: 1;
+}
+.truncate-2-line {
+  -webkit-line-clamp: 2;
+}
+.truncate-3-line {
+  -webkit-line-clamp: 3;
+}
+.truncate-4-line {
+  -webkit-line-clamp: 4;
+}
+.truncate-5-line {
+  -webkit-line-clamp: 5;
+}
+.truncate-6-line {
+  -webkit-line-clamp: 6;
+}
+.truncate-7-line {
+  -webkit-line-clamp: 7;
+}
+.truncate-8-line {
+  -webkit-line-clamp: 8;
+}
+.bt-adresse-lien {
+  border-top: 1px solid #ccc;
+  margin-top: auto;
+}
+.responsive > svg {
+  width: 150px !important;
+}
+.responsive {
+  width: 100%;
+  padding-bottom: 12% !important;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  background-color: #000000b0;
+}
+.info-small-card {
+  margin-top: 15px;
+
+  line-height: 1.75;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+.modal-style {
+  height: 85vh !important;
+}

@@ -1,0 +1,56 @@
+.header-recruiter {
+  .header-recruiter-image {
+    height: 15em;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+  }
+  .recruteur-info-general {
+    width: 100%;
+    position: relative;
+    /// background-color: rgba(0, 0, 0, 0.5);
+    top: -100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    z-index: 10;
+  }
+  .header-recruiter-logo {
+    height: 115px;
+    width: 115px;
+  }
+  .menu-recruiter-header {
+    box-shadow: 0 4px 8px rgba(118, 118, 120, 0.2);
+  }
+  .fa-brands {
+    font-size: 20px;
+  }
+}
+.sticky {
+  position: sticky;
+  top: 1em;
+}
+.main-page {
+  position: relative;
+
+  top: -100px;
+}
+.top-img-container {
+  position: relative;
+  &::before {
+    content: '';
+    // background: linear-gradient(#e66465, #9198e5);
+    background: linear-gradient(180deg, rgba(20, 20, 20, 0) 30%, #141414 170%);
+    position: absolute;
+    width: 100%;
+
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 5;
+
+    display: block;
+  }
+}

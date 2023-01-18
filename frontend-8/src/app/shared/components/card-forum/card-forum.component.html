@@ -1,0 +1,45 @@
+<div class="card-container h-100">
+  <div class="text-center">
+    <img
+      class="card-img img-fluid"
+      [defaultImage]="'assets/images/forum-default.jpg'"
+      [lazyLoad]="image"
+      alt=""
+    />
+  </div>
+  <h3 class="py-1 card-custom-title text-center truncate truncate-3-line">
+    {{ designation }}
+  </h3>
+
+  <div class="">
+    <p class="j-description j-resume-lg mt-2 truncate truncate-5-line">
+      {{ descriptif }}
+    </p>
+    <div class="statTheme">
+      <p
+        class="j-description j-resume-lg mt-2 truncate truncate-3-line blue-color"
+      >
+        <i class="fa fa-users" aria-hidden="true"></i>
+        &nbsp;{{ 'home.h0071' | translate }}
+
+        &nbsp;:
+        {{ nbrTheme }}
+      </p>
+
+      <p class="j-description j-resume-lg mt-2 truncate truncate-3-line">
+        <i class="fa fa-users" aria-hidden="true"></i>
+        &nbsp;{{ 'ajout.nbrP' | translate }}
+
+        &nbsp;:
+        {{ nbrParticipants }}
+      </p>
+
+      <p class="j-description j-resume-lg mt-2 truncate truncate-3-line">
+        <i class="fa fa-comment" aria-hidden="true"></i>
+        &nbsp;{{ 'correction.ech' | translate }}
+
+        : {{ nbrEchanges }}
+      </p>
+    </div>
+  </div>
+</div>

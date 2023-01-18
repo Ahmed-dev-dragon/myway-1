@@ -1,0 +1,66 @@
+<div class="bg-white card-article-container">
+  <div
+    href="/int-en/case-studies/carlsberg-b2b-engagement-plattform"
+    class="card-flexible"
+  >
+    <div class="card-article-media" [routerLink]="link">
+      <img
+        [lazyLoad]="image"
+        [defaultImage]="
+          'https://www.sqli.com/sites/default/files/styles/xl_thumbnail_teaser/public/2022-06/wine-2021-09-04-09-31-01-utc.jpg?h=306e89dc&itok=fEux5AhX'
+        "
+        alt="Carlsberg Banner Beer"
+        class="card-article-img"
+      />
+    </div>
+
+    <div class="card-article-body d-flex flex-column justify-content-evenly">
+      <div class="card-article-title">
+        <h3 class="card-custom-title" [routerLink]="link">
+          {{ titre }}
+        </h3>
+        <h6 class="" *ngIf="isArticle">
+          {{ sousTitre }}
+        </h6>
+        <div *ngIf="!isArticle">
+          <div class="">
+            <i class="fa-regular fa-calendar"></i>
+            &nbsp;
+            <span>
+              {{ dateDebut | date: 'M/d/yyyy' }} &nbsp;{{ heureDebut }}
+            </span>
+          </div>
+          <div class="my-1">
+            <i class="fa-regular fa-calendar"></i>
+            &nbsp;
+            <span>{{ dateFin | date: 'M/d/yyyy' }}&nbsp;{{ heureFin }}</span>
+          </div>
+        </div>
+      </div>
+      <p class="card-article-etiquette m-0" *ngIf="isArticle">
+        {{ etiquette }}
+      </p>
+      <p class="card-article-etiquette m-0 fw-bold" *ngIf="!isArticle">
+        {{ typeEvent }}
+      </p>
+      <div class="card-article-motCle">
+        <ng-container *ngIf="!isArticle">
+          <p>{{ organisateur }}</p>
+        </ng-container>
+        <ng-container *ngIf="isArticle">
+          <span class="motCle" *ngFor="let motCle of motsCles">
+            <span class="tag small me-2 p-1 text-secondary bg-light">
+              #{{ motCle }}
+            </span>
+          </span>
+        </ng-container>
+      </div>
+      <span
+        [routerLink]="link"
+        class="teaser-content__wrapper__link link-underlined link-underlined--pink"
+      >
+        Lire Plus
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<form [formGroup]="skills_form" (ngSubmit)="save_skills_from()">
+  <div class="row">
+    <!--  skills Name input -->
+    <div class="mb-3 col-md-6">
+      <label class="form-label" for="skills_form_skill_name_input">
+        {{ "form.nom skills" | translate }}
+      </label>
+      <input
+        class="form-control"
+        id="skills_form_skill_name_input"
+        type="text"
+        placeholder="{{ 'skill name' | translate }}"
+        [ngClass]="{
+          'is-invalid':
+            skills_form.get('skills_form_skill_name_input')?.touched &&
+            skills_form.get('skills_form_skill_name_input')?.invalid
+        }"
+        formControlName="skills_form_skill_name_input"
+        name="skills_form_skill_name_input"
+      />
+      <div
+        *ngIf="
+          skills_form.get('skills_form_skill_name_input')?.touched &&
+          skills_form.get('skills_form_skill_name_input')?.invalid
+        "
+        class="invalid-feedback mb-2"
+      >
+        <div
+          *ngIf="skills_form.get('skills_form_skill_name_input')?.errors?.['required']"
+        >
+          {{ "form.champ_oblig" | translate }}
+        </div>
+      </div>
+    </div>
+    <!-- skils lavel input -->
+    <div class="mb-3 col-md-6">
+      <label class="form-label" for="skills_form_skill_lavel_input">
+        {{ "form.skills_form_skill_lavel_input" | translate }}
+      </label>
+      <input
+        class="form-control"
+        id="skills_form_skill_lavel_input"
+        type="number"
+        placeholder=" {{ 'form.exp_pre' | translate }}"
+        formControlName="skills_form_skill_lavel_input"
+        name="skills_form_skill_lavel_input"
+        [ngClass]="{
+          'is-invalid':
+            skills_form.get('skills_form_skill_lavel_input')?.touched &&
+            skills_form.get('skills_form_skill_lavel_input')?.invalid
+        }"
+      />
+      <div
+        *ngIf="
+          skills_form.get('skills_form_skill_lavel_input')?.touched &&
+          skills_form.get('skills_form_skill_lavel_input')?.invalid
+        "
+        class="invalid-feedback mb-2"
+      >
+        <div *ngIf="skills_form.get('skills_form_skill_lavel_input')?.errors?.['required']">
+          {{ "form.champ_oblig" | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="row">
+
+  <button type="button" class="btn btn-warning px-5 addbtn  ">
+    <i class="fa-solid fa-circle-plus"></i>
+    add
+  </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+  <div class="modal-footer">
+    <div class="row">
+      <button type="submit" class="btn btn-info">save</button>
+    </div>
+  </div>
+</form>

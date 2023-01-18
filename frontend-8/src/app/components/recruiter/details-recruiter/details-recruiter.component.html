@@ -1,0 +1,87 @@
+<div class="">
+  <div class="header-recruiter">
+    <div class="top-img-container">
+      <img
+        class="header-recruiter-image"
+        [lazyLoad]="recruiter.imageBg"
+        [defaultImage]="'assets/images/bg-recruiter.jpg'"
+      />
+    </div>
+    <div class="recruteur-info-general container">
+      <div class="logo-societe-container">
+        <img
+          [lazyLoad]="recruiter.logo"
+          [defaultImage]="'assets/images/logo.jpg'"
+          alt="logo"
+          class="header-recruiter-logo"
+        />
+      </div>
+      <div class="info-general flex-grow-1 text-white">
+        <h2 class="title-recruiter-header mb-3">
+          {{ recruiter.title }}
+        </h2>
+        <div class="d-flex align-items-center">
+          <h6 class="m-0">{{ recruiter.type }}</h6>
+          <div class="ms-2">
+            <a>
+              <i class="fa-brands me-2 fa-facebook"></i>
+            </a>
+
+            <a>
+              <i class="fa-brands me-2 fa-instagram"></i>
+            </a>
+            <a>
+              <i class="fa-brands me-2 fa-linkedin"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="container main-page">
+    <p-tabMenu
+      [model]="items"
+      [scrollable]="true"
+      [activeItem]="items[0]"
+    ></p-tabMenu>
+    <div class="row mt-3">
+      <div class="col-md-9">
+        <router-outlet></router-outlet>
+      </div>
+      <aside class="col-md-3">
+        <div class="sticky">
+          <div class="section-recruteur info d-flex align-items-center mb-3">
+            <i class="fa-solid fa-phone me-2"></i>
+            <a href="" class="ellipsis-text">{{ recruteurInfo.phone }}</a>
+          </div>
+          <div class="section-recruteur info d-flex align-items-center mb-3">
+            <i class="fa-solid fa-envelope me-2"></i>
+            <a href="" class="ellipsis-text">{{ recruteurInfo.email }}</a>
+          </div>
+          <div class="section-recruteur info d-flex align-items-center mb-3">
+            <i class="fa-solid fa-map me-2"></i>
+            <a href="" class="ellipsis-text">
+              {{ recruteurInfo.cordonneeGeo }}
+            </a>
+          </div>
+          <div class="section-recruteur info d-flex align-items-center mb-3">
+            <i class="fa-solid fa-globe me-2"></i>
+            <a href="" class="ellipsis-text">{{ recruteurInfo.website }}</a>
+          </div>
+          <div class="section-recruteur info d-flex align-items-center mb-3">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4678.96074559164!2d-6.895474593133194!3d33.97904968734634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76d3cecf9c375%3A0xfca326e9aa5d4bd!2sEcole%20Mohamed%20Fkih%20Ghazi%2C%20Rabat!5e0!3m2!1sfr!2sma!4v1659630367687!5m2!1sfr!2sma"
+              height="450"
+              width="100%"
+              style="border: 0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</div>

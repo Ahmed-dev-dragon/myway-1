@@ -1,0 +1,113 @@
+<div class="container">
+      <div class="section-recruteur mb-3">
+        <div class="row">
+          <div class="" *ngIf="sondageHistorique.length">
+            <h4 class="py-3 j-title-lg">
+              {{ 'sondage.historique_sondages' | translate }}
+            </h4>
+          </div>
+
+<div class=" " *ngFor="let s of sondageHistorique; let i = index">
+  <div class="col-12">
+<div class="col-12">
+  <div class="row">
+    <h2 class="py-3 titre-sondage title blue-color">
+      {{ (sondage?.translations)['fr']?.__designation }}
+      &nbsp;&nbsp;&nbsp;
+      <span class="j-title-md">
+        <i class="fa fa-calendar"></i>
+        &nbsp; {{ 'sondage_historique.date_debut' | translate }}
+        {{ sondage?.date_ouverture | date: 'dd-MM-yyyy' }} -
+        {{ 'sondage_historique.date_fin' | translate }}
+        {{ sondage?.date_cloture | date: 'dd-MM-yyyy' }}
+      </span>
+    </h2>
+    <div class="col-12">
+      <form
+        class="border m-0 p-3 mb-2 row col-md-12"
+        style="box-shadow: 1px 1px #ddd;"
+      >
+        <div class="col-lg-4 col-xl-4 col-md-4 mb-2 taille-image">
+          <img
+            class="img-fluid imgSondage mb-3 col-md-12"
+            [src]="sondage?.image || 'assets/images/sondage.jpg'"
+            alt="post"
+          />
+          <small class="small mt-2 col-md-12">
+            {{ 'sondage_historique.nbr_participants' | translate }}
+            {{ sondage?.nombre_participants }}
+          </small>
+        </div>
+
+        <div class="col-lg-8 col-md-8 col-xl-8 col-12">
+          <div
+            *ngFor="let q of sondage?.question_sondage; let i = index"
+            class="mb-3"
+          >
+            <h3 style="color: #000; font-size: 18px;">
+              {{ i + 1 }} -
+              {{ (q?.translations)['fr']?.__label_question | titlecase }}
+            </h3>
+            <div>
+              <div
+                class="form-check ml-4 rtlR mb-3"
+                *ngFor="let r of q.reponse_sondage; let j = index"
+              >
+                <div class="row">
+                  <div class="col-md-8 col-8">
+                    <input
+                      class="form-check-input"
+                      disabled
+                      value="{{ (r?.translations)['fr']?.__valeur_choix1 }}"
+                      type="radio"
+                      name="flexRadioDefault"
+                      #rep
+                    />
+                    <label
+                      class="form-check-label"
+                      for="'flexRadioDefault'+ i "
+                    >
+                      &nbsp;&nbsp;
+                      {{ (r?.translations)['fr']?.__valeur_choix1 }}&nbsp;
+                    </label>
+                  </div>
+
+                  <div class="col-md-4 col-4 pull-right">
+                    <div class="progress">
+                      <div
+                        class="progress-bar"
+                        role="progressbar "
+                        [ngStyle]="{ 'background-color': 'rgb(63 96 109)' }"
+                        [ngStyle]="bgColor(i, j)"
+                        aria-valuenow="25"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      >
+                        {{
+                          (r?.nombre_reponse / sondage.nombre_participants) *
+                            100 | number: '1.2-2'
+                        }}%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+            </div>
+          </div>
+          <div
+            class="text-center col-md-12"
+            *ngIf="sondageHistorique.length"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+

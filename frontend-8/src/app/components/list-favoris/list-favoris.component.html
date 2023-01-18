@@ -1,0 +1,130 @@
+<div class="container text-dark py-5 text-center">
+  <h1 class="display-4">WishList</h1>
+</div>
+<div class="w-100 text-center" *ngIf="wishList.length == 0">
+  <h3>liste vide selectionner un element</h3>
+</div>
+<div class="container">
+  <div *ngIf="wishList.length > 0">
+    <div class="" *ngFor="let whishItem of wishList">
+      <div *ngIf="whishItem.pageName == 'offre'" class="section-recruteur">
+        <h3 class="wishList-title">{{ whishItem.pageName }}</h3>
+
+        <owl-carousel-o [options]="customOptions">
+          <ng-container *ngFor="let offre of whishItem.items">
+            <ng-template carouselSlide [id]="offre.id">
+              <app-card-offre-horizontale
+                class=""
+                [pageName]="whishItem.pageName"
+                [id]="offre?.id"
+                [link]="['/offres/details-offres/', offre.id]"
+                [Intitule]="offre.Intitule"
+                [Secteur]="offre.Secteur"
+                [Poste]="offre.Poste"
+                [TypePoste]="offre.TypePoste"
+                [NomEntreprise]="offre.NomEntreprise"
+                [TypeEntreprise]="offre.TypeEntreprise"
+                [TypeContrat]="offre.TypeContrat"
+                [Ville]="offre.Ville"
+                [Date]="offre.Date"
+                [dateDisponibilite]="offre.dateDisponibilite"
+                [image]="offre.Image"
+              ></app-card-offre-horizontale>
+            </ng-template>
+          </ng-container>
+        </owl-carousel-o>
+      </div>
+      <div *ngIf="whishItem.pageName == 'candidat'" class="section-recruteur">
+        <h3 class="wishList-title">{{ whishItem.pageName }}</h3>
+        <ngb-carousel>
+          <ng-template ngbSlide *ngFor="let c of whishItem.items">
+            <condida-c-card
+              *ngFor="let c of whishItem.items"
+              [routerLink]="['/Candidats/details', c?.info?.id]"
+              [pageName]="whishItem.pageName"
+              [id]="c?.id"
+              [available]="c?.info?.available"
+              [img]="c?.info?.img"
+              [last_name]="c?.info?.name?.last_name"
+              [first_name]="c?.info?.name?.first_name"
+              [age]="c?.info?.age"
+              [countrie]="c?.info?.address?.countrie"
+              [city]="c?.info?.address?.city"
+              [tital_job]="c?.info?.tital_job"
+              [years_of_ex]="c?.info?.job_post?.years_of_ex"
+              [ed_lavel]="c?.info?.ed_lavel"
+              [tag]="c?.info?.tag"
+            ></condida-c-card>
+          </ng-template>
+        </ngb-carousel>
+
+        <div class="row">
+          <condida-c-card
+            *ngFor="let c of whishItem.items"
+            [routerLink]="['/Candidats/details', c?.info?.id]"
+            class="col-md-6"
+            [pageName]="whishItem.pageName"
+            [id]="c?.id"
+            [available]="c?.info?.available"
+            [img]="c?.info?.img"
+            [last_name]="c?.info?.name?.last_name"
+            [first_name]="c?.info?.name?.first_name"
+            [age]="c?.info?.age"
+            [countrie]="c?.info?.address?.countrie"
+            [city]="c?.info?.address?.city"
+            [tital_job]="c?.info?.tital_job"
+            [years_of_ex]="c?.info?.job_post?.years_of_ex"
+            [ed_lavel]="c?.info?.ed_lavel"
+            [tag]="c?.info?.tag"
+          ></condida-c-card>
+        </div>
+      </div>
+      <div
+        *ngIf="whishItem.pageName == 'demande specifique'"
+        class="section-recruteur"
+      >
+        <h3 class="wishList-title">{{ whishItem.pageName }}</h3>
+        <div class="row">
+          <app-card-offre-horizontale
+            class="col-md-6 mb-3"
+            *ngFor="let offre of whishItem.items"
+            [link]="['/offres/details-offres/', offre?.id]"
+            [pageName]="whishItem.pageName"
+            [id]="offre?.id"
+            [Intitule]="offre?.Intitule"
+            [Secteur]="offre?.Secteur"
+            [Poste]="offre?.Poste"
+            [TypePoste]="offre?.TypePoste"
+            [NomEntreprise]="offre?.NomEntreprise"
+            [TypeEntreprise]="offre?.TypeEntreprise"
+            [TypeContrat]="offre?.TypeContrat"
+            [Ville]="offre?.Ville"
+            [Date]="offre?.Date"
+            [dateDisponibilite]="offre?.dateDisponibilite"
+            [image]="offre?.Image"
+          ></app-card-offre-horizontale>
+        </div>
+      </div>
+
+      <div *ngIf="whishItem.pageName == 'recruteur'" class="section-recruteur">
+        <h3 class="wishList-title">{{ whishItem.pageName }}</h3>
+        <div class="row">
+          <app-card-recruiter
+            *ngFor="let recruiter of whishItem.items"
+            [link]="['/recruteurs/details-recruteur/', recruiter?.id]"
+            [id]="recruiter?.id"
+            [pageName]="whishItem?.pageName"
+            class="col-md-4 col-sm-6"
+            [imageBg]="recruiter?.imageBg"
+            [logo]="recruiter?.logo"
+            [title]="recruiter?.title"
+            [type]="recruiter?.type"
+            [salaries]="recruiter?.salaries"
+            [caption]="recruiter?.caption"
+            [location]="recruiter?.Pays"
+          ></app-card-recruiter>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

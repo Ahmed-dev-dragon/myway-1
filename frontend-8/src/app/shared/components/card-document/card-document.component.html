@@ -1,0 +1,52 @@
+<div class="card-container cursor-pointer">
+  <div class="imgwrap" style="display: flex; justify-content: center;">
+    <a>
+      <img
+        class="card-img"
+        alt=""
+        [defaultImage]="'/assets/images/doc_a_tele.png'"
+        [lazyLoad]="image"
+      />
+    </a>
+  </div>
+  <div>
+    <h5 class="text-center my-2">
+      {{ titre }}
+      <span *ngIf="sousTitre">{{ sousTitre }}</span>
+    </h5>
+  </div>
+  <div>
+    <p class="j-description j-resume-lg">
+      <i class="fa fa-calendar"></i>
+      <span class="mx-1">
+        {{ dateEdition | date: 'dd - MMM - yyyy' }}
+      </span>
+    </p>
+  </div>
+
+  <div *ngIf="lienContenu">
+    <p class="j-description j-resume-lg">
+      <i class="fa fa-link"></i>
+      <span class="mx-1">
+        {{ lienContenu }}
+      </span>
+    </p>
+  </div>
+  <div class="" *ngIf="file">
+    <p class="j-description j-resume-lg">
+      <i class="fa fa-file"></i>
+      <span class="mx-1">{{ format }} - {{ taille }} KB</span>
+    </p>
+  </div>
+
+  <p class="j-description j-resume-lg" *ngIf="tags?.length > 0; else elseBlock">
+    <i class="fa fa-tags"></i>
+    <span *ngFor="let tags of tags">- {{ tags }} -</span>
+  </p>
+  <ng-template #elseBlock>
+    <p class="j-description j-resume-lg">
+      <i class="fa fa-tags"></i>
+      <span class="mx-1">Aucune Tag Trouvé</span>
+    </p>
+  </ng-template>
+</div>

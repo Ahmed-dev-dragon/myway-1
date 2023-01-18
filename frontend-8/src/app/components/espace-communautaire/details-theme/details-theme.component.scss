@@ -1,0 +1,11 @@
+.flex-inline {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  list-style: none;
+  i {
+    margin: 10px 3px;
+    font-size: 30px;
+  }
+}

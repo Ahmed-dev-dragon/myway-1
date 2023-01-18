@@ -1,0 +1,134 @@
+<div class="container mt-5">
+  <div class="section-recruteur mb-3">
+    <h4>Adresses Utiles</h4>
+  </div>
+  <div class="section-recruteur">
+    <div class="flex-grow-1">
+      <app-top-bar
+        [pageName]="'adresses utiles'"
+        [data]="adressesUtilesService.listAdresseUtiles"
+        (filtredData)="filtredData($event)"
+        (orientationView)="getOrientaion($event)"
+      ></app-top-bar>
+    </div>
+    <hr />
+
+    <div class="row smy-3">
+      <div class="col-md-9">
+        <div class="section-recruteur">
+          <ul class="row list-adresse">
+            <li class="col-lg-4 col-md-6 mb-3" *ngFor="let data of resultData">
+              <app-card-adresse-utile [data]="data"></app-card-adresse-utile>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3 col-lg-3">
+        <div class="section-recruteur"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #detailLien let-modal>
+  <div class="modal-header">
+    <h2
+      class="py-2 j-title-lg bold text-justify blue-color"
+      id="modal-basic-title"
+    >
+      {{ (adresse?.translations)['fr']?.__designation }}
+    </h2>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <div class="row">
+          <img
+            [defaultImage]="'assets/images/lien-utile.jpg'"
+            [lazyLoad]="adresse?.logo"
+            class="col-md-3"
+            style="object-fit: contain;"
+            alt=""
+          />
+          <div class="col-md-9">
+            <h4 class="py-2 j-title-md blue-color">
+              {{ 'adresse.description' | translate }}
+            </h4>
+            <p class="j-description j-resume-lg">
+              {{ (adresse?.translations)['fr']?.__descriptif }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item j-description j-resume-lg">
+            <i class="fa fa-map-marker pe-3"></i>
+            {{ 'adresse.adresse' | translate }} :
+
+            {{ (adresse?.translations)['fr']?.__adresse }}
+            -
+            {{ (adresse?.translations)['fr']?.__ville }}
+            -
+            {{ (adresse?.translations)['fr']?.__pays }}
+          </li>
+          <li class="list-group-item j-description j-resume-lg">
+            <i class="fa fa-phone pe-3" aria-hidden="true"></i>
+            {{ 'adresse.tele' | translate }} : {{ adresse?.telephone }}
+          </li>
+          <li class="list-group-item j-description j-resume-lg">
+            <i class="fa fa-fax pe-3" aria-hidden="true"></i>
+            {{ 'adresse.fax' | translate }} :
+            {{ adresse?.fax }}
+          </li>
+          <li class="list-group-item j-description j-resume-lg">
+            <i class="fa fa-envelope-open pe-3"></i>
+            {{ 'adresse.email' | translate }} :
+            {{ adresse?.email }}
+          </li>
+          <li class="list-group-item j-description j-resume-lg">
+            <i class="fa fa-globe pe-3"></i>
+            {{ 'adresse.site' | translate }} :
+            {{ adresse?.siteweb }}
+          </li>
+          <li class="list-group-item j-description j-resume-lg">
+            <i class="fa fa-clock pe-3"></i>
+            {{ 'adresse.horaires' | translate }} :
+            {{ (adresse?.translations)['fr']?.__horaire }}
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <app-map
+          class="map"
+          [lat]="adresse?.latitude"
+          [lon]="adresse?.longitude"
+          [zoom]="16"
+          [height]="'300px'"
+          [width]="'100%'"
+        ></app-map>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="modal.close('Save click')"
+    >
+      {{ 'adresse.close' | translate }}
+    </button>
+    <a href="{{ adresse?.siteweb }}" target="_blank">
+      <button type="button" class="btn btn-primary">
+        {{ 'adresse.consulter_site' | translate }}
+      </button>
+    </a>
+  </div>
+</ng-template>

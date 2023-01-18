@@ -1,0 +1,71 @@
+<ngb-carousel>
+  <ng-template ngbSlide *ngFor="let s of info">
+    <div class="picsum-img-wrapper aa">
+      <img
+        [lazyLoad]="s.url"
+        [defaultImage]="'assets/images/img-bg.jpg'"
+        alt="{{ s.alt }}"
+        [style.width]="width"
+        [style.height]="height"
+      />
+    </div>
+    <div class="carousel-caption">
+      <h3>{{ s.title }}</h3>
+      <p>{{ s.p }}</p>
+    </div>
+  </ng-template>
+</ngb-carousel>
+
+<!-- #region if you went to use it  this will helpe you add it in your project  -->
+
+<!-- #region  tomplet call  component  -->
+<!--<slider
+*ngFor="let slide of slide_info"
+  [id]="slide.id"
+  [width]="slide.drtails.width"
+  [height]="slide.drtails.height"
+  [Arrows_btns]="slide.drtails.Arrows_btns"
+  [keybourd_arrows_for_switching_slides]="slide.drtails.keybourd_arrows_for_switching_slides"
+  [Arrows]="slide.drtails.Arrows"
+  [footer]="slide.drtails.footer"
+  [time_btwn_slide]="slide.drtails.time_btwn_slide"
+  [animation]="slide.drtails.animation"
+  [info]="slide.drtails.info"
+>
+</slider>-->
+<!-- #endregion -->
+
+<!-- #region  ts  use slide serves -->
+
+<!--
+1 import server
+--------------------import { SliderService } from 'src/app/shared/Services/slider/slider.service';
+-->
+<!-- #region 1.a reacher about a slid with it's name and counact with tomplit -->
+<!--
+
+
+---------------------slide_info:any;
+
+---------------------constructor(slide: SliderService) {
+
+---------------------  this.slide_info = slide.getfindslide_by_name('slide for hero section in the landing page');
+
+---------------------}
+
+-->
+<!-- #endregion -->
+<!-- #region 1.b   reacher about a slid with it's id and counact with tomplit -->
+
+<!-- ---------------------slide_info:any;
+
+---------------------constructor(slide: SliderService) {
+
+---------------------  this.slide_info = slide.findslide_by_name('3');
+
+---------------------} -->
+
+<!-- #endregion -->
+
+<!-- #endregion -->
+<!-- #endregion -->

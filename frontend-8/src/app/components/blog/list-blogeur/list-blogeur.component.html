@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="section-recruteur mb-3">
+    <h4>List des Blogeurs</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="section-recruteur">
+        <div class="my-2">
+          <app-top-bar
+            [pageName]="'blogeurs'"
+            [data]="blogeurService.listBlogueurs"
+            (filtredData)="filtredData($event)"
+            (orientationView)="getOrientaion($event)"
+          ></app-top-bar>
+        </div>
+        <div class="row">
+          <app-card-blogueur
+            [routerLink]="['/bloggers/details-blogeur']"
+            class="col-md-4 mb-3"
+            *ngFor="let membre of resultData"
+            [nom]="membre.nom"
+            [prenom]="membre.prenom"
+            [fonction]="membre.fonction"
+            [resume]="membre.resume"
+            [image]="membre.image"
+          ></app-card-blogueur>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="section-recruteur"></div>
+    </div>
+  </div>
+</div>

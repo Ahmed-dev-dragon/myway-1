@@ -1,0 +1,22 @@
+{
+  "candidat": {
+    "t":
+     {
+    "ed": "Education",
+    "ex": "Experience",
+    "skill": "Skills",
+    "l": "Languages",
+    "c": "Certificates",
+    "hob": "Hobbies",
+    "conections": "Conections",
+    "about_me": "About me",
+    "contact": "Contact",
+    "expe": "Expectation",
+    "ach": "Achievements"
+  },
+  "home": "Home",
+  "user": "User",
+  "candidate": "Candidate",
+  "user_profile": "User Profile"
+}
+}

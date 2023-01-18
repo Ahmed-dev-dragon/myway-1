@@ -1,0 +1,217 @@
+<form [formGroup]="education_form" (ngSubmit)="save_education_from()">
+  <div class="row">
+
+
+    <div class="mb-3 col-md-5">
+      <label class="form-label" for="education_form_start_date_input">
+        {{ 'education_form_start_date_input' | translate }}
+      </label>
+      <input class="form-control" id="education_form_start_date_input" type="date"
+        formControlName="education_form_start_date_input" name="education_form_start_date_input" [ngClass]="{
+                      'is-invalid':
+                        education_form.get('education_form_start_date_input')?.touched &&
+                        education_form.get('education_form_start_date_input')?.invalid
+                    }" />
+      <div *ngIf="
+                      education_form.get('education_form_start_date_input')?.touched &&
+                      education_form.get('education_form_start_date_input')?.invalid
+                    " class="invalid-feedback">
+        <div *ngIf="education_form.get('education_form_start_date_input')?.errors?.['required']">
+          {{ 'education_form_start_date_input not valid' | translate }}
+        </div>
+
+      </div>
+    </div>
+
+    <!-- numer -->
+        <div class="mb-3 col-md-5">
+          <label class="form-label" for="education_form_end_date_input">
+            {{ 'education_form_end_date_input' | translate }}
+          </label>
+          <input class="form-control" id="education_form_end_date_input" type="date"
+            formControlName="education_form_end_date_input" name="education_form_end_date_input" [ngClass]="{
+                              'is-invalid':
+                                education_form.get('education_form_end_date_input')?.touched &&
+                                education_form.get('education_form_end_date_input')?.invalid
+                            }" />
+          <div *ngIf="
+                              education_form.get('education_form_end_date_input')?.touched &&
+                              education_form.get('education_form_end_date_input')?.invalid
+                            " class="invalid-feedback">
+            <div *ngIf="education_form.get('education_form_end_date_input')?.errors?.['required']">
+              {{ 'education_form_end_date_input not valid' | translate }}
+            </div>
+
+          </div>
+        </div>
+
+    <!-- chack box -->
+            <div class="mb-3 col-md-2">
+              <label class="form-label" for="education_form_not_end__checkbox">
+                {{ 'education_form_not_end__checkbox' | translate }}
+              </label>
+
+              <input class="form-check-input ch-w" id="education_form_not_end__checkbox" type="checkbox"
+                formControlName="education_form_not_end__checkbox" name="education_form_not_end__checkbox" [ngClass]="{
+                                          'is-invalid':
+                                            education_form.get('education_form_not_end__checkbox')?.touched &&
+                                            education_form.get('education_form_not_end__checkbox')?.invalid
+                                        }" />
+              <div *ngIf="
+                                          education_form.get('education_form_not_end__checkbox')?.touched &&
+                                          education_form.get('education_form_not_end__checkbox')?.invalid
+                                        " class="invalid-feedback">
+                <div *ngIf="education_form.get('education_form_not_end__checkbox')?.errors?.['required']">
+                  {{ 'education_form_not_end__checkbox not valid' | translate }}
+                </div>
+
+              </div>
+            </div>
+
+  </div>
+  <div class="row">
+<!-- education_form_education_fiield_input -->
+    <div class="mb-3 col-md-6">
+      <label class="form-label" for="education_form_education_fiield_input">
+        {{ "form.nom" | translate }}
+      </label>
+      <input
+        class="form-control"
+        id="education_form_education_fiield_input"
+        type="text"
+        placeholder="{{ 'form.exp_nom' | translate }}"
+        [ngClass]="{
+          'is-invalid':
+            education_form.get('education_form_education_fiield_input')?.touched &&
+            education_form.get('education_form_education_fiield_input')?.invalid
+        }"
+        formControlName="education_form_education_fiield_input"
+        name="education_form_education_fiield_input"
+      />
+      <div
+        *ngIf="
+          education_form.get('education_form_education_fiield_input')?.touched &&
+          education_form.get('education_form_education_fiield_input')?.invalid
+        "
+        class="invalid-feedback mb-2"
+      >
+        <div *ngIf="education_form.get('education_form_education_fiield_input')?.errors?.['required']">
+          {{ "form.champ_oblig" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <!-- education_form_education_school_input input -->
+    <div class="mb-3 col-md-6">
+      <label class="form-label" for="education_form_education_school_input">
+        {{ "form.nom" | translate }}
+      </label>
+      <input
+        class="form-control"
+        id="education_form_education_school_input"
+        type="text"
+        placeholder="{{ 'form.exp_nom' | translate }}"
+        [ngClass]="{
+          'is-invalid':
+            education_form.get('education_form_education_school_input')?.touched &&
+            education_form.get('education_form_education_school_input')?.invalid
+        }"
+        formControlName="education_form_education_school_input"
+        name="education_form_education_school_input"
+      />
+      <div
+        *ngIf="
+          education_form.get('education_form_education_school_input')?.touched &&
+          education_form.get('education_form_education_school_input')?.invalid
+        "
+        class="invalid-feedback mb-2"
+      >
+        <div *ngIf="education_form.get('education_form_education_school_input')?.errors?.['required']">
+          {{ "form.champ_oblig" | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- adriss -->
+  <div class="row">
+    <!-- contry -->
+    <div class="col-md-6">
+      <label for="education_form_education_contry_input" class="form-label">
+        {{ "education_form_education_contry_input" | translate }}
+      </label>
+      <select
+        class="form-select"
+        id="education_form_education_contry_input"
+        formControlName="education_form_education_contry_input"
+        name="education_form_education_contry_input"
+        [ngClass]="{
+          'is-invalid':
+            education_form.get('education_form_education_contry_input')?.touched &&
+            education_form.get('education_form_education_contry_input')?.invalid
+        }"
+      >
+        <option selected disabled value="">Choose...</option>
+        <option>...</option>
+      </select>
+
+      <div
+        *ngIf="
+          education_form.get('education_form_education_contry_input')?.touched &&
+          education_form.get('education_form_education_contry_input')?.invalid
+        "
+        class="invalid-feedback"
+      >
+        <div
+          *ngIf="education_form.get('education_form_education_contry_input')?.errors?.['required']"
+        >
+          {{ "education_form_education_contry_input not valid" | translate }}
+        </div>
+      </div>
+    </div>
+    <!-- ctiy -->
+    <div class="col-md-6">
+      <label for="education_form_education_ctiy_input" class="form-label">
+        {{ "education_form_education_ctiy_input" | translate }}
+      </label>
+      <select
+        class="form-select"
+        id="education_form_education_ctiy_input"
+        formControlName="education_form_education_ctiy_input"
+        name="education_form_education_ctiy_input"
+        [ngClass]="{
+          'is-invalid':
+            education_form.get('education_form_education_ctiy_input')?.touched &&
+            education_form.get('education_form_education_ctiy_input')?.invalid
+        }"
+      >
+        <option selected disabled value="">Choose...</option>
+        <option>...</option>
+      </select>
+
+      <div
+        *ngIf="
+          education_form.get('education_form_education_ctiy_input')?.touched &&
+          education_form.get('education_form_education_ctiy_input')?.invalid
+        "
+        class="invalid-feedback"
+      >
+        <div
+          *ngIf="education_form.get('education_form_education_ctiy_input')?.errors?.['required']"
+        >
+          {{ "education_form_education_ctiy_input not valid" | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <button type="button" class="btn btn-warning px-5 addbtn">
+      <i class="fa-solid fa-circle-plus"></i>
+      add
+    </button>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <button type="submit" class="btn btn-info">save this education</button>
+    </div>
+  </div>
+</form>

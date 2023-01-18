@@ -1,0 +1,64 @@
+.top-article {
+  min-height: 50vh;
+  position: relative;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.list-brands-article {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  li {
+    cursor: pointer;
+    border: 1px solid #fff;
+    font-size: 25px;
+    margin-inline-end: 0.5em;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 10px;
+  }
+}
+.writterInfo {
+  position: relative;
+  &:not(:last-child)::after {
+    content: ',';
+    position: absolute;
+    bottom: -3px;
+    right: 1px;
+  }
+}
+
+.top-article {
+  h6 {
+    line-height: 25px;
+  }
+}
+.info-article {
+  margin-inline-end: 5px;
+  color: #fff;
+  text-decoration: none;
+  i {
+    margin-inline-end: 3px;
+    font-size: 20px;
+    color: #fff;
+  }
+}
+.article-download {
+  color: #000;
+  a {
+    text-decoration: none;
+  }
+}
+.article-paragraphe-figure {
+  .article-paragraphe-image,
+  .article-paragraphe-video {
+    max-height: 400px;
+  }
+}

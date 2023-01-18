@@ -1,0 +1,31 @@
+.img-fluid {
+  max-height: 200px;
+}
+
+.padd {
+  padding-right: 12px;
+}
+
+.text-muted {
+  font-size: 13px;
+}
+
+.card-body {
+  padding-top: 20px;
+  align-items: center;
+}
+
+.text-justify {
+  text-align: center;
+}
+.text-muted {
+  list-style: none;
+  display: flex;
+  margin-bottom: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  .d-flex {
+    margin-bottom: 1rem !important;
+  }
+}

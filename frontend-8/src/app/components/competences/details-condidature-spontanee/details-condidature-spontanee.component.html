@@ -1,0 +1,107 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="section-recruteur mb-3">
+        <app-card-offre-Verticale
+          [showBtn]="false"
+          [Intitule]="demande.Titre"
+          [Secteur]="demande.Secteur"
+          [Poste]="demande.Poste"
+          [TypePoste]="demande.TypePoste"
+          [NomEntreprise]="demande.NomEntreprise"
+          [TypeEntreprise]="demande.TypeEntreprise"
+          [TypeContrat]="demande.TypeContrat"
+          [Ville]="demande.Ville"
+          [Date]="demande.Date"
+          [image]="demande.Image"
+        ></app-card-offre-Verticale>
+      </div>
+      <div class="section-recruteur mb-3">
+        <p-accordion>
+          <p-accordionTab
+            header="{{ 'globale.description' | translate }} "
+            [selected]="true"
+          >
+            <h3>Description</h3>
+            <div *ngFor="let info of demande.Description">
+              <h6 class="criteres-offres" *ngIf="info.Titre">
+                {{ info.Titre }} {{ demande.Intitule }}
+              </h6>
+              <p *ngIf="info.Texte">{{ info.Texte }}</p>
+              <ul *ngIf="info.List">
+                <li *ngFor="let list of info.List">{{ list }}</li>
+              </ul>
+            </div>
+          </p-accordionTab>
+          <p-accordionTab header="{{ 'offre.critere_offre' | translate }}">
+            <h3>Details</h3>
+            <ul>
+              <li>
+                <span class="offre-critere-label">Secteur d'activité:</span>
+                {{ demande.Secteur }}
+              </li>
+              <li>
+                <span class="offre-critere-label">Type de contrat:</span>
+                {{ demande.TypeContrat }}
+              </li>
+              <li>
+                <span class="offre-critere-label">Région:</span>
+                {{ demande.Region }}
+              </li>
+              <li>
+                <span class="offre-critere-label">Ville:</span>
+                {{ demande.Ville }}
+              </li>
+              <li>
+                <span class="offre-critere-label">Niveaux d'études:</span>
+                {{ demande.NiveauxEt }}
+              </li>
+              <li>
+                <span class="offre-critere-label">
+                  Niveau d'expérience:
+                </span>
+                {{ demande.NiveauxEx }}
+              </li>
+              <li>
+                <span class="offre-critere-label">langues exigées:</span>
+                {{ demande.Langues }}
+              </li>
+              <li>
+                <span class="offre-critere-label">Salaire:</span>
+                {{ demande.Salaire }}
+              </li>
+              <li>
+                <span class="offre-critere-label">Compétence clés:</span>
+                <span *ngFor="let comptence of demande.Competences">
+                  {{ comptence }}
+                </span>
+              </li>
+              <li>
+                <span class="offre-critere-label">
+                  Nombres de poste(s):
+                </span>
+                {{ demande.NombresPoste }}
+              </li>
+            </ul>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+      <div class="section-recruteur mb-3">
+        <app-card-membre
+          [nom]="membre.nom"
+          [prenom]="membre.prenom"
+          [fonction]="membre.fonction"
+          [service]="membre.service"
+          [resume]="membre.resume"
+          [email]="membre.email"
+          [telephone]="membre.telephone"
+          [rating]="membre.rating"
+          [nbBlog]="membre.nbBlog"
+        ></app-card-membre>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="section-recruteur"></div>
+    </div>
+  </div>
+</div>

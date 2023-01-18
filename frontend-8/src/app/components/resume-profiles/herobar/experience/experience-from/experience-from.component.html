@@ -1,0 +1,267 @@
+<form [formGroup]="experience_from" (ngSubmit)="save_experience_from()">
+
+
+
+
+
+
+
+
+
+          <div class="row">
+
+
+            <div class="mb-3 col-md-5">
+              <label class="form-label" for="experience_from_start_date_input">
+                {{ 'experience_from_start_date_input' | translate }}
+              </label>
+              <input class="form-control" id="experience_from_start_date_input" type="date"
+                formControlName="experience_from_start_date_input" name="experience_from_start_date_input" [ngClass]="{
+                                'is-invalid':
+                                  experience_from.get('experience_from_start_date_input')?.touched &&
+                                  experience_from.get('experience_from_start_date_input')?.invalid
+                              }" />
+              <div *ngIf="
+                                experience_from.get('experience_from_start_date_input')?.touched &&
+                                experience_from.get('experience_from_start_date_input')?.invalid
+                              " class="invalid-feedback">
+                <div *ngIf="experience_from.get('experience_from_start_date_input')?.errors?.['required']">
+                  {{ 'experience_from_start_date_input not valid' | translate }}
+                </div>
+
+              </div>
+            </div>
+
+            <!-- numer -->
+            <div class="mb-3 col-md-5">
+              <label class="form-label" for="experience_from_end_date_input">
+                {{ 'experience_from_end_date_input' | translate }}
+              </label>
+              <input class="form-control" id="experience_from_end_date_input" type="date"
+                formControlName="experience_from_end_date_input" name="experience_from_end_date_input" [ngClass]="{
+                                        'is-invalid':
+                                          experience_from.get('experience_from_end_date_input')?.touched &&
+                                          experience_from.get('experience_from_end_date_input')?.invalid
+                                      }" />
+              <div *ngIf="
+                                        experience_from.get('experience_from_end_date_input')?.touched &&
+                                        experience_from.get('experience_from_end_date_input')?.invalid
+                                      " class="invalid-feedback">
+                <div *ngIf="experience_from.get('experience_from_end_date_input')?.errors?.['required']">
+                  {{ 'experience_from_end_date_input not valid' | translate }}
+                </div>
+
+              </div>
+            </div>
+
+            <!-- chack box -->
+            <div class="mb-3 col-md-2">
+              <label class="form-label" for="experience_from_not_end__checkbox">
+                {{ 'experience_from_not' | translate }}
+              </label>
+
+              <input class="form-check-input ch-w" id="experience_from_not_end__checkbox" type="checkbox"
+                formControlName="experience_from_not_end__checkbox" name="experience_from_not_end__checkbox" [ngClass]="{
+                                                    'is-invalid':
+                                                      experience_from.get('experience_from_not_end__checkbox')?.touched &&
+                                                      experience_from.get('experience_from_not_end__checkbox')?.invalid
+                                                  }" />
+              <div *ngIf="
+                                                    experience_from.get('experience_from_not_end__checkbox')?.touched &&
+                                                    experience_from.get('experience_from_not_end__checkbox')?.invalid
+                                                  " class="invalid-feedback">
+                <div *ngIf="experience_from.get('experience_from_not_end__checkbox')?.errors?.['required']">
+                  {{ 'experience_from_not_end__checkbox not valid' | translate }}
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+          <!-- experience_from_jobe _titale_input -->
+          <div class="mb-3 col-md-6">
+            <label class="form-label" for="experience_from_jobe_titale_input">
+              {{ "form.nom" | translate }}
+            </label>
+            <input class="form-control" id="experience_from_jobe_titale_input" type="text"
+              placeholder="{{ 'form.exp_nom' | translate }}" [ngClass]="{
+                  'is-invalid':
+                    experience_from.get('experience_from_jobe_titale_input')?.touched &&
+                    experience_from.get('experience_from_jobe_titale_input')?.invalid
+                }" formControlName="experience_from_jobe_titale_input" name="experience_from_jobe_titale_input" />
+            <div *ngIf="
+                  experience_from.get('experience_from_jobe_titale_input')?.touched &&
+                  experience_from.get('experience_from_jobe_titale_input')?.invalid
+                " class="invalid-feedback mb-2">
+              <div *ngIf="experience_from.get('experience_from_jobe_titale_input')?.errors?.['required']">
+                {{ "form.champ_oblig" | translate }}
+              </div>
+            </div>
+          </div>
+
+          <!-- experience_from_company_name_input input -->
+          <div class="mb-3 col-md-6">
+            <label class="form-label" for="experience_from_company_name_input">
+              {{ "form.nom" | translate }}
+            </label>
+            <input class="form-control" id="experience_from_company_name_input" type="text"
+              placeholder="{{ 'form.exp_nom' | translate }}" [ngClass]="{
+                  'is-invalid':
+                    experience_from.get('experience_from_company_name_input')?.touched &&
+                    experience_from.get('experience_from_company_name_input')?.invalid
+                }" formControlName="experience_from_company_name_input" name="experience_from_company_name_input" />
+            <div *ngIf="
+                  experience_from.get('experience_from_company_name_input')?.touched &&
+                  experience_from.get('experience_from_company_name_input')?.invalid
+                " class="invalid-feedback mb-2">
+              <div *ngIf="experience_from.get('experience_from_company_name_input')?.errors?.['required']">
+                {{ "form.champ_oblig" | translate }}
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="row">
+            <!-- contry -->
+            <div class="col-md-6">
+              <label for="experience_from_experience_contry_input" class="form-label">
+                {{ "experience_from_experience_contry_input" | translate }}
+              </label>
+              <select class="form-select" id="experience_from_experience_contry_input"
+                formControlName="experience_from_experience_contry_input" name="experience_from_experience_contry_input" [ngClass]="{
+                    'is-invalid':
+                      experience_from.get('experience_from_experience_contry_input')?.touched &&
+                      experience_from.get('experience_from_experience_contry_input')?.invalid
+                  }">
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+              </select>
+
+              <div *ngIf="
+                    experience_from.get('experience_from_experience_contry_input')?.touched &&
+                    experience_from.get('experience_from_experience_contry_input')?.invalid
+                  " class="invalid-feedback">
+                <div *ngIf="experience_from.get('experience_from_experience_contry_input')?.errors?.['required']">
+                  {{ "experience_from_experience_contry_input not valid" | translate }}
+                </div>
+              </div>
+            </div>
+            <!-- ctiy -->
+            <div class="col-md-6">
+              <label for="experience_from_experience_ctiy_input" class="form-label">
+                {{ "experience_from_experience_ctiy_input" | translate }}
+              </label>
+              <select class="form-select" id="experience_from_experience_ctiy_input"
+                formControlName="experience_from_experience_ctiy_input" name="experience_from_experience_ctiy_input" [ngClass]="{
+                    'is-invalid':
+                      experience_from.get('experience_from_experience_ctiy_input')?.touched &&
+                      experience_from.get('experience_from_experience_ctiy_input')?.invalid
+                  }">
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+              </select>
+
+              <div *ngIf="
+                    experience_from.get('experience_from_experience_ctiy_input')?.touched &&
+                    experience_from.get('experience_from_experience_ctiy_input')?.invalid
+                  " class="invalid-feedback">
+                <div *ngIf="experience_from.get('experience_from_experience_ctiy_input')?.errors?.['required']">
+                  {{ "experience_from_experience_ctiy_input not valid" | translate }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="cexperience_from_experience_type_input" class="form-label">
+                {{ "cexperience_from_experience_type_input" | translate }}
+              </label>
+              <select class="form-select" id="cexperience_from_experience_type_input"
+                formControlName="cexperience_from_experience_type_input" name="cexperience_from_experience_type_input" [ngClass]="{
+                    'is-invalid':
+                      experience_from.get('cexperience_from_experience_type_input')?.touched &&
+                      experience_from.get('cexperience_from_experience_type_input')?.invalid
+                  }">
+                <option selected disabled value="">Choose...</option>
+                <option>...</option>
+              </select>
+
+              <div *ngIf="
+                    experience_from.get('cexperience_from_experience_type_input')?.touched &&
+                    experience_from.get('cexperience_from_experience_type_input')?.invalid
+                  " class="invalid-feedback">
+                <div *ngIf="experience_from.get('cexperience_from_experience_type_input')?.errors?.['required']">
+                  {{ "cexperience_from_experience_type_input not valid" | translate }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 mb-3">
+              <label for="experience_from_experience_discription_input">{{ "form.about" | translate }}</label>
+              <textarea class="form-control mt-2" placeholder="Leave a comment here" style="height: 40px"
+                id="experience_from_experience_discription_input" placeholder="{{ 'form.exp_nom' | translate }}" [ngClass]="{
+                    'is-invalid':
+                      experience_from.get('experience_from_experience_discription_input')?.touched &&
+                      experience_from.get('experience_from_experience_discription_input')?.invalid
+                  }" formControlName="experience_from_experience_discription_input"
+                name="experience_from_experience_discription_input"
+                [(ngModel)]="experience_from_experience_discription_input_value">
+
+                      <div *ngIf="
+                                    experience_from.get('experience_from_experience_discription_input')?.touched &&
+                                    experience_from.get('experience_from_experience_discription_input')?.invalid
+                                  " class="invalid-feedback mb-2">
+                        <div *ngIf="experience_from.get('experience_from_experience_discription_input')?.errors?.['required']">
+                          {{ "form.champ_oblig" | translate }}
+                        </div>
+                        <div *ngIf="experience_from.get('experience_from_experience_discription_input')?.errors?.['minlength']">
+                          {{ "form.champ_3" | translate }}
+                        </div>
+                        <div *ngIf="experience_from.get('experience_from_experience_discription_input')?.errors?.['maxlength']">
+                          {{ "form.champ_30" | translate }}
+                        </div>
+                      </div>
+
+                      </textarea>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="modal-footer">
+    <div class="row">
+      <button type="submit" class="btn btn-info">
+        save
+      </button>
+    </div>
+
+  </div>
+</form>

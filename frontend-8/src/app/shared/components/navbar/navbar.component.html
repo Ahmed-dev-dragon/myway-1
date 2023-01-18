@@ -1,0 +1,353 @@
+<!--DEBUT DE NAVBAR-->
+<nav
+  class="navbar navbar-expand-lg navbar-light"
+  style="
+    background-color: #c4f8ffba;
+    padding: 20px;
+    box-shadow: 10px 7px 15px #cdcbcb;
+  "
+>
+  <div class="container-fluid" style="margin-left: 90px;">
+    <a
+      class="navbar-brand logo-font"
+      style="margin-left: -50px; font-size: 25px;"
+      href="#"
+    >
+      MyWay
+    </a>
+    <button
+      class="navbar-toggler order-first"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarColor"
+      aria-controls="navbarColor"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Emploi/ Stage
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/offres-emploi']">
+                Offres d'emploi
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/offres-de-stage']">
+                Offres de stage
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/offres-alternance']">
+                Offres d'alternance
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/offres-extra']">
+                Offres d'extra
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            href="#"
+          >
+            Compétences
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/candidats']">
+                Candidats
+              </a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/demandes-specifiques']">
+                Demandes spécifiques
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                [routerLink]="['/list/condidatures-spontannes']"
+              >
+                Candidatures spontanées
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Annuaires des professionnels
+          </a>
+
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/recruteurs']">
+                Recruteurs
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/cabinets-recrutement']">
+                Cabinets de recrutement
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                [routerLink]="['/list/associations-insertion-economique']"
+              >
+                Associations d'insertion économique
+              </a>
+            </li>
+            <!-- <li>
+              <a class="dropdown-item" href="#">Etablissements de formations</a>
+            </li> -->
+            <li>
+              <a
+                class="dropdown-item"
+                [routerLink]="['/list/etablissements-formation']"
+              >
+                Etablissements de formation
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Pratiques
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/conseils-pratique']">
+                Conseils pratiques
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/adresses-utiles']">
+                Adresses utiles
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/liens-utiles']">
+                Liens utiles
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/guides-emploi']">
+                Guides d'emploi
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/documents']">
+                Documents et formulaires à télécharger
+              </a>
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="#"
+                [routerLink]="['/list/legislations-et-textes-lois']"
+              >
+                Législations et textes de lois
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Expertises & Orientations
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                class="dropdown-item"
+                [routerLink]="['/list/decouverte-des-metiers']"
+              >
+                Découverte des métiers
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/hard-skills']">
+                Hard-Skills
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/soft-skills']">
+                Soft-Skills
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/metiers-pour-vous']">
+                Métiers pour vous
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/listquiz']">
+                Bilan de compétences
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Evénements et actualités
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/actualites-emploi']">
+                Actualités d'emploi
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/evenement']">
+                Evénement
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Communauté
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/forums']">
+                Forums de discussions
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/sondage']">
+                Sondages
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/temoignage']">
+                Témoignages
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#" [routerLink]="['/list/bloggers']">
+                Blog
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item dropdown">
+          <a
+            class="dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <img
+              src="https://avatars.githubusercontent.com/u/71600486?v=4"
+              alt="mdo"
+              width="32"
+              height="32"
+              class="rounded-circle"
+            />
+          </a>
+
+          <ul class="dropdown-menu" style="transform: translate(-100px, 5px);">
+            <!-- <li><a class="dropdown-item" href="#">Se connecter</a></li> -->
+            <!-- <li><a class="dropdown-item" href="#">S'inscrire</a></li> -->
+
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/wishList']">
+                wishList
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" [routerLink]="['/list/resume-profiles/cv']">
+                view Profile
+              </a>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- <div class="dropdown text-end">
+      <a
+        class="dropdown-toggle"
+        href="#"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        style="padding-left: 30px;"
+      >
+        <img src="" alt="mdo" width="32" height="32" class="rounded-circle" />
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Se connecter</a></li>
+        <li><a class="dropdown-item" href="#">S'inscrire</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li>
+          <hr class="dropdown-divider" />
+        </li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div> -->
+  </div>
+</nav>

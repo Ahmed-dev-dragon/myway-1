@@ -1,0 +1,483 @@
+<div class="section-recruteur mb-3">
+  <h4>{{ 'globale.entretien' | translate }}</h4>
+</div>
+<div class="section-recruteur">
+  <p-tabView>
+    <p-tabPanel header="Expérience de l'entretien">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">
+            {{ 'form.noteEntretien' | translate }}
+          </label>
+          <div class="">
+            <p-rating
+              [ngModel]="entretien.noteEntretien"
+              [readonly]="true"
+              [cancel]="false"
+            ></p-rating>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">{{ 'form.difficulte' | translate }}</label>
+          <div class="">
+            <p-rating
+              [ngModel]="entretien.difficulte"
+              [readonly]="true"
+              [cancel]="false"
+            ></p-rating>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">
+            {{ 'form.recommandation' | translate }}
+          </label>
+          <div class="">
+            <p-rating
+              [ngModel]="entretien.recommandation"
+              [readonly]="true"
+              [cancel]="false"
+            ></p-rating>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">{{ 'form.note' | translate }}</label>
+          <div class="">
+            <p-rating
+              [ngModel]="entretien.note"
+              [readonly]="true"
+              [cancel]="false"
+            ></p-rating>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">{{ 'form.salaire' | translate }}</label>
+          <div class="">
+            <p-rating
+              [ngModel]="entretien.salaire"
+              [readonly]="true"
+              [cancel]="false"
+            ></p-rating>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">{{ 'form.securite' | translate }}</label>
+          <div class="">
+            <p-rating
+              [ngModel]="entretien.securite"
+              [readonly]="true"
+              [cancel]="false"
+            ></p-rating>
+          </div>
+        </div>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Partager votre expérience d'entretien">
+      <div class="section-recruteur">
+        <form [formGroup]="entretienForm" (ngSubmit)="sendEntretien()">
+          <div class="row">
+            <!-- Name input -->
+
+            <div class="mb-3 col-md-6">
+              <label class="form-label" for="name">
+                {{ 'form.nom' | translate }}
+              </label>
+              <input
+                class="form-control"
+                id="name"
+                type="text"
+                placeholder="{{ 'form.exp_nom' | translate }}"
+                [ngClass]="{
+                  'is-invalid':
+                    entretienForm.get('name')?.touched &&
+                    entretienForm.get('name')?.invalid
+                }"
+                formControlName="name"
+                name="name"
+              />
+              <div
+                *ngIf="
+                  entretienForm.get('name')?.touched &&
+                  entretienForm.get('name')?.invalid
+                "
+                class="invalid-feedback mb-2"
+              >
+                <div *ngIf="entretienForm.get('name')?.errors?.['required']">
+                  {{ 'form.champ_oblig' | translate }}
+                </div>
+                <div *ngIf="entretienForm.get('name')?.errors?.['minlength']">
+                  {{ 'form.champ_3' | translate }}
+                </div>
+                <div *ngIf="entretienForm.get('name')?.errors?.['maxlength']">
+                  {{ 'form.champ_30' | translate }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Prenom input -->
+            <div class="mb-3 col-md-6">
+              <label class="form-label" for="prenom">
+                {{ 'form.prenom' | translate }}
+              </label>
+              <input
+                class="form-control"
+                id="prenom"
+                type="prenom"
+                placeholder=" {{ 'form.exp_pre' | translate }}"
+                formControlName="prenom"
+                name="prenom"
+                [ngClass]="{
+                  'is-invalid':
+                    entretienForm.get('prenom')?.touched &&
+                    entretienForm.get('prenom')?.invalid
+                }"
+              />
+              <div
+                *ngIf="
+                  entretienForm.get('prenom')?.touched &&
+                  entretienForm.get('prenom')?.invalid
+                "
+                class="invalid-feedback mb-2"
+              >
+                <div *ngIf="entretienForm.get('prenom')?.errors?.['required']">
+                  {{ 'form.champ_oblig' | translate }}
+                </div>
+                <div *ngIf="entretienForm.get('prenom')?.errors?.['minlength']">
+                  {{ 'form.champ_3' | translate }}
+                </div>
+                <div *ngIf="entretienForm.get('prenom')?.errors?.['maxlength']">
+                  {{ 'form.champ_30' | translate }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Telephone + email address input -->
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label class="form-label" for="telephone">
+                {{ 'form.telephone' | translate }}
+              </label>
+              <input
+                class="form-control"
+                id="telephone"
+                type="texte"
+                placeholder="{{ 'form.exp_tel' | translate }}"
+                formControlName="telephone"
+                name="telephone"
+                [ngClass]="{
+                  'is-invalid':
+                    entretienForm.get('telephone')?.touched &&
+                    entretienForm.get('telephone')?.invalid
+                }"
+              />
+              <div
+                *ngIf="
+                  entretienForm.get('telephone')?.touched &&
+                  entretienForm.get('telephone')?.invalid
+                "
+                class="invalid-feedback"
+              >
+                <div
+                  *ngIf="entretienForm.get('telephone')?.errors?.['required']"
+                >
+                  {{ 'form.champ_oblig' | translate }}
+                </div>
+                <div
+                  *ngIf="entretienForm.get('telephone')?.errors?.['pattern']"
+                >
+                  {{ 'form.tel_valid' | translate }}
+                </div>
+                <div
+                  *ngIf="entretienForm.get('telephone')?.errors?.['minlength']"
+                >
+                  {{ 'form.champ_10' | translate }}
+                </div>
+              </div>
+            </div>
+            <!-- Email  input -->
+            <div class="mb-3 col-md-6">
+              <label class="form-label" for="emailAddress">
+                {{ 'form.email' | translate }}
+              </label>
+              <input
+                class="form-control"
+                id="emailAddress"
+                type="email"
+                placeholder="{{ 'form.exp_email' | translate }}"
+                formControlName="email"
+                name="email"
+                [ngClass]="{
+                  'is-invalid':
+                    entretienForm.get('email')?.touched &&
+                    entretienForm.get('email')?.invalid
+                }"
+              />
+              <div
+                *ngIf="
+                  entretienForm.get('email')?.touched &&
+                  entretienForm.get('email')?.invalid
+                "
+                class="invalid-feedback"
+              >
+                <div *ngIf="entretienForm.get('email')?.errors?.['required']">
+                  {{ 'form.champ_oblig' | translate }}
+                </div>
+                <div *ngIf="entretienForm.get('email')?.errors?.['email']">
+                  {{ 'form.mail_valid' | translate }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">
+                {{ 'form.noteEntretien' | translate }}
+              </label>
+              <select
+                class="form-select"
+                id="noteEntretien"
+                type="texte"
+                formControlName="noteEntretien"
+                name="noteEntretien"
+                [ngClass]="{
+                  'is-invalid':
+                    entretienForm.get('noteEntretien')?.touched &&
+                    entretienForm.get('noteEntretien')?.invalid
+                }"
+              >
+                <option selected disabled value="">
+                  Choisir une noteEntretien
+                </option>
+
+                <option value="niveau1">Facile</option>
+                <option value="niveau2">Moyen</option>
+                <option value="niveau3">Bien</option>
+                <option value="niveau4">Difficile</option>
+              </select>
+              <div
+                *ngIf="
+                  entretienForm.get('noteEntretien')?.touched &&
+                  entretienForm.get('noteEntretien')?.invalid
+                "
+                class="invalid-feedback"
+              >
+                <div
+                  *ngIf="entretienForm.get('noteEntretien')?.errors?.['required']"
+                >
+                  {{ 'form.champ_oblig' | translate }}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">
+                {{ 'form.difficulte' | translate }}
+              </label>
+              <select
+                class="form-select"
+                id="difficulte"
+                type="texte"
+                formControlName="difficulte"
+                name="difficulte"
+                [ngClass]="{
+                  'is-invalid':
+                    entretienForm.get('difficulte')?.touched &&
+                    entretienForm.get('difficulte')?.invalid
+                }"
+              >
+                <option selected disabled value="">
+                  Choisir une difficulte
+                </option>
+
+                <option value="niveau1">Facile</option>
+                <option value="niveau2">Moyen</option>
+                <option value="niveau3">Bien</option>
+                <option value="niveau4">Difficile</option>
+              </select>
+              <div
+                *ngIf="
+                  entretienForm.get('difficulte')?.touched &&
+                  entretienForm.get('difficulte')?.invalid
+                "
+                class="invalid-feedback"
+              >
+                <div
+                  *ngIf="entretienForm.get('difficulte')?.errors?.['required']"
+                >
+                  {{ 'form.champ_oblig' | translate }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">
+                {{ 'form.recommandation' | translate }}
+              </label>
+              <div class="">
+                <select
+                  class="form-select"
+                  id="recommandation"
+                  type="texte"
+                  formControlName="recommandation"
+                  name="recommandation"
+                  [ngClass]="{
+                    'is-invalid':
+                      entretienForm.get('recommandation')?.touched &&
+                      entretienForm.get('recommandation')?.invalid
+                  }"
+                >
+                  <option selected disabled value="">
+                    Choisir une recommandation
+                  </option>
+
+                  <option value="niveau1">Facile</option>
+                  <option value="niveau2">Moyen</option>
+                  <option value="niveau3">Bien</option>
+                  <option value="niveau4">Difficile</option>
+                </select>
+                <div
+                  *ngIf="
+                    entretienForm.get('recommandation')?.touched &&
+                    entretienForm.get('recommandation')?.invalid
+                  "
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="entretienForm.get('recommandation')?.errors?.['required']"
+                  >
+                    {{ 'form.champ_oblig' | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">{{ 'form.note' | translate }}</label>
+              <div class="">
+                <select
+                  class="form-select"
+                  id="note"
+                  type="texte"
+                  formControlName="note"
+                  name="note"
+                  [ngClass]="{
+                    'is-invalid':
+                      entretienForm.get('note')?.touched &&
+                      entretienForm.get('note')?.invalid
+                  }"
+                >
+                  <option selected disabled value="">
+                    Choisir une note
+                  </option>
+
+                  <option value="niveau1">Facile</option>
+                  <option value="niveau2">Moyen</option>
+                  <option value="niveau3">Bien</option>
+                  <option value="niveau4">Difficile</option>
+                </select>
+                <div
+                  *ngIf="
+                    entretienForm.get('note')?.touched &&
+                    entretienForm.get('note')?.invalid
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="entretienForm.get('note')?.errors?.['required']">
+                    {{ 'form.champ_oblig' | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">{{ 'form.salaire' | translate }}</label>
+              <div class="">
+                <select
+                  class="form-select"
+                  id="salaire"
+                  type="texte"
+                  formControlName="salaire"
+                  name="salaire"
+                  [ngClass]="{
+                    'is-invalid':
+                      entretienForm.get('salaire')?.touched &&
+                      entretienForm.get('salaire')?.invalid
+                  }"
+                >
+                  <option selected disabled value="">
+                    Choisir une salaire
+                  </option>
+
+                  <option value="niveau1">Facile</option>
+                  <option value="niveau2">Moyen</option>
+                  <option value="niveau3">Bien</option>
+                  <option value="niveau4">Difficile</option>
+                </select>
+                <div
+                  *ngIf="
+                    entretienForm.get('salaire')?.touched &&
+                    entretienForm.get('salaire')?.invalid
+                  "
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="entretienForm.get('salaire')?.errors?.['required']"
+                  >
+                    {{ 'form.champ_oblig' | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">
+                {{ 'form.securite' | translate }}
+              </label>
+              <div class="">
+                <select
+                  class="form-select"
+                  id="securite"
+                  type="texte"
+                  formControlName="securite"
+                  name="securite"
+                  [ngClass]="{
+                    'is-invalid':
+                      entretienForm.get('securite')?.touched &&
+                      entretienForm.get('securite')?.invalid
+                  }"
+                >
+                  <option selected disabled value="">
+                    Choisir une securite
+                  </option>
+
+                  <option value="niveau1">Facile</option>
+                  <option value="niveau2">Moyen</option>
+                  <option value="niveau3">Bien</option>
+                  <option value="niveau4">Difficile</option>
+                </select>
+                <div
+                  *ngIf="
+                    entretienForm.get('securite')?.touched &&
+                    entretienForm.get('securite')?.invalid
+                  "
+                  class="invalid-feedback"
+                >
+                  <div
+                    *ngIf="entretienForm.get('securite')?.errors?.['required']"
+                  >
+                    {{ 'form.champ_oblig' | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-outline-info">Enregister</button>
+        </form>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</div>

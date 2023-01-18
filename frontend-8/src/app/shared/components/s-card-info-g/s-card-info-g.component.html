@@ -1,0 +1,39 @@
+<p-card
+  [style]="{ width: '100%', 'margin-bottom': '2em', 'margin-top': '2em' }"
+>
+  <p-tabView>
+    <p-tabPanel *ngFor="let i of info_slids" header="{{ i.name }}">
+      <!-- #region  boyd 1  -->
+      <div class="row m-1 hed">
+        <div class="filter_all" *ngIf="i.detail.filter">
+          <div class="prr">
+            <div class="sideBar-Main">
+              <div class="sideBarContainer p-2" *ngIf="filter_show">
+                <p-scrollPanel
+
+                  [style]="{ width: '100%', height: '500px' }"
+                  styleClass="custombar1"
+                >
+                 <app-filter [pageName]="'offre'"></app-filter>
+                </p-scrollPanel>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let d of i.detail.row" class="col-md-{{ d.colum }}">
+          <!-- #region colem 2 body 1 -->
+          <p-scrollPanel
+            [style]="{ width: '100%', height: '500px' }"
+            styleClass="u"
+          >
+            <app-card-library [info]="d.cards_we_need"></app-card-library>
+          </p-scrollPanel>
+          <!-- #endregion -->
+        </div>
+      </div>
+      <!-- #endregion -->
+    </p-tabPanel>
+  </p-tabView>
+</p-card>

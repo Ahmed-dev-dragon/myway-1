@@ -1,0 +1,121 @@
+<div (click)="_open(detailLien, data)">
+  <div class="card-container bg-white">
+    <div class="imgwrap" style="display: flex; justify-content: center;">
+      <img
+        class="lien-logo img-fluid mb-2"
+        [defaultImage]="'assets/images/lien-utile.jpg'"
+        [lazyLoad]="data?.image"
+        alt=""
+        style="max-height: 200px;"
+      />
+    </div>
+    <h4 class="text-center">
+      {{ (data?.translations)['fr']?.__designation | titlecase }}
+    </h4>
+
+    <p class="my-3 truncate truncate-5-line">
+      {{ (data?.translations)['fr']?.__descriptif | titlecase }}
+    </p>
+    <div class="info-small-card">
+      <a href="{{ data?.valeur_lien }}" target="_blank">
+        <h6 class="ellipsis-text text-center mt-2 mb-0">
+          {{ data?.valeur_lien }}
+        </h6>
+      </a>
+    </div>
+  </div>
+</div>
+<ng-template #detailLien let-modal>
+  <div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header text-info">
+      <h4 class="modal-title">
+        <a href="https://{{ lienUtilPost?.valeur_lien }}" target="_blanck">
+          {{ (lienUtilPost?.translations)['fr'].__designation }}
+        </a>
+      </h4>
+      <button
+        type="button"
+        class="btn btn-outline-dark"
+        (click)="modal.close('Cross click')"
+      >
+        &times;
+      </button>
+    </div>
+
+    <!-- Modal body -->
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>
+            <b>{{ 'add.desc' | translate }} :</b>
+          </h4>
+          <p>
+            {{ (lienUtilPost?.translations)['fr'].__descriptif }}
+          </p>
+        </div>
+
+        <div
+          class="col-md-6"
+          *ngIf="(lienUtilPost?.translations)['fr'].__services.length > 0"
+        >
+          <h4>
+            <i class="fa fa-handshake"></i>
+            &nbsp;
+            <b>{{ 'add.services' | translate }}</b>
+          </h4>
+
+          <ul style="list-style-type: circle; list-style-position: inside;">
+            <li
+              style="padding-left: 10px;"
+              *ngFor="
+                let service of (lienUtilPost?.translations)['fr'].__services
+              "
+            >
+              {{ service }}
+            </li>
+          </ul>
+          <br />
+        </div>
+
+        <div
+          class="col-md-6"
+          *ngIf="(lienUtilPost?.translations)['fr'].__services.length == 0"
+        >
+          <h4>
+            <i class="fa fa-handshake"></i>
+            &nbsp;
+            <b>{{ 'add.services' | translate }}</b>
+          </h4>
+
+          <p>
+            {{ 'home.h0040' | translate }}
+          </p>
+
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal footer -->
+    <div class="modal-footer">
+      <button class="btn btn-primary">
+        <a
+          href="https://{{ lienUtilPost?.valeur_lien }}"
+          style="color: white;"
+          target="blank"
+        >
+          {{ 'home.h0041' | translate }}
+        </a>
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="modal.close('Cross click')"
+      >
+        {{ 'Edit_annuaire.close' | translate }}
+      </button>
+    </div>
+  </div>
+</ng-template>

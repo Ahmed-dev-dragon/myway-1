@@ -1,0 +1,25 @@
+<p-tabView styleClass="tabview-custom">
+  <p-tabPanel>
+    <ng-template pTemplate="header">
+      <i class="fa-solid fa-building-columns"></i>
+      <span>&nbsp; {{ "Éducation" | translate }}</span>
+    </ng-template>
+    <ng-template pTemplate="body">
+    <education-from></education-from>
+    </ng-template>
+  </p-tabPanel>
+  <p-tabPanel header="Header II">
+    <ng-template pTemplate="header">
+      <i class="fa-solid fa-certificate"></i>
+      <span>&nbsp; {{ "Certificats" | translate }}</span>
+    </ng-template>
+    <ng-template pTemplate="body">
+      <certificats-from></certificats-from>
+    </ng-template>
+  </p-tabPanel>
+</p-tabView>
+<div class="modal-footer">
+  <div class="row">
+    <button type="button"  (click)="save_ed_ce_froms()" class="btn btn-info">save all</button>
+  </div>
+</div>

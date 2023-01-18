@@ -1,0 +1,299 @@
+<form [formGroup]="expectations_form" (ngSubmit)="save_expectations_from()">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- sicrot do ofer -->
+<div class="row">
+  <!-- select form scter 1  -->
+      <div class="col-md-4">
+        <label for="expectations_form_job_fild_1_input" class="form-label">
+          {{ 'expectations_form_job_fild_1_input' | translate }}
+        </label>
+        <select
+        class="form-select"
+        id="expectations_form_job_fild_1_input"
+        formControlName="expectations_form_job_fild_1_input"
+        name="expectations_form_job_fild_1_input"
+        [ngClass]="{
+                    'is-invalid':
+                      expectations_form.get('expectations_form_job_fild_1_input')?.touched &&
+                      expectations_form.get('expectations_form_job_fild_1_input')?.invalid
+                  }">
+          <option selected disabled value="">Choose...</option>
+          <option>...</option>
+        </select>
+
+        <div *ngIf="
+                    expectations_form.get('expectations_form_job_fild_1_input')?.touched &&
+                    expectations_form.get('expectations_form_job_fild_1_input')?.invalid
+                  " class="invalid-feedback">
+          <div *ngIf="expectations_form.get('expectations_form_job_fild_1_input')?.errors?.['required']">
+            {{ 'form.champ_oblig' | translate }}
+          </div>
+        </div>
+      </div>
+  <!-- select form scter 2  -->
+          <div class="col-md-4">
+            <label for="expectations_form_job_fild_2_input" class="form-label">
+              {{ 'expectations_form_job_fild_2_input' | translate }}
+            </label>
+            <select class="form-select" id="expectations_form_job_fild_2_input" formControlName="expectations_form_job_fild_2_input"
+              name="expectations_form_job_fild_2_input" [ngClass]="{
+                              'is-invalid':
+                                expectations_form.get('expectations_form_job_fild_2_input')?.touched &&
+                                expectations_form.get('expectations_form_job_fild_2_input')?.invalid
+                            }">
+              <option selected disabled value="">Choose...</option>
+              <option>...</option>
+            </select>
+
+            <div *ngIf="
+                              expectations_form.get('expectations_form_job_fild_2_input')?.touched &&
+                              expectations_form.get('expectations_form_job_fild_2_input')?.invalid
+                            " class="invalid-feedback">
+              <div *ngIf="expectations_form.get('expectations_form_job_fild_2_input')?.errors?.['required']">
+                {{ 'form.champ_oblig' | translate }}
+              </div>
+            </div>
+          </div>
+  <!-- select form scter 3  -->
+      <div class="col-md-4">
+        <label for="expectations_form_job_fild_3_input" class="form-label">
+          {{ 'expectations_form_job_fild_3_input' | translate }}
+        </label>
+        <select class="form-select" id="expectations_form_job_fild_3_input" formControlName="expectations_form_job_fild_3_input"
+          name="expectations_form_job_fild_3_input" [ngClass]="{
+                          'is-invalid':
+                            expectations_form.get('expectations_form_job_fild_3_input')?.touched &&
+                            expectations_form.get('expectations_form_job_fild_3_input')?.invalid
+                        }">
+          <option selected disabled value="">Choose...</option>
+          <option>...</option>
+        </select>
+
+        <div *ngIf="
+                          expectations_form.get('expectations_form_job_fild_3_input')?.touched &&
+                          expectations_form.get('expectations_form_job_fild_3_input')?.invalid
+                        " class="invalid-feedback">
+          <div *ngIf="expectations_form.get('expectations_form_job_fild_3_input')?.errors?.['required']">
+            {{ 'form.champ_oblig' | translate }}
+          </div>
+        </div>
+      </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- plasise city or countery  and time -->
+<div class="row">
+     <!-- contry -->
+        <div class="col-md-4">
+          <label for="expectations_form_contry_input" class="form-label">
+            {{ 'expectations_form_contry_input' | translate }}
+          </label>
+          <select
+          class="form-select"
+          id="expectations_form_contry_input"
+          formControlName="expectations_form_contry_input"
+          name="expectations_form_contry_input"
+          [ngClass]="{
+                            'is-invalid':
+                              expectations_form.get('expectations_form_contry_input')?.touched &&
+                              expectations_form.get('expectations_form_contry_input')?.invalid
+                          }">
+            <option selected disabled value="">Choose...</option>
+            <option>...</option>
+          </select>
+
+          <div *ngIf="
+                            expectations_form.get('expectations_form_contry_input')?.touched &&
+                            expectations_form.get('expectations_form_contry_input')?.invalid
+                          " class="invalid-feedback">
+            <div *ngIf="expectations_form.get('expectations_form_contry_input')?.errors?.['required']">
+              {{ 'expectations_form_contry_input not valid' | translate }}
+            </div>
+          </div>
+        </div>
+      <!-- ctiy -->
+        <div class="col-md-4">
+          <label for="expectations_form_ctiy_input" class="form-label">
+            {{ 'expectations_form_ctiy_input' | translate }}
+          </label>
+          <select class="form-select" id="expectations_form_ctiy_input" formControlName="expectations_form_ctiy_input"
+            name="expectations_form_ctiy_input" [ngClass]="{
+                                    'is-invalid':
+                                      expectations_form.get('expectations_form_ctiy_input')?.touched &&
+                                      expectations_form.get('expectations_form_ctiy_input')?.invalid
+                                  }">
+            <option selected disabled value="">Choose...</option>
+            <option>...</option>
+          </select>
+
+          <div *ngIf="
+                                    expectations_form.get('expectations_form_ctiy_input')?.touched &&
+                                    expectations_form.get('expectations_form_ctiy_input')?.invalid
+                                  " class="invalid-feedback">
+            <div *ngIf="expectations_form.get('expectations_form_ctiy_input')?.errors?.['required']">
+              {{ 'expectations_form_ctiy_input not valid' | translate }}
+            </div>
+          </div>
+        </div>
+      <!-- time -->
+      <div class="mb-3 col-md-4">
+        <label class="form-label" for="expectations_form_time_input">
+          {{ 'expectations_form_time_input' | translate }}
+        </label>
+        <input class="form-control" id="expectations_form_time_input" type="date" formControlName="expectations_form_time_input" name="expectations_form_time_input" [ngClass]="{
+                  'is-invalid':
+                    expectations_form.get('expectations_form_time_input')?.touched &&
+                    expectations_form.get('expectations_form_time_input')?.invalid
+                }" />
+        <div *ngIf="
+                  expectations_form.get('expectations_form_time_input')?.touched &&
+                  expectations_form.get('expectations_form_time_input')?.invalid
+                " class="invalid-feedback">
+          <div *ngIf="expectations_form.get('expectations_form_time_input')?.errors?.['required']">
+            {{ 'expectations_form_time_input not valid' | translate }}
+          </div>
+
+        </div>
+      </div>
+</div>
+
+
+
+
+
+
+
+
+<!--  select conterct type and saler -->
+<div class="row">
+  <!--  select conterct type  -->
+    <div class="col-md-6">
+      <label for="expectations_form_conteract_type_input" class="form-label">
+        {{ 'conteract' | translate }}
+      </label>
+      <select
+      class="form-select"
+      id="expectations_form_conteract_type_input"
+      formControlName="expectations_form_conteract_type_input"
+      name="expectations_form_conteract_type_input"
+      [ngClass]="{
+                        'is-invalid':
+                          expectations_form.get('expectations_form_conteract_type_input')?.touched &&
+                          expectations_form.get('expectations_form_conteract_type_input')?.invalid
+                      }">
+        <option selected disabled value="">Choose...</option>
+        <option>...</option>
+      </select>
+
+      <div *ngIf="
+                        expectations_form.get('expectations_form_conteract_type_input')?.touched &&
+                        expectations_form.get('expectations_form_conteract_type_input')?.invalid
+                      " class="invalid-feedback">
+        <div *ngIf="expectations_form.get('expectations_form_conteract_type_input')?.errors?.['required']">
+          {{ ' not vald' | translate }}
+        </div>
+
+      </div>
+    </div>
+    <!-- salery -->
+    <div class="mb-3 col-md-6">
+      <label class="form-label" for="expectations_form_saliry_input">
+        {{ 'salery' | translate }}
+      </label>
+      <input
+      class="form-control"
+      id="expectations_form_saliry_input"
+      type="number"
+      placeholder="{{ 'salery' | translate }}"
+      formControlName="expectations_form_saliry_input"
+      name="expectations_form_saliry_input"
+      [ngClass]="{
+              'is-invalid':
+                expectations_form.get('expectations_form_saliry_input')?.touched &&
+                expectations_form.get('expectations_form_saliry_input')?.invalid
+            }"
+
+             />
+      <div *ngIf="
+              expectations_form.get('expectations_form_saliry_input')?.touched &&
+              expectations_form.get('expectations_form_saliry_input')?.invalid
+            " class="invalid-feedback mb-2">
+        <div *ngIf="expectations_form.get('expectations_form_saliry_input')?.errors?.['required']">
+          {{ 'form.champ_oblig' | translate }}
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="modal-footer">
+    <div class="row">
+      <button type="submit" class="btn btn-info">
+        save
+      </button>
+    </div>
+  </div>
+</form>

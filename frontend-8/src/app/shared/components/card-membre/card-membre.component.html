@@ -1,0 +1,70 @@
+<div class="row align-items-center section-recruteur mb-3">
+  <div class="col-lg-5 my-1">
+    <div class="about-avatar">
+      <img
+        src="https://bootdey.com/img/Content/avatar/avatar7.png"
+        alt="img-avatar"
+        class=""
+      />
+    </div>
+  </div>
+
+  <div class="col-lg-7 my-1">
+    <div class="">
+      <h3 class="card-custom-title">{{ nom }} {{ prenom }}</h3>
+      <h4 class="theme-color">
+        {{ fonction }}
+      </h4>
+      <div class="font-weight-bold d-flex flex-row align-items-center mb-2">
+        <i class="fa-solid fa-house me-2"></i>
+        <h6 class="m-0">{{ service }}</h6>
+      </div>
+      <p>
+        {{ resume }}
+
+        <!-- I
+        <mark>design and develop</mark>
+        services for customers of all sizes, specializing in creating stylish,
+        modern websites, web services and online stores. My passion is to design
+        digital user experiences through the bold interface and meaningful
+        interactions. -->
+      </p>
+      <div class="row about-list">
+        <div class="col-md-6">
+          <div class="media">
+            <label>
+              {{ 'form.email' | translate }}
+            </label>
+            <p>{{ email }}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="media">
+            <label>{{ 'form.telephone' | translate }}</label>
+            <p>{{ telephone }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row about-list" *ngIf="rating || nbBlog">
+        <div class="col-md-6" *ngIf="rating">
+          <div class="media">
+            <label>
+              {{ 'form.rating' | translate }}
+            </label>
+            <p-rating
+              [ngModel]="rating"
+              [disabled]="true"
+              [cancel]="false"
+            ></p-rating>
+          </div>
+        </div>
+        <div class="col-md-6" *ngIf="nbBlog">
+          <div class="media">
+            <label>{{ 'form.nbBlog' | translate }}</label>
+            <p>{{ nbBlog }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

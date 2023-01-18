@@ -1,0 +1,62 @@
+<div class="container">
+  <!--fin de barre de recherche-->
+
+  <div class="row">
+    <!-- BEGIN SEARCH RESULT -->
+    <div class="col-md-12">
+      <div class="d-flex flex-main">
+        <!-- BEGIN FILTERS -->
+        <div class="section-recruteur spacing-inline-end mb-3">
+          <app-filter [pageName]="'evenement'"></app-filter>
+        </div>
+        <!-- END FILTERS -->
+        <!-- BEGIN RESULT -->
+        <div class="w-100">
+          <div class="section-recruteur mb-3 w-100">
+            <h2 class="px-1" style="font-size: 25px;">
+              Résultats des offres
+            </h2>
+          </div>
+          <div class="section-recruteur mb-3 w-100">
+            <div class="flex-grow-1">
+              <app-top-bar
+                [pageName]="'evenement'"
+                [data]="evenementService.listEvents"
+                (filtredData)="filtredData($event)"
+                (orientationView)="getOrientaion($event)"
+              ></app-top-bar>
+            </div>
+            <!-- BEGIN TABLE RESULT -->
+            <hr />
+
+            <div class="row">
+              <app-card-article
+                class="col-md-6 mb-3"
+                *ngFor="
+                  let event of resultData
+                    | paginate: { itemsPerPage: 20, currentPage: paginate }
+                "
+                [isArticle]="false"
+                [link]="['/evenement/details-event']"
+                [image]="event.image"
+                [titre]="event.titre"
+                [dateDebut]="event.dateDebut"
+                [dateFin]="event.dateFin"
+                [heureDebut]="event.heureDebut"
+                [heureFin]="event.heureFin"
+                [typeEvent]="event.TypeEvenement"
+                [organisateur]="event.organisateur"
+              ></app-card-article>
+              <pagination-controls
+                class="text-center"
+                (pageChange)="paginate = $event"
+              ></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END RESULT -->
+  </div>
+</div>
+<!-- END SEARCH RESULT -->

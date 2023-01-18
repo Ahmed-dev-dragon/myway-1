@@ -1,0 +1,51 @@
+<div class="">
+  <div class="dropdown">
+    <button
+      class="btn btn-default dropdown-toggle"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarDropdown"
+      aria-controls="navbarDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      Order by
+    </button>
+    <ul
+      class="dropdown-menu custom-navbar"
+      aria-labelledby="navbarDropdown"
+      id="navbarDropdown"
+    >
+      <li>
+        <div class="row">
+          <div class="col-6">Name</div>
+
+          <div class="col-4">
+            <a
+              class="dropdown-item"
+              (click)="sortByNameFunction()"
+            >
+              <i class="fa-solid fa-{{sort_by_name_value}}"></i>
+            </a>
+
+          </div>
+        </div>
+      </li>
+      <!-- <li>
+        <div class="row" *ngIf="pageName=='offre'||">
+          <div class="col-6">Date</div>
+
+          <div class="col-4">
+            <a
+              class="dropdown-item"
+              (click)=" sortByDateFunction()"
+            >
+              <i class="fa-solid fa-{{sort_by_date_value}}"></i>
+            </a>
+
+          </div>
+        </div>
+      </li> -->
+    </ul>
+  </div>
+</div>

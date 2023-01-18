@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="mb-3">
+    <div class="" *ngIf="Sondage.length > 0">
+      <h4 class="py-2 j-title-lg" *ngIf="!isValider">
+        {{ 'sondage.sondae_encours' | translate }}
+      </h4>
+      <div class="col-12" *ngFor="let currentS of Sondage">
+        <div class="">
+          <h5 class="py-3" *ngIf="!isValider">
+            {{ (currentS?.translations)['fr']?.__designation }}
+            &nbsp;
+
+            <span *ngIf="currentS" class="j-title-md">
+              <i class="fa fa-calendar"></i>
+              &nbsp;
+              {{ 'sondage.date_debut' | translate }}
+              {{ currentS?.date_ouverture | date: 'dd-MM-yyyy' }}
+              -
+              {{ 'sondage.date_fin' | translate }}
+              {{ currentS?.date_cloture | date: 'dd-MM-yyyy' }}
+            </span>
+          </h5>
+          <form class="border p-3 mb-2">
+            <div class="row col-12">
+              <div class="col-md-5 mb-3 taille-image d-flex flex-column">
+                <img
+                  class="img-fluid imgSondage mb-2"
+                  [lazyLoad]="currentS?.image"
+                  [defaultImage]="'assets/images/sondage.jpg'"
+                  alt="post"
+                />
+                <span class="small col-md-12">
+                  {{ 'sondage.nbr_participants' | translate }}
+                  {{ currentS?.nombre_participants }}
+                </span>
+              </div>
+              <div class="col-lg-7 col-md-7 col-xl-7 col-12">
+                <div
+                  *ngFor="let q of currentS?.question_sondage; let i = index"
+                  class="mb-3"
+                >
+                  <h4 style="color: #000; text-align: justify;">
+                    <b>{{ i + 1 }} -</b>
+                    {{ (q?.translations)['fr']?.__label_question | titlecase }}
+                  </h4>
+                  <div>
+                    <div
+                      class="form-check ml-4"
+                      *ngFor="let r of q.reponse_sondage; let j = index"
+                    >
+                      <input
+                        class="form-check-input"
+                        [disabled]="
+                          interactionService.alreadyAnsweredS(currentS?._id)
+                        "
+                        [checked]="
+                          interactionService.sondageEnteredAnswers(
+                            currentS?._id,
+                            i
+                          ) === r?._id
+                        "
+                        (click)="choisir(currentS, rep.value, i, j)"
+                        value="{{ (r?.translations)['fr']?.__valeur_choix1 }}"
+                        type="radio"
+                        [name]="'flexRadioDefault-' + i"
+                        #rep
+                        [id]="'flexRadioDefault-' + i + '-' + j"
+                      />
+                      <label
+                        class="form-check-label"
+                        [ngClass]="{
+                          disabled: interactionService.alreadyAnsweredS(
+                            currentS?._id
+                          )
+                        }"
+                        [for]="'flexRadioDefault-' + i + '-' + j"
+                      >
+                        {{ (r?.translations)['fr']?.__valeur_choix1 }}
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-2 col-12">
+                <button
+                  type="button"
+                  class="btn btn-outline-dark pull-right"
+                  [disabled]="
+                    interactionService.alreadyAnsweredS(currentS?._id) ||
+                    isValide
+                  "
+                  (click)="
+                    enregistrer(currentS); disable(); increment(currentS?._id)
+                  "
+                >
+                  {{ 'sondage.valider' | translate }}
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="mt-3 mb-3" *ngIf="isValider && currentS">
+            <p class="text-accent text-center">
+              {{ 'sondage.choix_enregistrer' | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="section-recruteur mb-3">
+    <div class="row">
+      <div class="" *ngIf="sondageHistorique.length">
+        <h4 class="py-3 j-title-lg">
+          {{ 'sondage.historique_sondages' | translate }}
+        </h4>
+      </div>
+
+      <div class=" " *ngFor="let s of sondageHistorique; let i = index">
+        <app-sondage-historique [sondage]="s"></app-sondage-historique>
+      </div>
+      <div class="text-center col-md-12" *ngIf="sondageHistorique.length"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,300 @@
+<div class="container">
+  <div class="row">
+    <div class="main col-md-9">
+      <div class="section-recruteur">
+        <section class="row">
+          <h2 class="py-3 j-title-lg text-justify blue-color">
+            {{ (post?.translations)['fr']?.__designation }}
+          </h2>
+          <div class="col-md-12 text-center mb-3">
+            <figure class="j-image-container img-container">
+              <img
+                class="img-fluid img-event"
+                alt="article image"
+                src=""
+                [defaultImage]="'assets/images/img-bg.jpg'"
+                [lazyLoad]="post?.image"
+              />
+            </figure>
+          </div>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="date-container">
+                  <p class="article-details bold">
+                    {{ 'form.date_debut' | translate }} :&nbsp;
+                  </p>
+                  <span>{{ post?.date_debut | date: 'dd-MMM-yyyy' }}</span>
+                </div>
+                <div class="date-container">
+                  <p class="article-details bold">
+                    {{ 'form.date_debut' | translate }} :&nbsp;
+                  </p>
+                  <span>{{ post?.heureDebut }}</span>
+                </div>
+
+                <div class="date-container">
+                  <p class="article-details bold">
+                    {{ 'form.date_fin' | translate }} :&nbsp;
+                  </p>
+                  <span>{{ post?.date_fin | date: 'dd-MMM-yyyy' }}</span>
+                </div>
+
+                <div class="date-container">
+                  <p class="article-details bold">
+                    {{ 'form.date_debut' | translate }} :&nbsp;
+                  </p>
+                  <span>{{ post?.heureFin }}</span>
+                </div>
+
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.particip' | translate }} :&nbsp;
+                  </p>
+                  <span>
+                    <b
+                      style="color: red;"
+                      *ngIf="post?.sur_invitation_seulement"
+                    >
+                      {{ 'evenement.invitation' | translate }}
+                    </b>
+                    <b
+                      style="color: rgb(5, 173, 5);"
+                      *ngIf="!post?.sur_invitation_seulement"
+                    >
+                      {{ 'evenement.ouverte' | translate }}
+                    </b>
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.nbr_place' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    {{ post?.nbre_max_place_assises }}
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.nbr_participant' | translate }}:&nbsp;
+                  </p>
+                  <span>{{ post?.nbre_max_participants_en_ligne }}</span>
+                </div>
+
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.nbr_reel_participant' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    {{ post?.nbre_reels_participants }}
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.nbr_place_en_ligne' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    {{ post?.nbre_reel_participants_en_ligne }}
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.nbr_place_assises' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    {{ post?.nbre_max_place_assises }}
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.inscrire' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    <a href="{{ post?.lien_pour_inscription }}" target="_blank">
+                      {{ post?.lien_pour_inscription }}
+                    </a>
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.participe' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    <a href="{{ post?.lien_pour_participer }}" target="_blank">
+                      {{ post?.lien_pour_participer }}
+                    </a>
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.lieux' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    <a
+                      href="{{ post?.lien_pour_suivre_en_direct }}"
+                      target="_blank"
+                    >
+                      {{ post?.lien_pour_suivre_en_direct }}
+                    </a>
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.lien_en_ligne' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    <a target="_blank">
+                      {{
+                        (post?.translations)['fr']
+                          ?.__coordonnees_geog_lieux_event
+                      }}
+                    </a>
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.organisat' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    {{
+                      (post?.translations)['fr']
+                        ?.__organisateurs_nom_description_coord
+                    }}
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.cordon_N' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    {{
+                      (post?.translations)['fr']
+                        ?.__coordonnees_numeriques_associees
+                    }}
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'form.email' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    {{
+                      (post?.translations)['fr']
+                        ?.__personnes_a_contacter_nom_prenom_fonction_tel_email
+                    }}
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.nbr_place_en_ligne' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    {{ post?.nbre_reel_participants_en_ligne }}
+                  </span>
+                </div>
+                <div class="">
+                  <p class="article-details bold">
+                    {{ 'evenement.nbr_place_assises' | translate }}:&nbsp;
+                  </p>
+                  <span>
+                    {{ post?.nbre_max_place_assises }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <hr />
+        <section class="details-event">
+          <p-tabView>
+            <p-tabPanel header="  {{ 'evenement.description' | translate }}">
+              <div
+                class="details-event-element"
+                *ngIf="(post?.translations)['fr']?.__description"
+              >
+                <h3 class="py-2 j-title-lg text-justify blue-color">
+                  {{ 'evenement.description' | translate }}
+                </h3>
+
+                <p class="j-description j-resume-lg">
+                  {{ (post?.translations)['fr']?.__description }}
+                </p>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="   {{ 'evenement.indic_supp' | translate }}">
+              <div
+                class="details-event-element"
+                *ngIf="(post?.translations)['fr']?.__indication_particuliere"
+              >
+                <h3 class="py-2 j-title-lg text-justify blue-color">
+                  {{ 'evenement.indic_supp' | translate }}
+                </h3>
+
+                <p class="j-description j-resume-lg">
+                  {{ (post?.translations)['fr']?.__indication_particuliere }}
+                </p>
+              </div>
+            </p-tabPanel>
+
+            <p-tabPanel header="   {{ 'evenement.acteur' | translate }}">
+              <div
+                class="details-event-element"
+                *ngIf="(post?.translations)['fr']?.__description"
+              >
+                <h3 class="py-2 j-title-lg text-justify blue-color">
+                  {{ 'evenement.acteur' | translate }}
+                </h3>
+
+                <ul class="no-style-list">
+                  <li class="my-4" *ngFor="let r of post?.acteurs_event">
+                    <div class="acteur-div">
+                      <img
+                        alt=""
+                        img-person
+                        [lazyLoad]="r?.image"
+                        [defaultImage]="'assets/images/user.png'"
+                        class="img-fluid"
+                      />
+                      <div class="acteur-div-body">
+                        <h5 class="j-title-md blue-color">
+                          {{ (r?.translations)['fr']?.__nom }}
+                          {{ (r?.translations)['fr']?.__prenom }}
+                          ({{ (r?.translations)['fr']?.__role }})
+                        </h5>
+                        <p class="m-0 pt-2 article-details">
+                          {{ (r?.translations)['fr']?.__fonction }}
+                        </p>
+                        <p class="m-0 pt-2 article-details">
+                          {{ (r?.translations)['fr']?.__presentation }}
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel
+              header="                  {{ 'evenement.programme' | translate }}
+"
+            >
+              <div class="" *ngIf="(post?.translations)['fr']?.__programme">
+                <h3 class="py-2 j-title-lg text-justify blue-color">
+                  {{ 'evenement.programme' | translate }}
+                </h3>
+
+                <p class="article-details">
+                  {{ (post?.translations)['fr']?.__programme }}
+                </p>
+              </div>
+            </p-tabPanel>
+          </p-tabView>
+        </section>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="section-recruteur"></div>
+    </div>
+  </div>
+</div>

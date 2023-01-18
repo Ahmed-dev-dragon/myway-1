@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="section-recruteur mb-3">
+    <h4>{{ 'globale.details_forum' | translate }}</h4>
+  </div>
+  <div class="row">
+    <div class="my-2 col-md-9">
+      <div class="section-recruteur col-12 mb-3">
+        <div class="row">
+          <div class="forum-container">
+            <div class="row col-lg-12 align-items-center">
+              <div class="col-md-6 flexible text-center my-2">
+                <img
+                  [defaultImage]="'assets/images/forum-default.jpg'"
+                  style="object-fit: contain; width: 100%; max-height: 250px;"
+                  class="img-fluid logoAnnuaire"
+                  [lazyLoad]="forum?.image_forum"
+                  alt="img-forum"
+                />
+              </div>
+              <div class="col-md-6 my-2">
+                <div
+                  class="d-flex align-items-center justify-content-between w-100 mb-2"
+                >
+                  <div class="meta">
+                    <span
+                      class="j-description bold j-resume-lg mt-2 bold"
+                      *ngIf="forum?.date_cloture"
+                    >
+                      <i class="fa-regular fa-calendar"></i>
+                      {{ forum?.date_cloture | date: 'medium' }}
+                    </span>
+                  </div>
+                  <div *ngIf="forumCloturer" class="meta">
+                    <span
+                      class="j-description bold j-resume-lg mt-2 bold text-danger"
+                    >
+                      <i class="fa-solid fa-look text-danger"></i>
+
+                      {{ 'home.h0072' | translate }}
+                    </span>
+                  </div>
+                </div>
+                <div class="product-right">
+                  <div class="title1">
+                    <h2 class="py-2 j-title-lg blue-color">
+                      {{ forum?.designation }}
+                    </h2>
+                    <p class="py-2 j-description j-resume-lg">
+                      {{ forum?.descriptif }}
+                    </p>
+                    <p class="py-2 j-description j-resume-lg">
+                      {{ forum?.responsable }}
+                      --
+                      {{ forum?.ref_responsable }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <app-card-forum
+            class="col-md-6 mb-2"
+            [routerLink]="['/espace-communautaire/details-theme']"
+            *ngFor="let item of forum.theme"
+            [image]="item.image"
+            [designation]="item.designation_theme"
+            [descriptif]="item.descriptif_theme"
+            [nbrTheme]="item.nbre_theme"
+            [nbrParticipants]="item.nbre_participants"
+            [nbrEchanges]="item.nbre_echanges"
+          ></app-card-forum>
+        </div>
+      </div>
+    </div>
+    <div class="my-2 col-md-3">
+      <div class="section-recruteur col-12"></div>
+    </div>
+  </div>
+</div>

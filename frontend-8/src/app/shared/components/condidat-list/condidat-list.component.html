@@ -1,0 +1,43 @@
+<div class="container">
+  <!--fin de barre de recherche-->
+  <div class="row">
+    <!-- BEGIN SEARCH RESULT -->
+    <div class="col-md-12">
+      <div class="d-flex flex-main">
+        <!-- BEGIN FILTERS -->
+        <div class="section-recruteur spacing-inline-end mb-3">
+          <app-filter [pageName]="'candidat'"></app-filter>
+        </div>
+        <!-- END FILTERS -->
+        <!-- BEGIN RESULT -->
+        <div class="col-md-8">
+          <div class="section-recruteur mb-3 w-100">
+            <h2 class="px-1" style="font-size: 25px;">
+              Résultats des contidats
+            </h2>
+          </div>
+          <div class="section-recruteur mb-3 w-100">
+            <div class="flex-grow-1">
+              <div class="">
+                <app-top-bar
+                  [pageName]="'candidat'"
+                  [showOrientation]="true"
+                  [data]="candidatService.condidats_list"
+                  (filtredData)="filtredData($event)"
+                  
+                ></app-top-bar>
+              </div>
+
+              <!-- BEGIN TABLE RESULT -->
+              <hr />
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END RESULT -->
+    </div>
+  </div>
+  <!-- END SEARCH RESULT -->
+</div>

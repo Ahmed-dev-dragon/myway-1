@@ -1,0 +1,33 @@
+<div class="top-bar">
+  <app-filter-by-text
+    *ngIf="showTextInput"
+    [pageName]="pageName"
+  ></app-filter-by-text>
+
+  <div class="btn-group" *ngIf="
+
+        pageName=='offre' ||
+        pageName=='demande specifique' ||
+        pageName=='candidat'"
+  >
+    <button
+      (click)="genericService.toggleOrientation('verticale')"
+      type="button"
+      class="btn btn-default active"
+    >
+      <i class="fa fa-list"></i>
+    </button>
+    <button
+      (click)="genericService.toggleOrientation('horizontale')"
+      type="button"
+      class="btn btn-default"
+    >
+      <i class="fa fa-th"></i>
+    </button>
+  </div>
+  <app-sort
+    *ngIf="showSort"
+    [pageName]="pageName"
+    [type]="'titre'"
+  ></app-sort>
+</div>

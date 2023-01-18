@@ -1,0 +1,50 @@
+<div class="width-card-guide">
+  <div
+    class=""
+    *ngFor="let guide of genericService.get('guides-emploi').getlist()"
+  >
+    <a [routerLink]="['/guides-emploi/details-guide/', guide.id]">
+      <h2>{{ guide.titre }}</h2>
+    </a>
+    <ul>
+      <div class="niveau-1" *ngFor="let guideChildren of guide.children">
+        <li *ngIf="guideChildren.type == 'faq'">
+          <a [routerLink]="['/guides-emploi/faq']">
+            <h6>{{ guideChildren.titre }}</h6>
+          </a>
+        </li>
+        <li *ngIf="guideChildren.type == 'post'">
+          <a [routerLink]="['/guides-emploi/details-guide/article/1']">
+            <h6>{{ guideChildren.titre }}</h6>
+          </a>
+        </li>
+
+        <li *ngIf="guideChildren.type == 'sub'">
+          <a
+            [routerLink]="[
+              '/guides-emploi/details-guide/',
+              guide.id,
+              guideChildren.id
+            ]"
+          >
+            <h5>{{ guideChildren.titre }}</h5>
+          </a>
+          <ul class="niveau-2">
+            <div class="" *ngFor="let guideChildren2 of guideChildren.children">
+              <li *ngIf="guideChildren2.type == 'faq'">
+                <a [routerLink]="['/guides-emploi/faq']">
+                  <h6>{{ guideChildren2.titre }}</h6>
+                </a>
+              </li>
+              <li *ngIf="guideChildren2.type == 'post'">
+                <a [routerLink]="['/guides-emploi/details-guide/article/1']">
+                  <h6>{{ guideChildren2.titre }}</h6>
+                </a>
+              </li>
+            </div>
+          </ul>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.team-boxed .intro p {
+  margin-bottom: 0;
+}
+
+.team-boxed {
+  text-align: center;
+}
+
+.team-boxed img {
+  max-width: 160px;
+}
+
+.team-boxed .social {
+  font-size: 18px;
+  color: #a2a8ae;
+}
+
+.team-boxed .social a {
+  color: inherit;
+  margin: 0 10px;
+  display: inline-block;
+  opacity: 0.7;
+}
+
+.team-boxed .social a:hover {
+  opacity: 1;
+}

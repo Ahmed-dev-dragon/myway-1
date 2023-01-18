@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="section-recruteur row mb-3">
+    <h4>{{ 'globale.membre_Entreprise' | translate }}</h4>
+  </div>
+  <app-card-membre
+    class=""
+    *ngFor="let membre of listMembres"
+    [nom]="membre.nom"
+    [prenom]="membre.prenom"
+    [fonction]="membre.fonction"
+    [service]="membre.service"
+    [resume]="membre.resume"
+    [email]="membre.email"
+    [telephone]="membre.telephone"
+  ></app-card-membre>
+</div>

@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="col-md-12 mb-3">
+    <div class="section-recruteur mb-3">
+      <h4>{{ 'globale.presentation' | translate }}</h4>
+    </div>
+    <div class="section-recruteur">
+      <div class="d-flex flex-wrap justify-content-evenly">
+        <app-card-info-small
+          class="col-md-2"
+          [type]="'file'"
+          [titre]="'Secteur d activité'"
+          [valeur]="recruteurInfo.secteurActivite"
+        ></app-card-info-small>
+        <app-card-info-small
+          class="col-md-2"
+          [type]="'calendar'"
+          [titre]="'Date de Creation'"
+          [valeur]="recruteurInfo.dateCreation"
+        ></app-card-info-small>
+        <app-card-info-small
+          class="col-md-2"
+          [type]="'user'"
+          [titre]="'Nombre d Employés'"
+          [valeur]="recruteurInfo.effectif"
+        ></app-card-info-small>
+      </div>
+      <div class="spacing-article-divider">
+        <div class="">
+          <div
+            *ngIf="recruteurInfo?.paragraphes.length > 0"
+            class="col-lg-12 p-0 rtl-text"
+          >
+            <div
+              class="article-paragraphe-wrapper"
+              *ngFor="
+                let paragraphe of recruteurInfo?.paragraphes;
+                let i = index
+              "
+            >
+              <h4
+                *ngIf="paragraphe?.designation"
+                class="apropos-details bold mb-4"
+              >
+                {{ paragraphe?.designation }}
+              </h4>
+              <div class="article-paragraphe-container">
+                <p class="article-details mb-4 lettrine txt-col">
+                  {{ paragraphe?.description }}
+                </p>
+                <figure
+                  *ngIf="paragraphe?.type_contenu"
+                  class="article-paragraphe-figure mb-4"
+                >
+                  <a
+                    href="{{ paragraphe?.lien_contenu }}"
+                    class="d-flex justify-content-center"
+                    target="_blank"
+                  >
+                    <img
+                      *ngIf="paragraphe?.type_contenu === 'image'"
+                      [defaultImage]="'assets/images/img-article.webp'"
+                      [lazyLoad]="paragraphe?.photo"
+                      alt="paragraphe image"
+                      class="article-paragraphe-image img-fluid mb-1"
+                    />
+                  </a>
+                  <a>
+                    <video
+                      controls
+                      [src]="paragraphe?.Chemin_associe"
+                      *ngIf="paragraphe?.type_contenu === 'video'"
+                      class="article-paragraphe-video w-100 mb-1"
+                      type="video/mp4"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </a>
+                  <figcaption
+                    class="d-flex justify-content-between figure-caption"
+                  >
+                    <span>
+                      {{ paragraphe?.titre_contenu }}
+                    </span>
+                    <span>
+                      {{ paragraphe?.source_contenu }}
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

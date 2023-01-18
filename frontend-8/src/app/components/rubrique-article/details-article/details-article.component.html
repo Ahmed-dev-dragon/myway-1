@@ -1,0 +1,443 @@
+<div class="top-article mb-3">
+  <div class="container">
+    <div class="row align-items-center my-2">
+      <div class="col-lg-6">
+        <p class="">
+          {{ article.etiquette }}
+        </p>
+        <h1>
+          {{ article.titre }}
+          <span *ngIf="article.s_titre">( {{ article.s_titre }})</span>
+        </h1>
+
+        <h6 class="my-3">
+          {{ article.resume }}
+        </h6>
+        <p class="my-2">
+          Par:
+          <span class="writterInfo" *ngFor="let i of article.Auteur">
+            {{ i.nom }}&nbsp;{{ i.prenom }}&nbsp;
+          </span>
+          <span class="writterInfo" *ngFor="let i of article.Organisation">
+            {{ i.nom_organisation }}&nbsp;
+          </span>
+        </p>
+      </div>
+      <div class="col-lg-6">
+        <div>
+          <picture>
+            <img
+              src="https://www.sqli.com/sites/default/files/styles/xs_use_case_hero_media/public/2021-12/202111_SQLI_ALL_banners_Drupal_customer_case_carlsberg.jpg?h=bbb2c827&amp;itok=jgN4VRPk"
+              alt="Carlsberg mockup"
+              class="img-fluid"
+            />
+          </picture>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 my-3">
+      <div class="d-flex flex-wrap justify-content-between align-items-center">
+        <div class="my-1">
+          <p class="mb-0">
+            {{ article.date_publication | date: 'EEEE, MMMM d, y, h:mm a ' }}
+          </p>
+        </div>
+        <div class="my-1">
+          <a class="info-article" (click)="increMenterImpression()">
+            <i class="fa-solid fa-print pr-1" aria-hidden="true"></i>
+            <span>{{ article.nbre_impression }}</span>
+          </a>
+          <a class="info-article">
+            <i class="fa-solid fa-eye pr-1" aria-hidden="true"></i>
+            <span>{{ article?.nbre_vues }}</span>
+          </a>
+
+          <a class="info-article">
+            <i
+              class="fa-solid fa-thumbs-up pr-1"
+              aria-hidden="true"
+              (click)="likeFunction('like')"
+            ></i>
+            <span>{{ article?.like }}</span>
+          </a>
+          <a class="info-article">
+            <i
+              class="fa-solid fa-thumbs-down pr-1"
+              aria-hidden="true"
+              (click)="likeFunction('')"
+            ></i>
+            <span>{{ article?.unlike }}</span>
+          </a>
+
+          <a class="info-article">
+            <i class="fa-solid fa-commenting pr-1" aria-hidden="true"></i>
+            <span>{{ article?.commentaire_interne.length }}</span>
+          </a>
+        </div>
+        <ul class="list-brands-article my-1 p-0">
+          <li><i class="fa-brands fa-instagram"></i></li>
+          <li><i class="fa-brands fa-facebook"></i></li>
+          <li><i class="fa-brands fa-linkedin"></i></li>
+          <li><i class="fa-brands fa-twitter"></i></li>
+          <li><i class="fa-solid fa-link"></i></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="my-2 col-md-9">
+      <div class="section-recruteur col-12 mb-3">
+        <div
+          class="col-12"
+          *ngFor="let paragraphe of article?.paragraphes; let i = index"
+        >
+          <h4 class="mb-3">
+            {{ paragraphe?.designation }}
+          </h4>
+          <figure
+            *ngIf="paragraphe?.type_contenu"
+            class="article-paragraphe-figure mb-4"
+          >
+            <a
+              href="{{ paragraphe?.lien_contenu }}"
+              class="d-flex justify-content-center"
+              target="_blank"
+            >
+              <img
+                *ngIf="paragraphe?.type_contenu === 'image'"
+                [defaultImage]="'assets/images/img-article.webp'"
+                [lazyLoad]="paragraphe?.lien_contenu"
+                alt="paragraphe image"
+                class="article-paragraphe-image img-fluid mb-1"
+              />
+            </a>
+
+            <video
+              controls
+              [src]="paragraphe?.Chemin_associe"
+              *ngIf="paragraphe?.type_contenu === 'video'"
+              class="article-paragraphe-video w-100 mb-1"
+              type="video/mp4"
+            >
+              Your browser does not support the video tag.
+            </video>
+
+            <figcaption class="d-flex justify-content-between figure-caption">
+              <span>
+                {{ paragraphe?.titre_contenu }}
+              </span>
+              <span>
+                {{ paragraphe?.source_contenu }}
+              </span>
+            </figcaption>
+          </figure>
+          <div class="">
+            <div class="article-paragraphe-container">
+              <p class="article-details mb-4 lettrine txt-col">
+                {{ paragraphe?.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="space-comment-form">
+          <div class="documents my-3" *ngIf="article.Document.length != 0">
+            <h4 class="">
+              {{ 'document.docA' | translate }}
+            </h4>
+
+            <div class="article-download" *ngFor="let doc of article.Document">
+              <span class="article-details bold my-2">{{ doc?.titre }} :</span>
+              <span>
+                <a href="{{ doc?.Chemin_associe }}">
+                  &nbsp;
+
+                  <i class="fa fa-download me-2"></i>
+                  {{ 'document.docA' | translate }}
+                </a>
+              </span>
+            </div>
+          </div>
+          <div class="Reference my-3" *ngIf="article.Reference.length != 0">
+            <h4 class="">
+              {{ 'article.ref' | translate }}
+            </h4>
+
+            <div
+              class="article-download"
+              *ngFor="let doc of article?.Reference"
+            >
+              <span class="bold my-2">{{ doc?.titre }} :</span>
+              <span>
+                <a class="" href="{{ doc?.link }}">
+                  &nbsp;
+
+                  <i class="fa fa-download me-1"></i>
+                  {{ 'document.telecharger' | translate }}
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-recruteur col-12">
+        <div class="row">
+          <form
+            id="contactForm"
+            (ngSubmit)="sendAvis()"
+            [formGroup]="avisForm"
+            #form2
+          >
+            <h4 class="">Poser Votre Avis</h4>
+
+            <div class="row">
+              <!-- Name input -->
+
+              <div class="mb-3 col-md-6">
+                <label class="form-label" for="name">
+                  {{ 'form.nom' | translate }}
+                </label>
+                <input
+                  class="form-control"
+                  id="name"
+                  type="text"
+                  placeholder="{{ 'form.exp_nom' | translate }}"
+                  [ngClass]="{
+                    'is-invalid':
+                      avisForm.get('name')?.touched &&
+                      avisForm.get('name')?.invalid
+                  }"
+                  formControlName="name"
+                  name="name"
+                />
+                <div
+                  *ngIf="
+                    avisForm.get('name')?.touched &&
+                    avisForm.get('name')?.invalid
+                  "
+                  class="invalid-feedback mb-2"
+                >
+                  <div *ngIf="avisForm.get('name')?.errors?.['required']">
+                    {{ 'form.champ_oblig' | translate }}
+                  </div>
+                  <div *ngIf="avisForm.get('name')?.errors?.['minlength']">
+                    {{ 'form.champ_3' | translate }}
+                  </div>
+                  <div *ngIf="avisForm.get('name')?.errors?.['maxlength']">
+                    {{ 'form.champ_30' | translate }}
+                  </div>
+                  <div *ngIf="avisForm.get('name')?.errors?.['pattern']">
+                    {{ 'form.champ_lettre' | translate }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Prenom input -->
+              <div class="mb-3 col-md-6">
+                <label class="form-label" for="prenom">
+                  {{ 'form.prenom' | translate }}
+                </label>
+                <input
+                  class="form-control"
+                  id="prenom"
+                  type="prenom"
+                  placeholder=" {{ 'form.exp_pre' | translate }}"
+                  formControlName="prenom"
+                  name="prenom"
+                  [ngClass]="{
+                    'is-invalid':
+                      avisForm.get('prenom')?.touched &&
+                      avisForm.get('prenom')?.invalid
+                  }"
+                />
+                <div
+                  *ngIf="
+                    avisForm.get('prenom')?.touched &&
+                    avisForm.get('prenom')?.invalid
+                  "
+                  class="invalid-feedback mb-2"
+                >
+                  <div *ngIf="avisForm.get('prenom')?.errors?.['required']">
+                    {{ 'form.champ_oblig' | translate }}
+                  </div>
+                  <div *ngIf="avisForm.get('prenom')?.errors?.['minlength']">
+                    {{ 'form.champ_3' | translate }}
+                  </div>
+                  <div *ngIf="avisForm.get('prenom')?.errors?.['maxlength']">
+                    {{ 'form.champ_30' | translate }}
+                  </div>
+                  <div *ngIf="avisForm.get('prenom')?.errors?.['pattern']">
+                    {{ 'form.champ_lettre' | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Telephone + email address input -->
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label class="form-label" for="telephone">
+                  {{ 'form.telephone' | translate }}
+                </label>
+                <input
+                  class="form-control"
+                  id="telephone"
+                  type="texte"
+                  placeholder=" {{ 'form.exp_tel' | translate }}"
+                  formControlName="telephone"
+                  name="telephone"
+                  [ngClass]="{
+                    'is-invalid':
+                      avisForm.get('telephone')?.touched &&
+                      avisForm.get('telephone')?.invalid
+                  }"
+                />
+                <div
+                  *ngIf="
+                    avisForm.get('telephone')?.touched &&
+                    avisForm.get('telephone')?.invalid
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="avisForm.get('telephone')?.errors?.['required']">
+                    {{ 'form.champ_oblig' | translate }}
+                  </div>
+                  <div *ngIf="avisForm.get('telephone')?.errors?.['pattern']">
+                    {{ 'form.tel_valid' }}
+                  </div>
+                  <div *ngIf="avisForm.get('telephone')?.errors?.['minlength']">
+                    {{ 'form.champ_10' }}
+                  </div>
+                </div>
+              </div>
+              <!-- Email  input -->
+              <div class="mb-3 col-md-6">
+                <label class="form-label" for="emailAddress">
+                  {{ 'form.email' | translate }}
+                </label>
+                <input
+                  class="form-control"
+                  id="emailAddress"
+                  type="email"
+                  placeholder=" {{ 'form.exp_email' | translate }}"
+                  formControlName="email"
+                  name="email"
+                  [ngClass]="{
+                    'is-invalid':
+                      avisForm.get('email')?.touched &&
+                      avisForm.get('email')?.invalid
+                  }"
+                />
+                <div
+                  *ngIf="
+                    avisForm.get('email')?.touched &&
+                    avisForm.get('email')?.invalid
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="avisForm.get('email')?.errors?.['required']">
+                    {{ 'form.champ_oblig' | translate }}
+                  </div>
+                  <div *ngIf="avisForm.get('email')?.errors?.['email']">
+                    {{ 'form.mail_valid' }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="mb-3 col-md-12">
+                <label class="form-label" for="avis">
+                  {{ 'form.avis' }}
+                </label>
+                <textarea
+                  class="form-control"
+                  id="avis"
+                  type="texte"
+                  placeholder=" {{ 'form.exp_tel' | translate }}"
+                  formControlName="avis"
+                  name="avis"
+                  [ngClass]="{
+                    'is-invalid':
+                      avisForm.get('avis')?.touched &&
+                      avisForm.get('avis')?.invalid
+                  }"
+                ></textarea>
+                <div
+                  *ngIf="
+                    avisForm.get('avis')?.touched &&
+                    avisForm.get('avis')?.invalid
+                  "
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="avisForm.get('avis')?.errors?.['required']">
+                    {{ 'form.champ_oblig' | translate }}
+                  </div>
+
+                  <div *ngIf="avisForm.get('avis')?.errors?.['minlength']">
+                    {{ 'form.champ_3' | translate }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Form submit button -->
+            <div class="mt-5 text-center">
+              <button class="btn btn-outline-dark" type="submit">
+                {{ 'form.Envoyer' | translate }}
+              </button>
+            </div>
+          </form>
+
+          <div class="my-3">
+            <h2 class="title-md bold my-3 blue-color">
+              Liste des Temoignages
+            </h2>
+            <div class="" *ngIf="article.Annotation.length == 0">
+              <p>Auncun Comments trouvés</p>
+            </div>
+
+            <ol
+              class="commentlist p-0 m-0"
+              *ngIf="article.Annotation.length > 0"
+            >
+              <li
+                *ngFor="let comment of article.Annotation"
+                class="row align-items-center justify-content-center mb-5"
+              >
+                <figure class="comment-figure">
+                  <img
+                    alt=""
+                    [defaultImage]="'assets/images/user.png'"
+                    [lazyLoad]="comment.img"
+                    class="avatar-rounded"
+                    height="70"
+                    width="70"
+                  />
+                </figure>
+                <div class="comment-content col-sm-10 p-3">
+                  <div class="">
+                    <h6 class="comment-info j-c-v-sm-container">
+                      {{ comment.nom_ou_pseudo }}
+                      ( {{ comment.fonction }})
+                    </h6>
+                  </div>
+
+                  <div class="">
+                    <p class="j-resume-sm p-0 m-0">
+                      {{ comment.commentaire_intervenent }}
+                    </p>
+                  </div>
+                  <span class="comment-info small-text">
+                    {{ comment.date }}
+                  </span>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-2 col-md-3">
+      <div class="section-recruteur col-12"></div>
+    </div>
+  </div>
+</div>
