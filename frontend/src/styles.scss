@@ -15,11 +15,11 @@ a {
 .etatCreation-cloturer,
 .etatCreation-valider {
   background: #c8e6c9;
-  color: #256029;
+  color: #6d28d9;
 }
 .etatCreation-validation {
   background: #7bc37d;
-  color: #256029;
+  color: #6d28d9;
 }
 .etatObjet-archive,
 .etatCreation-creation {
@@ -41,7 +41,7 @@ a {
 }
 .green-badge {
   background-color: #c8e6c9;
-  color: #256029;
+  color: #6d28d9;
 }
 .brown-badge {
   background-color: #ffd8b2;
@@ -242,7 +242,7 @@ span {
   .form-grid-container {
     flex-grow: 1;
     margin-top: 0.9rem;
-    container-type: inline-size;
+
     .form-grid {
       $grid-row-gap: 30px;
       $grid-columns: 1;
@@ -292,68 +292,7 @@ span {
           grid-row-end: span $i;
         }
       }
-      &.grid-cols- {
-        @container (min-width: 650px) {
-          &5,
-          &4,
-          &3,
-          &2 {
-            $grid-columns: 2;
-            grid-template-columns: repeat($grid-columns,
-                calc(calc(100% - calc(calc($grid-columns - 1) * $grid-row-gap)) / $grid-columns ));
-            .column-span- {
-              &5,
-              &4,
-              &3,
-              &2 {
-                grid-column-end: span $grid-columns;
-              }
-            }
-          }
-        }
-        @container (min-width: 1024px) {
-          &5,
-          &4,
-          &3 {
-            $grid-columns: 3;
-            grid-template-columns: repeat($grid-columns,
-                calc(calc(100% - calc(calc($grid-columns - 1) * $grid-row-gap)) / $grid-columns ));
-            .column-span- {
-              &5,
-              &4,
-              &3 {
-                grid-column-end: span $grid-columns;
-              }
-            }
-          }
-        }
-        @container (min-width: 1300px) {
-          &5,
-          &4 {
-            $grid-columns: 4;
-            grid-template-columns: repeat($grid-columns,
-                calc(calc(100% - calc(calc($grid-columns - 1) * $grid-row-gap)) / $grid-columns ));
-            .column-span- {
-              &5,
-              &4 {
-                grid-column-end: span $grid-columns;
-              }
-            }
-          }
-        }
-        @container (min-width: 1550px) {
-          &5 {
-            $grid-columns: 5;
-            grid-template-columns: repeat($grid-columns,
-                calc(calc(100% - calc(calc($grid-columns - 1) * $grid-row-gap)) / $grid-columns ));
-            .column-span- {
-              &5 {
-                grid-column-end: span $grid-columns;
-              }
-            }
-          }
-        }
-      }
+
     }
   }
   .form-footer {
@@ -376,3 +315,52 @@ span {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .p-submenu-expanded {
+//   background-color: #ff0000 !important;
+
+// }
+
+
+//   .ng-star-inserted {
+//     background-color: #c4d1d1 !important;
+//   }
+
+//   .ng-tns-c182-3 {
+//     background-color: #11df89 !important;
+//   }
+
+
+
+//  .p-menuitem-link-active{
+//       background-color: #1141df !important;
+//  }
+//  .ng-tns-c181-8{
+//     background-color: #11df89 !important;
+//  }
+
+// .p-menuitem-text{
+//       background-color: #ffffff !important;
+// }

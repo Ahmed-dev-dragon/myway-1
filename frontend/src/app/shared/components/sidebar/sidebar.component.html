@@ -1,56 +1,59 @@
-<!-- <aside class="sidebar" id="sidebar" [ngClass]="showSidebar ? 'open' : ''">
-  <nav class="sidebar-nav">
-    <p-panelMenu
-
-      [model]="sidebarNavItems"
-      [style]="{ width: '280px' }"
-      [multiple]="false">
-    </p-panelMenu>
-  </nav>
-<aside class="sidebar">
-  <div class="toggle">
-    <a href="#" class="burger js-menu-toggle active" data-toggle="collapse" data-target="#main-navbar">
-      <span>
 
 
-      </span>
-    </a>
-  </div>
-  <div class="side-inner">
-    <div class="logo-wrap">
-      <div class="logo">
-        <span>C</span>
-      </div>
-      <span class="logo-text">Colorlib</span>
-    </div>
-    <div class="search-form">
-      <form action="#">
-        <span class="wrap-icon">
-          <span class="icon-search2"></span>
-        </span>
-        <input type="text" class="form-control" placeholder="Search...">
-      </form>
-    </div>
-    <div class="nav-menu">
-      <ul>
-        <li class="active"><a href="#" class="d-flex align-items-center"><span
-              class="wrap-icon icon-home2 mr-3"></span><span class="menu-text">Home</span></a></li>
-        <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-videocam mr-3"></span><span
-              class="menu-text">Videos</span></a></li>
-        <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-book mr-3"></span><span
-              class="menu-text">Books</span></a></li>
-        <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-shopping-cart mr-3"></span><span
-              class="menu-text">Store</span></a></li>
-        <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-pie-chart mr-3"></span><span
-              class="menu-text">Analytics</span></a></li>
-        <li><a href="#" class="d-flex align-items-center"><span class="wrap-icon icon-cog mr-3"></span><span
-              class="menu-text">Settings</span></a></li>
-      </ul>
-    </div>
-  </div>
+
+<aside class="sidebar"  [ngClass]="showSidebar ? 'open' : ''" >
+  <header class="s-header"  class="s-header">
+     <h1>header</h1>
+  </header>
+  <main class="s-main">
+
+    <ul class="s-ul-0" *ngIf="sidebarNavItems.length">
+      
+    <ng-container
+     *ngFor=" let i of sidebarNavItems">
+     <li class="s-li-0"> 0{{i.label}}</li>
+    <!-- <br> -->
+    <div *ngIf="i.items?.length"></div>
+     <ng-container  *ngIf="i.items?.length">
+          <ng-container  *ngTemplateOutlet="child ; context:{items: i.items , index:1}">
+          </ng-container>
+     </ng-container>
+    </ng-container>
+
+    </ul>
+  </main>
+  <footer class="s-footer">
+    <h1>footer</h1>
+  </footer>
+
 </aside>
 
-</aside> -->
-    <main >
-       <h1 class="sidebar " [ngClass]="showSidebar ? 'open' : ''">test</h1>
-    </main>
+
+
+
+<ng-template  #child let-items="items"  let-i="index">
+  <ul  class="s-ul-{{i}}">
+
+      <ng-container *ngFor="let s of items">
+
+        <span *ngFor="let x of array(i*2).fill('*');">
+           <span class="s-nevo-spice"></span>
+          </span>
+            <li  class="s-li-{{i}}">{{i}}{{ s.label}}</li>
+
+            <ng-container *ngIf="s.items?.length " >
+
+                  <ng-container *ngTemplateOutlet="child ; context:{items: s.items ,index: i+1}">
+                  </ng-container>
+
+            </ng-container>
+
+      </ng-container>
+  </ul>
+</ng-template>
+
+
+
+
+
+

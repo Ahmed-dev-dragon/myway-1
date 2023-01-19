@@ -16,22 +16,64 @@ export class SidebarComponent implements OnInit {
   showSubMenu = '';
   mobileSize = false;
   sidebarNavItems: sidebarItem[] = [];
+  model: any[] = [];
+ array =  Array
 
   constructor(private sidebarService: SidebarService, public router: Router) {
-
-    this.getSideBar()
+    this.getSideBar();
     //console.log(this.sidebarNavItems)
   }
 
   ngOnInit() {
     this.handleSidebar();
     this.setActive();
+
+    this.model = [
+      {
+        label: 'File',
+        icon: 'pi pi-pw pi-file',
+        items: [
+          {
+          label: 'New',
+          icon: 'pi pi-fw pi-plus',
+          items: [
+            {
+              label: 'User',
+              icon: 'pi pi-fw pi-user-plus',
+              items: [
+                      {
+                        label: 'User',
+                      icon: 'pi pi-fw pi-user-plus'
+                      },
+                      {
+                        label: 'Filter', icon: 'pi pi-fw pi-filter'
+                      }
+                    ]
+             },
+            {
+              label: 'Filter', icon: 'pi pi-fw pi-filter'
+             }
+          ]
+        },
+        { label: 'Open', icon: 'pi pi-fw pi-external-link' },
+        { label: 'Quit', icon: 'pi pi-fw pi-times' }
+        ]
+      },
+      {
+        label: 'Edit',
+        icon: 'pi pi-fw pi-pencil',
+        items: [
+          { label: 'Delete', icon: 'pi pi-fw pi-trash' },
+          { label: 'Refresh', icon: 'pi pi-fw pi-refresh' }
+        ]
+      }
+    ];
+      this.sidebarNavItems = this.model;
   }
   getSideBar() {
 
-    this.sidebarNavItems = this.sidebarService.getMenuItems();
-
-
+    //   this.sidebarNavItems = this.sidebarService.getMenuItems();
+    //
 
   }
   @HostListener('window:resize', ['$event'])

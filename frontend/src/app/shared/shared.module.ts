@@ -67,10 +67,14 @@ import { GenericPipe } from './pipes/generic.pipe';
 import { DynamicTableCellColorPipe } from './pipes/dynamic-table-cell-color.pipe';
 import { DynamicTableCellColorPipeStyle } from './pipes/dynamic-table-cell-color-style.pipe';
 import { TaxonomieTreeComponent } from './components/taxonomie-tree/taxonomie-tree.component';
+import { TemplatesModule } from './components/templates/templates.module';
+import { LibModule } from './components/lib/lib.module';
+
 
 @NgModule({
   declarations: [
     SidebarComponent,
+
     TaxonomieInputComponent,
     HeaderComponent,
     FooterComponent,
@@ -87,6 +91,8 @@ import { TaxonomieTreeComponent } from './components/taxonomie-tree/taxonomie-tr
     DynamicTableCellColorPipeStyle,
   ],
   imports: [
+    TemplatesModule,
+    LibModule,
     CommonModule,
     TranslateModule,
     FormsModule,
@@ -139,7 +145,6 @@ import { TaxonomieTreeComponent } from './components/taxonomie-tree/taxonomie-tr
     NgApexchartsModule,
     TieredMenuModule,
     SplitterModule,
-
   ],
   exports: [
     SidebarComponent,
@@ -209,4 +214,4 @@ import { TaxonomieTreeComponent } from './components/taxonomie-tree/taxonomie-tr
   ],
   providers: [ConfirmationService, MessageService],
 })
-export class SharedModule { }
+export class SharedModule {}

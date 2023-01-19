@@ -6,13 +6,14 @@
       <p-toast></p-toast>
       <app-breadcrumb></app-breadcrumb>
       <main class="main">
+
+
         <router-outlet></router-outlet>
       </main>
       <!-- <app-footer></app-footer> -->
     </div>
   </div>
 </div>
-
 <p-dialog header="Timeout" [modal]="true" [(visible)]="this.authService.showInvalidTokenModel"
   (visibleChange)="closeTokenDialog($event)" [style]="{ width: '50vw' }">
   <ng-template pTemplate="body">
@@ -22,16 +23,13 @@
     <button type="button" label="ok" class="p-button-sm" pButton (click)="closeTokenDialog()"></button>
   </ng-template>
 </p-dialog>
-
 <p-dialog [modal]="true" [(visible)]="!authService.canAccess" [style]="{ width: '50vw' }">
-
   <ng-template pTemplate="header">
     <div class="d-flex align-items-center justify-content-space-between" style="color :red">
       <i class="pi pi-ban me-3" style="font-size: 2rem"></i>
       <span class="p-dialog-title">{{'authorization' |translate|titlecase}}</span>
     </div>
   </ng-template>
-
   <ng-template pTemplate="body">
     {{'you are not authorized to access to this space' | translate|titlecase}}
   </ng-template>
