@@ -37,19 +37,18 @@
 //   }
 // }
 
+$su_border_menu_color: #1147da0c;
+$su_border_menu_width: 5px;
+$su_border_menu_radius: 0px 0px 0px 17px;
 
 .s-ul-0{
 
     list-style: none;
-    background-color: rgba(48, 48, 48, 0.075);
     color: rgb(101, 104, 102);
     padding-left: 7px;
     padding-right: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
-    border-left: #1147da88 5px solid;
-    border-bottom: #1147da88 5px solid;
-    border-radius: 0px 0px 0px 17px;
 
 
       }
@@ -59,12 +58,12 @@
       color: rgb(101, 104, 102);
       padding-left: 30px;
       padding-right: 5px;
-      padding-top: 10px;
+      padding-top: 0px;
       padding-bottom: 10px;
-      border-left: #1147da88 5px solid;
-      border-bottom:#1147da88 5px solid;
-      border-radius: 0px 0px 0px 17px;
-      margin: 10px 0px;
+      border-left: $su_border_menu_color $su_border_menu_width solid;
+      border-bottom:$su_border_menu_color $su_border_menu_width solid;
+      border-radius: $su_border_menu_radius;
+      margin: 0px 0px;
 }
 .s-ul-2 {
 
@@ -73,12 +72,12 @@
       color: rgb(101, 104, 102);
       padding-left: 30px;
       padding-right: 5px;
-      padding-top: 10px;
+      padding-top: 0px;
       padding-bottom: 10px;
-      border-left: #1147da88 5px solid;
-      border-bottom: #1147da88 5px solid;
-      border-radius: 0px 0px 0px 17px;
-      margin: 10px 0px;
+      border-left: $su_border_menu_color $su_border_menu_width solid;
+      border-bottom: $su_border_menu_color $su_border_menu_width solid;
+      border-radius: $su_border_menu_radius;
+      margin: 0px 0px;
 }
 .s-ul-3 {
 
@@ -87,12 +86,12 @@
       color: rgb(101, 104, 102);
       padding-left: 30px;
       padding-right: 5px;
-      padding-top: 10px;
+      padding-top: 0px;
       padding-bottom: 10px;
-      border-left: #1147da88 5px solid;
-      border-bottom: #1147da88 5px solid;
-      border-radius: 0px 0px 0px 17px;
-      margin: 10px 0px;
+      border-left: $su_border_menu_color $su_border_menu_width solid;
+      border-bottom: $su_border_menu_color $su_border_menu_width solid;
+      border-radius: $su_border_menu_radius;
+      margin: 0px 0px;
 
 
 }
@@ -108,22 +107,24 @@
 
 
 .s-li-0{
-  margin: 10px 0px;
+  margin: 20px 0px 0px 0px;
   border: #fafafa 3px solid;
   border-radius: 7px;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 30px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 
 
 }
 
 .s-li-1 {
+
   margin-top: -10px;
   border: #ffffff 3px solid;
   border-radius: 5px;
-  background-color: #8f8f8f;
+  background-color: #ffffff;
   padding: 5px 5px 5px 5px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
 }
 .s-li-2 {
   margin-top: -10px;
@@ -137,10 +138,16 @@
   margin-top: -10px;
   border: #ffffff 3px solid;
   border-radius: 5px;
-  background-color: #a1a1a1;
+  background-color: #ffffff;
   padding: 5px 5px 5px 5px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
+
+
+
+
+
+
 
 .s-nevo-spice{
   width: 300px;

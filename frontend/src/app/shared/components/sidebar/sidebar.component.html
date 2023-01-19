@@ -8,7 +8,7 @@
   <main class="s-main">
 
     <ul class="s-ul-0" *ngIf="sidebarNavItems.length">
-      
+
     <ng-container
      *ngFor=" let i of sidebarNavItems">
      <li class="s-li-0"> 0{{i.label}}</li>
@@ -32,14 +32,19 @@
 
 
 <ng-template  #child let-items="items"  let-i="index">
-  <ul  class="s-ul-{{i}}">
 
+  <ul  class="s-ul-{{i}}">
       <ng-container *ngFor="let s of items">
 
-        <span *ngFor="let x of array(i*2).fill('*');">
-           <span class="s-nevo-spice"></span>
+        <span *ngFor="let x of array(i).fill('*');">
+          <span class="s-nevo-spice"></span>
           </span>
-            <li  class="s-li-{{i}}">{{i}}{{ s.label}}</li>
+
+            <li onclick="opensidebarAccordion()"
+            class="s-li-{{i}}"
+            >
+            {{i}}{{ s.label}}
+          </li>
 
             <ng-container *ngIf="s.items?.length " >
 

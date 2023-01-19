@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
   mobileSize = false;
   sidebarNavItems: sidebarItem[] = [];
   model: any[] = [];
- array =  Array
+  array = Array;
 
   constructor(private sidebarService: SidebarService, public router: Router) {
     this.getSideBar();
@@ -34,47 +34,47 @@ export class SidebarComponent implements OnInit {
         icon: 'pi pi-pw pi-file',
         items: [
           {
-          label: 'New',
-          icon: 'pi pi-fw pi-plus',
-          items: [
-            {
-              label: 'User',
-              icon: 'pi pi-fw pi-user-plus',
-              items: [
-                      {
-                        label: 'User',
-                      icon: 'pi pi-fw pi-user-plus'
-                      },
-                      {
-                        label: 'Filter', icon: 'pi pi-fw pi-filter'
-                      }
-                    ]
-             },
-            {
-              label: 'Filter', icon: 'pi pi-fw pi-filter'
-             }
-          ]
-        },
-        { label: 'Open', icon: 'pi pi-fw pi-external-link' },
-        { label: 'Quit', icon: 'pi pi-fw pi-times' }
-        ]
+            label: 'New',
+            icon: 'pi pi-fw pi-plus',
+            items: [
+              {
+                label: 'User',
+                icon: 'pi pi-fw pi-user-plus',
+                items: [
+                  {
+                    label: 'User',
+                    icon: 'pi pi-fw pi-user-plus',
+                  },
+                  {
+                    label: 'Filter',
+                    icon: 'pi pi-fw pi-filter',
+                  },
+                ],
+              },
+              {
+                label: 'Filter',
+                icon: 'pi pi-fw pi-filter',
+              },
+            ],
+          },
+          { label: 'Open', icon: 'pi pi-fw pi-external-link' },
+          { label: 'Quit', icon: 'pi pi-fw pi-times' },
+        ],
       },
       {
         label: 'Edit',
         icon: 'pi pi-fw pi-pencil',
         items: [
           { label: 'Delete', icon: 'pi pi-fw pi-trash' },
-          { label: 'Refresh', icon: 'pi pi-fw pi-refresh' }
-        ]
-      }
+          { label: 'Refresh', icon: 'pi pi-fw pi-refresh' },
+        ],
+      },
     ];
-      this.sidebarNavItems = this.model;
+    this.sidebarNavItems = this.model;
   }
   getSideBar() {
-
     //   this.sidebarNavItems = this.sidebarService.getMenuItems();
     //
-
   }
   @HostListener('window:resize', ['$event'])
   onResize() {
@@ -98,5 +98,9 @@ export class SidebarComponent implements OnInit {
 
     recF(this.sidebarNavItems);
     return id;
+  }
+
+  opensidebarAccordion(id: any) {
+    
   }
 }
