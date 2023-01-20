@@ -12,12 +12,18 @@ import {
 })
 export class SidebarComponent implements OnInit {
   @Input() showSidebar!: boolean;
+
   showMenu = '';
   showSubMenu = '';
   mobileSize = false;
   sidebarNavItems: sidebarItem[] = [];
   model: any[] = [];
   array = Array;
+
+  showMenu_1: boolean = false;
+  showMenu_2: boolean = false;
+  showMenu_3: boolean = false;
+  showMenu_4: boolean = false;
 
   constructor(private sidebarService: SidebarService, public router: Router) {
     this.getSideBar();
@@ -100,7 +106,21 @@ export class SidebarComponent implements OnInit {
     return id;
   }
 
-  opensidebarAccordion(id: any) {
-    
+  opensidebarAccordion(id: any) {}
+
+  showMenuChildren(a: any ,i:any) {
+    console.log('777777777777777777',a ,"========>",i);
+    if (a = 1) {
+      this.showMenu_1 = !this.showMenu_1;
+    }
+     else if (a = 2) {
+      this.showMenu_2 = !this.showMenu_2;
+    }
+   else if  (a = 3) {
+      this.showMenu_3 = !this.showMenu_3;
+    }
+    else if (a = 4){
+      this.showMenu_4 = !this.showMenu_4;
+    }
   }
 }
