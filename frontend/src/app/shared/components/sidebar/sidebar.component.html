@@ -15,13 +15,13 @@
          <!-- <li  class="s-li-0"> 0{{i.label}}</li> -->
             <div class="col-12 ">
               <div class="tabs">
-                  <div *ngIf="i.items?.length == null" class="tab">
-                    <div class="notlabel">
-                      #4 {{ i.label}}
-                    </div>
-                  </div>
-                <div *ngIf="i.items?.length " class="tab">
+              <div *ngIf="i.items?.length== null" class="tab">
+                <div class="notlabel">
+                  {{i.label}}
 
+                </div>
+              </div>
+                <div  *ngIf="i.items?.length!=null" class="tab">
                   <input type="checkbox" id="{{sidebarNavItems.length}}-{{ i.label}}">
                   <label class="tab-label" for="{{sidebarNavItems.length}}-{{ i.label}}">{{ i.label}}</label>
                   <div *ngIf="i.items?.length" class="tab-content">
@@ -60,24 +60,22 @@
             <!-- <li  class="s-li">{{i}}{{ s.label}}</li> -->
               <div class="col">
                 <div class="tabs">
-                  <div *ngIf="i.items?.length==null"
-                    class="tab">
-                        <div  class="tab">
-                          <div class="notlabel">
-                            #8 {{ i.label}}
-                          </div>
-                        </div>
-                  </div>
-                  <div *ngIf="i.items?.length"
+                    <div *ngIf="s.items?.length== null" class="tab">
+                       <div class="notlabel">
+                         notlabel  {{i}}{{s.label}}
+
+                       </div>
+                    </div>
+                  <div
+                    *ngIf="s.items?.length"
                     class="tab">
                     <input type="checkbox" id="{{s.length}}-{{i}}-{{ s.label}}">
                     <label class="tab-label" for="{{s.length}}-{{i}}-{{ s.label}}">{{i}}{{ s.label}}</label>
-                    <div class="tab-content">
+                    <div *ngIf="s.items?.length" class="tab-content">
                         <ng-container *ngTemplateOutlet="child ; context:{items: s.items ,index: i+1}">
                         </ng-container>
                     </div>
                   </div>
-
                 </div>
               </div>
 

@@ -335,7 +335,7 @@ $stat-padding: $spacer * 0.75 !default;
 
 
 
-$b_color_itomes_of_the_sidebar:rgba(212, 212, 221, 0.644);
+$b_color_itomes_of_the_sidebar:#2962FF;
 
 
 
@@ -515,6 +515,7 @@ $clouds: #7e7e7e;
 
 
 h1 {
+  color: #ffffff;
   margin: 0;
   line-height: 2;
   text-align: center;
@@ -595,7 +596,7 @@ input {
       /* Icon */
       &:hover {
         background: darken($midnight, 5%);
-        color: rgb(65, 65, 65);
+        color: rgb(202, 202, 202);
       }
 
 

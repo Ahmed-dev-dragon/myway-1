@@ -72,8 +72,25 @@ export class SidebarComponent implements OnInit {
         icon: 'pi pi-fw pi-pencil',
         items: [
           { label: 'Delete', icon: 'pi pi-fw pi-trash' },
-          { label: 'Refresh', icon: 'pi pi-fw pi-refresh' },
+          {
+            label: 'Refresh',
+            icon: 'pi pi-fw pi-refresh',
+            items: [
+              {
+                label: 'User',
+                icon: 'pi pi-fw pi-user-plus',
+              },
+              {
+                label: 'Filter',
+                icon: 'pi pi-fw pi-filter',
+              },
+            ],
+          },
         ],
+      },
+      {
+        label: 'User',
+        icon: 'pi pi-fw pi-user-plus',
       },
     ];
     this.sidebarNavItems = this.model;
