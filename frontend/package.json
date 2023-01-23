@@ -29,7 +29,7 @@
     "angular-calendar": "~0.29.0",
     "apexcharts": "^3.36.3",
     "bootstrap": "~5.2.0",
-    "bootstrap-icons": "~1.8.1",
+    "bootstrap-icons": "^1.10.3",
     "chart.js": "~3.7.1",
     "chartjs-color": "~2.4.1",
     "dropzone": "~5.9.3",

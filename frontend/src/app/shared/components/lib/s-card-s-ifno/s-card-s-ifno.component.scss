@@ -1,0 +1,129 @@
+@import '../../../../../assets/scss/variables';
+.main {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  transition: $sidebar-transition;
+  background: $body-bg;
+  flex-direction: column;
+  overflow: hidden;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.wrapper {
+  align-items: stretch;
+  display: flex;
+  width: 100%;
+  background: $sidebar-bg;
+}
+.content {
+  padding: $content-padding-mobile;
+  flex: 1;
+  width: 100vw;
+  max-width: 100vw;
+  direction: ltr;
+
+  @media only screen and (max-width: 768px) {
+    width: auto;
+    max-width: auto;
+  }
+    @media only screen and (max-width: 992px) {
+    padding: $content-padding-desktop;
+  }
+}
+
+
+
+
+
+
+
+
+
+.card {
+  margin-bottom: $grid-gutter-width-v2;
+  box-shadow: $card-shadow;
+}
+.card-header {
+  border-bottom-width: 1px;
+}
+.card-title {
+  font-size: $card-title-font-size;
+  font-weight: $card-title-font-weight;
+  color: $card-title-color;
+}
+.card-subtitle {
+  font-weight: $font-weight-normal;
+}
+.card-table {
+  margin-bottom: 0;
+}
+.card-table tr td:first-child,
+.card-table tr th:first-child {
+  padding-left: $card-spacer-x;
+}
+.card-table tr td:last-child,
+.card-table tr th:last-child {
+  padding-right: $card-spacer-x;
+}
+.card-img,
+.card-img-top,
+.card-img-bottom {
+
+
+
+    // Part 1: Set a maximum relative to the parent
+    max-width: 100%;
+    // Part 2: Override the height to auto, otherwise images will be stretched
+    // when setting a width and height attribute on the img element.
+    height: auto;
+
+  @media all and (-ms-high-contrast:none) {
+    height: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+.avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.avatar-lg {
+  width: 64px;
+  height: 64px;
+}
+
+.avatar-title {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: $primary;
+}
+
+
+
+
+.s-icon-5
+{
+   font-size:25px ;
+   color: rgb(108, 111, 112);
+
+}
+
+
+
+
+.s-shadow-2{
+ box-shadow:  $main-box-shadow;
+}

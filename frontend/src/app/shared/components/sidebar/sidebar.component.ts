@@ -1,9 +1,12 @@
+
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   SidebarService,
   sidebarItem,
 } from 'src/app/shared/services/sidebar.service';
+
+
 
 @Component({
   selector: 'app-sidebar',
@@ -25,7 +28,11 @@ export class SidebarComponent implements OnInit {
   showMenu_3: boolean = false;
   showMenu_4: boolean = false;
 
-  constructor(private sidebarService: SidebarService, public router: Router) {
+  constructor(
+    private sidebarService: SidebarService,
+    public router: Router,
+
+  ) {
     this.getSideBar();
     //console.log(this.sidebarNavItems)
   }
@@ -95,10 +102,12 @@ export class SidebarComponent implements OnInit {
     ];
     this.sidebarNavItems = this.model;
   }
+
   getSideBar() {
     //   this.sidebarNavItems = this.sidebarService.getMenuItems();
     //
   }
+
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.handleSidebar();
@@ -125,18 +134,15 @@ export class SidebarComponent implements OnInit {
 
   opensidebarAccordion(id: any) {}
 
-  showMenuChildren(a: any ,i:any) {
-    console.log('777777777777777777',a ,"========>",i);
-    if (a = 1) {
+  showMenuChildren(a: any, i: any) {
+    console.log('777777777777777777', a, '========>', i);
+    if ((a = 1)) {
       this.showMenu_1 = !this.showMenu_1;
-    }
-     else if (a = 2) {
+    } else if ((a = 2)) {
       this.showMenu_2 = !this.showMenu_2;
-    }
-   else if  (a = 3) {
+    } else if ((a = 3)) {
       this.showMenu_3 = !this.showMenu_3;
-    }
-    else if (a = 4){
+    } else if ((a = 4)) {
       this.showMenu_4 = !this.showMenu_4;
     }
   }

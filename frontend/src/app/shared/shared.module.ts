@@ -147,6 +147,7 @@ import { LibModule } from './components/lib/lib.module';
     SplitterModule,
   ],
   exports: [
+
     SidebarComponent,
     TaxonomieInputComponent,
     HeaderComponent,
