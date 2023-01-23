@@ -1,0 +1,55 @@
+
+
+
+
+<div class="container">
+  <div  class="row  ">
+
+
+    <div *ngFor="let s of data; index as i" class="col-lg-4 col-md-6 ">
+    <!-- rrrrr -->
+     <div class="  mb-3 card hover-lift hover-shadow-xl shadow-sm border-0 ">
+        <div class=" card s-shadow-2">
+          <div class="card-body">
+            <!-- rrrrr -->
+             <div class="row">
+              <div class="col mt-0">
+                <h5 *ngIf="s?.title" class="card-title">{{s?.title}}</h5>
+              </div>
+              <div class="col-auto">
+                <div class="stat text-primary">
+
+                  <i
+                  *ngIf="s?.sideIcon && s?.sideIcon!='sideIcon'"
+                  (click)="saveF(i)"
+                  class="{{s?.sideIcon}}-fill "
+                  [ngClass]="s.saved? s?.sideIcon+'-fill seved' : s?.sideIcon+' s-icon-5'"
+                  >
+                  </i>
+                  <span *ngIf="s?.sideIcon && s?.sideIcon=='sideIcon'" >((sideIcon=>"<i
+                      class="bi bi-bookmark s-icon-5"></i>"))</span>
+                </div>
+              </div>
+            </div>
+            <h1 *ngIf="s?.CN " class="mt-1 mb-3 cn">{{s?.CN}}  <span *ngIf="s.CnUnit" class="cn-unit">{{s.CnUnit}}</span></h1>
+
+            <div class="mb-0">
+              <div class="row">
+                <div class="col mt-0">
+                  <span  *ngIf="s?.changeCN" [class]="s.changeCN < 0 ? 'text-danger':'text-success'">
+                    <i *ngIf="s?.changeCnIcon && s?.changeCnIcon!='changeCnIcon'" class="{{s?.changeCnIcon}}"></i>
+                    <span *ngIf="s?.changeCnIcon && s?.changeCnIcon=='changeCnIcon'">((changeCnIcon=>"<i class="bi bi-activity s-icon-5"></i>"))</span>
+                    {{s?.changeCN}} <span *ngIf="s?.changeCnUnit">{{s?.changeCnUnit}}</span>
+                  </span>
+                </div>
+                <div class="col-auto">
+                  <span *ngIf="s?.changeCN && s?.changeCnTime" class="text-muted"> {{s?.changeCnTime}} </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col mt-0">
+    <h5 *ngIf="data?.title" class="card-title">{{data?.title}}</h5>
+  </div>
+  <div class="col-auto">
+    <div class="stat text-primary">
+      <i *ngIf="data?.sideIcon && data?.sideIcon!='sideIcon'" (click)="saveF(index)" class="{{data?.sideIcon}}-fill "
+        [ngClass]="data.saved? data?.sideIcon+'-fill seved' : data?.sideIcon+' s-icon-5'">
+      </i>
+      <span *ngIf="data?.sideIcon && data?.sideIcon=='sideIcon'">((sideIcon=>"<i
+          class="bi bi-bookmark s-icon-5"></i>"))</span>
+    </div>
+  </div>
+</div>
+<h1 *ngIf="data?.CN " class="mt-1 mb-3 cn">{{data?.CN}} <span *ngIf="data.CnUnit" class="cn-unit">{{data.CnUnit}}</span>
+</h1>
+<div class="mb-0">
+  <div class="row">
+    <div class="col mt-0">
+      <span *ngIf="data?.changeCN" [class]="data.changeCN < 0 ? 'text-danger':'text-success'">
+        <i *ngIf="data?.changeCnIcon && data?.changeCnIcon!='changeCnIcon'" class="{{data?.changeCnIcon}}"></i>
+        <span *ngIf="data?.changeCnIcon && data?.changeCnIcon=='changeCnIcon'">((changeCnIcon=>"<i
+            class="bi bi-activity s-icon-5"></i>"))</span>
+        {{data?.changeCN}} <span *ngIf="data?.changeCnUnit">{{data?.changeCnUnit}}</span>
+      </span>
+    </div>
+    <div class="col-auto">
+      <span *ngIf="data?.changeCN && data?.changeCnTime" class="text-muted"> {{data?.changeCnTime}} </span>
+    </div>
+  </div>
+</div>

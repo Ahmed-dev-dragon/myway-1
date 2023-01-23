@@ -1,6 +1,3 @@
-
-
-@import './grid';
 @import './button';
 // Fonts
 $font-family-sans-serif: "Inter", "Helvetica Neue", Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
@@ -187,7 +184,7 @@ $card-cap-bg: $white !default;
 $card-shadow: 0 0 .875rem 0 rgba($dark, 0.05) !default;
 $card-title-font-size: $font-size-lg !default;
 $card-title-font-weight: $font-weight-bold !default;
-$card-title-color: lighten($gray-600, 15%) !default;
+$card-title-color: lighten($gray-600, 65%) !default;
 $card-spacer-y: 1.25rem !default;
 $card-spacer-x: 1.25rem !default;
 $card-cap-padding-y: 1rem !default;
@@ -277,12 +274,6 @@ $hamburger-width-bottom: 16px !default;
 $stat-bg: lighten($primary, 35%) !default;
 $stat-icon-color: $primary !default;
 $stat-padding: $spacer * 0.75 !default;
-
-
-
-
-
-
 @mixin button-color($color) {
   &,
   &:focus,
@@ -305,42 +296,15 @@ $stat-padding: $spacer * 0.75 !default;
     color: $color;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$b_color_itomes_of_the_sidebar: #2962FF;
+$cn-color: #161616;
 // @mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
 //   $max: breakpoint-max($name, $breakpoints);
-
 //   @if $max {
 //     @media (max-width: $max) {
 //       @content;
 //     }
 //   }
-
 //   @else {
 //     @content;
 //   }

@@ -1,4 +1,5 @@
-@import '../../../../../assets/scss/variables';
+@import '../../../../../../assets/scss/variables';
+
 .main {
   display: flex;
   width: 100%;
@@ -11,12 +12,14 @@
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
+
 .wrapper {
   align-items: stretch;
   display: flex;
   width: 100%;
   background: $sidebar-bg;
 }
+
 .content {
   padding: $content-padding-mobile;
   flex: 1;
@@ -28,7 +31,8 @@
     width: auto;
     max-width: auto;
   }
-    @media only screen and (max-width: 992px) {
+
+  @media only screen and (max-width: 992px) {
     padding: $content-padding-desktop;
   }
 }
@@ -38,46 +42,53 @@
 
 
 
+.card-body{
+  margin-bottom: 0px !important;
 
+}
 
 
 .card {
-  margin-bottom: $grid-gutter-width-v2;
+  // margin-bottom: 10px;
+  padding-bottom: 0px;
   box-shadow: $card-shadow;
 }
+
 .card-header {
   border-bottom-width: 1px;
 }
-.card-title {
-  font-size: $card-title-font-size;
-  font-weight: $card-title-font-weight;
-  color: $card-title-color;
-}
+
+
+
 .card-subtitle {
   font-weight: $font-weight-normal;
 }
-.card-table {
-  margin-bottom: 0;
-}
+
+// .card-table {
+//   margin-bottom: 0;
+// }
+
 .card-table tr td:first-child,
 .card-table tr th:first-child {
   padding-left: $card-spacer-x;
 }
+
 .card-table tr td:last-child,
 .card-table tr th:last-child {
   padding-right: $card-spacer-x;
 }
+
 .card-img,
 .card-img-top,
 .card-img-bottom {
 
 
 
-    // Part 1: Set a maximum relative to the parent
-    max-width: 100%;
-    // Part 2: Override the height to auto, otherwise images will be stretched
-    // when setting a width and height attribute on the img element.
-    height: auto;
+  // Part 1: Set a maximum relative to the parent
+  max-width: 100%;
+  // Part 2: Override the height to auto, otherwise images will be stretched
+  // when setting a width and height attribute on the img element.
+  height: auto;
 
   @media all and (-ms-high-contrast:none) {
     height: 100%;
@@ -113,17 +124,38 @@
 
 
 
+.card-title {
+  font-size: $card-title-font-size;
+  font-weight: $card-title-font-weight;
+  color: $card-title-color;
+}
 
-.s-icon-5
-{
-   font-size:25px ;
-   color: rgb(108, 111, 112);
+.s-icon-5 {
+  font-size: 25px;
+  color: rgb(108, 111, 112);
 
 }
 
+.seved {
+  font-size: 25px;
+  color: $b_color_itomes_of_the_sidebar;
+}
+
+.s-p-3 {
+  padding-right: 13px;
+}
+
+.cn {
+  color: $cn-color;
+}
+
+.cn-unit {
+  color: lighten($cn-color, 50%);
+  // background: lighten($color: $cn-clolor, $amount: 50%);
+}
 
 
+.s-shadow-2 {
+  box-shadow: $main-box-shadow;
 
-.s-shadow-2{
- box-shadow:  $main-box-shadow;
 }
