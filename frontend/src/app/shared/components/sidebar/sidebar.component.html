@@ -1,37 +1,37 @@
-
-
-
-<aside class="sidebar"  [ngClass]="showSidebar ? 'open' : ''" >
-  <header class="s-header"  class="s-header">
-     <h1>header </h1>
+<aside class="sidebar" [ngClass]="showSidebar ? 'open' : ''">
+  <header class="s-header" class="s-header">
+    <h1>header </h1>
   </header>
   <main class="s-main">
 
 
     <div class="s-ul" *ngIf="sidebarNavItems.length">
 
-    <ng-container
-     *ngFor=" let i of sidebarNavItems">
-         <!-- <li  class="s-li-0"> 0{{i.label}}</li> -->
-            <div class="col-12 ">
-              <div class="tabs">
-              <div *ngIf="i.items?.length== null" class="tab">
-                <div class="notlabel">
-                  {{i.label}}
+      <ng-container *ngFor=" let i of sidebarNavItems">
+        <!-- <li  class="s-li-0"> 0{{i.label}}</li> -->
+        <div class="col-12 ">
+          <div class="tabs">
+            <div *ngIf="i.items?.length== 0;else elseBlock" class="tab">
+              <div class="notlabel">
+                {{i.label}}
 
-                </div>
-              </div>
-                <div  *ngIf="i.items?.length!=null" class="tab">
-                  <input type="checkbox" id="{{sidebarNavItems.length}}-{{ i.label}}">
-                  <label class="tab-label" for="{{sidebarNavItems.length}}-{{ i.label}}">{{ i.label}}</label>
-                  <div *ngIf="i.items?.length" class="tab-content">
-                    <ng-container *ngTemplateOutlet="child ; context:{items: i.items , index:1}">
-                    </ng-container>
-                  </div>
-                </div>
               </div>
             </div>
-    </ng-container>
+            <ng-template #elseBlock>
+              <div class="tab">
+                <input type="checkbox" id="{{sidebarNavItems.length}}-{{ i.label}}">
+                <label class="tab-label" for="{{sidebarNavItems.length}}-{{ i.label}}">{{ i.label}}</label>
+                <div *ngIf="i.items?.length" class="tab-content">
+                  <ng-container *ngTemplateOutlet="child ; context:{items: i.items , index:1}">
+                  </ng-container>
+                </div>
+              </div>
+            </ng-template>
+
+
+          </div>
+        </div>
+      </ng-container>
 
     </div>
   </main>
@@ -40,7 +40,7 @@
       <div class="sidebar-cta-content">
         <strong class="d-inline-block s-t mb-2"> how to be a mamber </strong>
         <div class="mb-3  text-sm">
-          Are you looking for more serveses? Check out our privete  serves be a mamber.
+          Are you looking for more serveses? Check out our privete serves be a mamber.
         </div>
         <div class="d-grid">
           <a href="#" class="btn s-btn-info">sign in </a>
@@ -53,33 +53,31 @@
 
 
 
-<ng-template  #child let-items="items"  let-i="index">
+<ng-template #child let-items="items" let-i="index">
   <ul class="s-ul">
-      <ng-container *ngFor="let s of items">
-        <span *ngFor="let x of array(i).fill('*');"><span class="s-nevo-spice"></span></span>
-            <!-- <li  class="s-li">{{i}}{{ s.label}}</li> -->
-              <div class="col">
-                <div class="tabs">
-                    <div *ngIf="s.items?.length== null" class="tab">
-                       <div class="notlabel">
-                         notlabel  {{i}}{{s.label}}
+    <ng-container *ngFor="let s of items">
+      <span *ngFor="let x of array(i).fill('*');"><span class="s-nevo-spice"></span></span>
+      <!-- <li  class="s-li">{{i}}{{ s.label}}</li> -->
+      <div class="col">
+        <div class="tabs">
+          <div *ngIf="s.items?.length== null" class="tab">
+            <div class="notlabel">
+              notlabel {{i}}{{s.label}}
 
-                       </div>
-                    </div>
-                  <div
-                    *ngIf="s.items?.length"
-                    class="tab">
-                    <input type="checkbox" id="{{s.length}}-{{i}}-{{ s.label}}">
-                    <label class="tab-label" for="{{s.length}}-{{i}}-{{ s.label}}">{{i}}{{ s.label}}</label>
-                    <div *ngIf="s.items?.length" class="tab-content">
-                        <ng-container *ngTemplateOutlet="child ; context:{items: s.items ,index: i+1}">
-                        </ng-container>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            </div>
+          </div>
+          <div *ngIf="s.items?.length" class="tab">
+            <input type="checkbox" id="{{s.length}}-{{i}}-{{ s.label}}">
+            <label class="tab-label" for="{{s.length}}-{{i}}-{{ s.label}}">{{i}}{{ s.label}}</label>
+            <div *ngIf="s.items?.length" class="tab-content">
+              <ng-container *ngTemplateOutlet="child ; context:{items: s.items ,index: i+1}">
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      </ng-container>
+    </ng-container>
   </ul>
 </ng-template>
 
