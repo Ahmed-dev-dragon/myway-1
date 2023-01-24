@@ -1,0 +1,35 @@
+
+    <s-card-contianer>
+<s-dynamic-table
+[data]="dummyDate"
+[cols]="cols"
+[captionConfig]="captionConfig"
+(onEditClick)="onEditClick($event)"
+(onDetailClick)="onDetailClick($event)"
+(onCloneClick)="onCloneClick($event)"
+(onAddClick)="onAddClick($event)"
+(onDelete)="onDelete($event)"
+>
+<ng-template #expandedRow let-dattt>
+
+
+     <card-content   [data]="passedDate[0]"></card-content>
+
+
+ </ng-template>
+</s-dynamic-table>
+</s-card-contianer>
+
+
+
+
+<div class="mb-5"></div>
+<app-dynamic-table [data]="dummyDate" [cols]="cols" [captionConfig]="captionConfig" (onEditClick)="onEditClick($event)"
+  (onDetailClick)="onDetailClick($event)" (onCloneClick)="onCloneClick($event)" (onAddClick)="onAddClick($event)"
+  (onDelete)="onDelete($event)"
+
+  >
+
+
+ <ng-template #expandedRow let-dattt > <h1 class="a"> hhhhhhh</h1>  {{dattt |json}} </ng-template>
+</app-dynamic-table>

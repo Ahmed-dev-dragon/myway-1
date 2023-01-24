@@ -1,4 +1,4 @@
-<aside class="sidebar" [ngClass]="showSidebar ? 'open' : ''">
+<!-- <aside class="sidebar" [ngClass]="showSidebar ? 'open' : ''">
   <header class="s-header" class="s-header">
     <h1>header </h1>
   </header>
@@ -7,9 +7,9 @@
 
     <div class="s-ul" *ngIf="sidebarNavItems.length">
 
-      <ng-container *ngFor=" let i of sidebarNavItems">
+      <ng-container *ngFor=" let i of sidebarNavItems"> -->
         <!-- <li  class="s-li-0"> 0{{i.label}}</li> -->
-        <div class="col-12 ">
+        <!-- <div class="col-12 ">
           <div class="tabs">
             <div *ngIf="i.items?.length== 0;else elseBlock" class="tab">
               <div class="notlabel">
@@ -56,9 +56,9 @@
 <ng-template #child let-items="items" let-i="index">
   <ul class="s-ul">
     <ng-container *ngFor="let s of items">
-      <span *ngFor="let x of array(i).fill('*');"><span class="s-nevo-spice"></span></span>
+      <span *ngFor="let x of array(i).fill('*');"><span class="s-nevo-spice"></span></span> -->
       <!-- <li  class="s-li">{{i}}{{ s.label}}</li> -->
-      <div class="col">
+      <!-- <div class="col">
         <div class="tabs">
           <div *ngIf="s.items?.length== null" class="tab">
             <div class="notlabel">
@@ -81,7 +81,7 @@
   </ul>
 </ng-template>
 
-
+ -->
 
 
 
@@ -199,3 +199,10 @@
   </div>
 </nav>
  -->
+
+
+
+<aside class="sidebar" [ngClass]="showSidebar ? 'open' : ''">
+
+
+</aside>

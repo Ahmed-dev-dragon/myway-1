@@ -40,8 +40,9 @@ export interface ListHeader {
   }[];
 }
 
-export interface expanded extends List {
-  dataField: string;
+export interface expanded extends  Partial<List> {
+  dataField?: string;
+
 }
 
 export interface Button {

@@ -1,4 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
+import { ListHeader } from 'src/app/shared/models/List.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { SCardSInfoInterface } from '../../lib/cards/s-card-s-ifno/s-card-s-info-Interfaces';
 
@@ -8,6 +9,7 @@ import { SCardSInfoInterface } from '../../lib/cards/s-card-s-ifno/s-card-s-info
   styleUrls: ['./content-layout.component.scss'],
 })
 export class ContentLayoutComponent implements OnInit, DoCheck {
+
   display = false;
   passedDate: SCardSInfoInterface[] = [
     {
@@ -104,6 +106,9 @@ export class ContentLayoutComponent implements OnInit, DoCheck {
       CnUnit: '원',
     },
   ];
+
+
+
   constructor(public authService: AuthService) {}
   ngDoCheck(): void {
     //this.display = !this.authService.canAccess
@@ -112,7 +117,9 @@ export class ContentLayoutComponent implements OnInit, DoCheck {
 
   isSidebarOpen = true;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   closeTokenDialog(event?: any) {
     if (!event) {
@@ -125,3 +132,6 @@ export class ContentLayoutComponent implements OnInit, DoCheck {
     this.authService.canAccess = true;
   }
 }
+
+
+

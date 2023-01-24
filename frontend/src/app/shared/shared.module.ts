@@ -69,6 +69,8 @@ import { DynamicTableCellColorPipeStyle } from './pipes/dynamic-table-cell-color
 import { TaxonomieTreeComponent } from './components/taxonomie-tree/taxonomie-tree.component';
 import { TemplatesModule } from './components/templates/templates.module';
 import { LibModule } from './components/lib/lib.module';
+import { TestComponent } from './test/test.component';
+import { SDynamicTableComponent } from './components/s-dynamic-table/s-dynamic-table.component';
 
 
 @NgModule({
@@ -89,6 +91,8 @@ import { LibModule } from './components/lib/lib.module';
     GenericPipe,
     DynamicTableCellColorPipe,
     DynamicTableCellColorPipeStyle,
+    TestComponent,
+    SDynamicTableComponent,
   ],
   imports: [
     TemplatesModule,
@@ -147,7 +151,6 @@ import { LibModule } from './components/lib/lib.module';
     SplitterModule,
   ],
   exports: [
-
     SidebarComponent,
     TaxonomieInputComponent,
     HeaderComponent,
@@ -212,6 +215,7 @@ import { LibModule } from './components/lib/lib.module';
     GenericPipe,
     DynamicTableCellColorPipe,
     DynamicTableCellColorPipeStyle,
+    SDynamicTableComponent,
   ],
   providers: [ConfirmationService, MessageService],
 })
