@@ -2,11 +2,9 @@
   background-color: #c8e6c9 !important;
   color: #256029 !important;
 }
-
 .dynamic-table-chips-container {
   display: flex;
   flex-wrap: wrap;
-
   span {
     margin-block: 0.2rem;
     margin-inline-end: 0.2rem;
@@ -33,23 +31,16 @@
   border: none !important;
 // background-color: #256029 !important;
 }
-
-
-
 .c
 {
   width: 20px;
   height: 20px ;
   background-color: #256029;
-
   border-radius: 50px;
 }
-
-
-
-
 .s-Search
 {
+
   background-color: #ffffff !important;
 
 }
@@ -62,37 +53,16 @@ s-Search-span{
   justify-content: space-between;
 }
 .s-tr-body{
-   border: #f1ecec 1px solid !important;
 
+   border: #ffffff 1px solid !important;
+
+ &:hover{
+
+ margin-top: 10px!important;
+ border: #000000  solid 2px 2px !important;
+
+ }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  .outofstock {
    font-weight: 700;
@@ -120,5 +90,43 @@ s-Search-span{
   background-color: rgb(247, 247, 247) !important;
 }
 
+.expandedRow-tr{
+    // margin: 0!important;
+    // padding: 0!important;
+    border: none !important;
+    height: 200px;
+}
+.expandedRow-td{
+    // margin: 0 !important;
+    // padding: 0 !important;
+    border: none !important;
+}
 
+td :hover{
+  color: #000000;
+}
+
+
+.clear-filter
+{
+
+color:#998f8f ;
+
+}
+
+  .green{
+  background-color: #25D366;
+  }
+
+
+
+
+
+.red {
+  background: #f09433;
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+}
 

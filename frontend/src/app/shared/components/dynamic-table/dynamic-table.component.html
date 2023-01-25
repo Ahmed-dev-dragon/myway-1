@@ -256,20 +256,21 @@
         <div
           style="display: flex; justify-content: center; align-items: center"
         >
-          <button
-            *ngIf="captionConfig.expanded"
-            type="button"
-            pButton
-            pRipple
-            [pRowToggler]="rowData"
-            class="p-button-text p-button-rounded p-button-plain"
-            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
-          ></button>
+              <button
+                *ngIf="captionConfig.expanded"
+                type="button"
+                pButton
+                pRipple
+                [pRowToggler]="rowData"
+                class="p-button-text p-button-rounded p-button-plain"
+                [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+              ></button>
 
-          <p-tableCheckbox
-            *ngIf="captionConfig.selectionType === 'multiple'"
-            [value]="rowData"
-          ></p-tableCheckbox>
+              <p-tableCheckbox
+                *ngIf="captionConfig.selectionType === 'multiple'"
+                [value]="rowData"
+              ></p-tableCheckbox>
+              
         </div>
       </td>
 

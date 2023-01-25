@@ -12,8 +12,7 @@
   <ng-template #expandedRow let-i>
 
   <s-table-contianer>
-
-      <textarea   cols="30" rows="10"> {{i|json}}</textarea>
+  <s-table-card [data]="i"></s-table-card>
   </s-table-contianer>
 
 
@@ -27,7 +26,7 @@
 
 
 
-<!-- <div class="mb-5"></div>
+ <div class="mb-5"></div>
 
 <app-dynamic-table
   [data]="dummyDate"
@@ -43,4 +42,4 @@
 
 
   </ng-template>
-</app-dynamic-table> -->
+</app-dynamic-table>
