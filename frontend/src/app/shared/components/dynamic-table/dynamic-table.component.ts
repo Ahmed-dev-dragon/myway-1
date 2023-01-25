@@ -12,6 +12,7 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
+
 import { TranslateService } from '@ngx-translate/core';
 import * as FileSaver from 'file-saver';
 import jsPDF from 'jspdf';

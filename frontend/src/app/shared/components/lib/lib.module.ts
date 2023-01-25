@@ -8,6 +8,7 @@ import { CardContianerComponent } from './containers/card-contianer.component';
 import { SCardContentComponent } from './cards/s-card-content/s-card-content.component';
 import { GridContianerComponent } from './containers/grid-contianer.component';
 import { MCardComponent } from './cards/m-card/m-card.component';
+import { TableContianerComponent } from './containers/table-contianer/table-contianer.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MCardComponent } from './cards/m-card/m-card.component';
     SCardContentComponent,
     GridContianerComponent,
     MCardComponent,
+    TableContianerComponent,
   ],
   imports: [CommonModule],
   exports: [
@@ -28,6 +30,7 @@ import { MCardComponent } from './cards/m-card/m-card.component';
     SCardContentComponent,
     GridContianerComponent,
     MCardComponent,
+    TableContianerComponent,
   ],
 })
 export class LibModule {}

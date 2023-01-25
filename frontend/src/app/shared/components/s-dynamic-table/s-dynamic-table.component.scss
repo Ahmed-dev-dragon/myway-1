@@ -27,7 +27,7 @@
 
   // background-color: #256029 !important;
   // border: none !important;
-  
+
 }
 .p-datatable {
   border: none !important;
@@ -65,3 +65,60 @@ s-Search-span{
    border: #f1ecec 1px solid !important;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .outofstock {
+   font-weight: 700;
+   color: #FF5252;
+   text-decoration: line-through;
+ }
+
+ .lowstock {
+   font-weight: 700;
+   color: #FFA726;
+ }
+
+ .instock {
+   font-weight: 700;
+   color: #66BB6A;
+ }
+
+ :host ::ng-deep .row-accessories:nth-child(2n+1) {
+   background-color: rgba(226, 224, 224, 0.12) !important;
+ }
+
+
+
+:host ::ng-deep .p-selectable-row:nth-child(2n+1){
+  background-color: rgb(247, 247, 247) !important;
+}
+
+
+

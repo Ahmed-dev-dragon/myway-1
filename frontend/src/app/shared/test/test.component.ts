@@ -80,7 +80,7 @@ export class TestComponent {
 
   dummyDate: any[] = [
     {
-      id: 1,
+      _id: 1,
       first_name: 'Bryant',
       last_name: 'Gomes',
       email: 'bgomes0@reddit.com',
@@ -93,7 +93,7 @@ export class TestComponent {
       company: 'Safetec of America, Inc.',
     },
     {
-      id: 2,
+      _id: 2,
       first_name: 'Julita',
       last_name: 'Antoney',
       email: 'jantoney1@symantec.com',
@@ -106,7 +106,7 @@ export class TestComponent {
       company: 'Uriel Pharmacy Inc.',
     },
     {
-      id: 3,
+      _id: 3,
       first_name: 'Nap',
       last_name: 'Hackforth',
       email: 'nhackforth2@fotki.com',
@@ -119,7 +119,7 @@ export class TestComponent {
       company: 'CHAIN DRUG MARKETING ASSOCIATION INC',
     },
     {
-      id: 4,
+      _id: 4,
       first_name: 'Viole',
       last_name: 'Briiginshaw',
       email: 'vbriiginshaw3@t.co',
@@ -132,7 +132,7 @@ export class TestComponent {
       company: 'RUGBY LABORATORIES, INC.',
     },
     {
-      id: 5,
+      _id: 5,
       first_name: 'Chere',
       last_name: 'Laden',
       email: 'claden4@smh.com.au',
@@ -145,7 +145,7 @@ export class TestComponent {
       company: 'Taro Pharmaceuticals U.S.A., Inc.',
     },
     {
-      id: 6,
+      _id: 6,
       first_name: 'Nigel',
       last_name: 'Odger',
       email: 'nodger5@meetup.com',
@@ -158,7 +158,7 @@ export class TestComponent {
       company: 'State of Florida DOH Central Pharmacy',
     },
     {
-      id: 7,
+      _id: 7,
       first_name: 'Hakim',
       last_name: 'Beades',
       email: 'hbeades6@ask.com',
@@ -171,7 +171,7 @@ export class TestComponent {
       company: 'Walgreen Company',
     },
     {
-      id: 8,
+      _id: 8,
       first_name: 'Hayley',
       last_name: 'Marcu',
       email: 'hmarcu7@privacy.gov.au',
@@ -184,7 +184,7 @@ export class TestComponent {
       company: 'REMEDYREPACK INC.',
     },
     {
-      id: 9,
+      _id: 9,
       first_name: 'Alexio',
       last_name: 'Barge',
       email: 'abarge8@hc360.com',
@@ -197,7 +197,7 @@ export class TestComponent {
       company: 'Cardinal Health',
     },
     {
-      id: 10,
+      _id: 10,
       first_name: 'Lucias',
       last_name: 'Coch',
       email: 'lcoch9@yellowpages.com',
@@ -210,7 +210,7 @@ export class TestComponent {
       company: 'Moore Medical LLC',
     },
     {
-      id: 11,
+      _id: 11,
       first_name: 'Orren',
       last_name: 'Bims',
       email: 'obimsa@pinterest.com',
@@ -223,7 +223,7 @@ export class TestComponent {
       company: 'Accord Healthcare Inc.',
     },
     {
-      id: 12,
+      _id: 12,
       first_name: 'Harlan',
       last_name: 'Casella',
       email: 'hcasellab@technorati.com',
@@ -236,7 +236,7 @@ export class TestComponent {
       company: 'ANIP Acquisition Company',
     },
     {
-      id: 13,
+      _id: 13,
       first_name: 'Beverie',
       last_name: 'Oakley',
       email: 'boakleyc@friendfeed.com',
@@ -249,7 +249,7 @@ export class TestComponent {
       company: 'BioActive Nutritional, Inc.',
     },
     {
-      id: 14,
+      _id: 14,
       first_name: 'Paquito',
       last_name: 'Silliman',
       email: 'psillimand@nyu.edu',
@@ -262,7 +262,7 @@ export class TestComponent {
       company: 'Oral-B Laboratories',
     },
     {
-      id: 15,
+      _id: 15,
       first_name: 'Reggy',
       last_name: 'Pane',
       email: 'rpanee@soundcloud.com',
@@ -275,7 +275,7 @@ export class TestComponent {
       company: 'Target Corporation',
     },
     {
-      id: 16,
+      _id: 16,
       first_name: 'Madge',
       last_name: 'Caramuscia',
       email: 'mcaramusciaf@unesco.org',
@@ -288,7 +288,7 @@ export class TestComponent {
       company: 'Elizabeth Arden, Inc',
     },
     {
-      id: 17,
+      _id: 17,
       first_name: 'Scarface',
       last_name: 'Salling',
       email: 'ssallingg@barnesandnoble.com',
@@ -301,7 +301,7 @@ export class TestComponent {
       company: 'Home Sweet Homeopathics',
     },
     {
-      id: 18,
+      _id: 18,
       first_name: 'Valaria',
       last_name: 'Sapir',
       email: 'vsapirh@hibu.com',
@@ -314,7 +314,7 @@ export class TestComponent {
       company: 'Janssen Pharmaceuticals, Inc.',
     },
     {
-      id: 19,
+      _id: 19,
       first_name: 'Laure',
       last_name: 'Di Biaggi',
       email: 'ldibiaggii@cdbaby.com',
@@ -327,7 +327,7 @@ export class TestComponent {
       company: 'ViiV Healthcare Company',
     },
     {
-      id: 20,
+      _id: 20,
       first_name: 'Nappie',
       last_name: 'Maywood',
       email: 'nmaywoodj@statcounter.com',
