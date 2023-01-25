@@ -65,6 +65,8 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
   columns: any[] = [];
   selectedItems: any = [];
   speedDialItems: any[] = [];
+  selected: any;
+  firstTime: any = true;
   initSpeedDialItems: MenuItem[] = [
     {
       id: 'csv',
@@ -248,11 +250,9 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
   }
 
   showColumnDtaills(index: number) {
-    
     this.showColumn == 'up'
       ? (this.showColumn = 'down')
       : (this.showColumn = 'up');
-
   }
 
   onAdd() {
@@ -359,4 +359,15 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
   saveSelectedItems() {
     this.ref.close(this.selectedItems);
   }
+
+  onRowExpand(itemSelected: any) {
+    console.log('itemSelected.data', itemSelected.data);
+    this.firstTime = false;
+    this.selected = itemSelected.data._id;
+    console.log('🚀 ~ ~  this.selected', this.selected);
+  }
+
+
+
+
 }

@@ -401,3 +401,32 @@ span {
 // .p-menuitem-text{
 //       background-color: #ffffff !important;
 // }
+
+
+
+.isOpened>td {
+  background-color: #cad1fa !important;
+}
+
+.isOpened {
+  background-color: #cad1fa !important;
+}
+
+.isBlacked {
+  position: relative;
+
+  :before {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(145, 145, 145, 0.05);
+  }
+
+  filter: blur(1px);
+
+  pointer-events: none;
+}

@@ -1,4 +1,5 @@
 <p-table
+(onRowExpand)="onRowExpand($event)"
 responsiveLayout="stack"
  [tableStyle]="{'backgroundColor':'#000'}"
   #dt
@@ -123,16 +124,14 @@ responsiveLayout="stack"
       <div class="col-1" style=" margin: auto;">
         <s-card-contianer>
           <div style="height: 48px ; margin: auto;" class="d-flex position-relative m-0 p-0">
-
-
             <div
               style="
-                height: 350px;
-                margin: auto;
-                margin-top: -7px;
-                padding: auto;
-                position: absolute;
-              "
+                      height: 350px;
+                      margin: auto;
+                      margin-top: -7px;
+                      padding: auto;
+                      position: absolute;
+                    "
               class="speeddial-delay-demo"
             >
               <p-speedDial
@@ -252,6 +251,8 @@ responsiveLayout="stack"
       class="s-tr-body"
       [pSelectableRow]="rowData"
       [ngClass]="rowData.cloned ? 'clonedElement' : ''"
+      [class.isOpened]="this.selected == rowData._id"
+      [class.isBlacked]="this.selected != rowData._id && !firstTime"
     >
 <!-- #region start col -->
       <td
