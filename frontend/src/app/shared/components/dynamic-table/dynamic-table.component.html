@@ -270,7 +270,7 @@
                 *ngIf="captionConfig.selectionType === 'multiple'"
                 [value]="rowData"
               ></p-tableCheckbox>
-              
+
         </div>
       </td>
 
@@ -376,7 +376,7 @@
   <ng-template pTemplate="rowexpansion" let-rowData>
     <ng-container *ngIf="expandedRow">
       <ng-container
-        *ngTemplateOutlet="expandedRow; context: { $implicit: rowData }"
+            *ngTemplateOutlet="expandedRow; context: { $implicit: rowData }"
       ></ng-container>
     </ng-container>
 

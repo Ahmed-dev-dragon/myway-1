@@ -8,8 +8,8 @@ responsiveLayout="stack"
   [value]="data"
   [rows]="rows"
   [paginator]="true"
-  [showCurrentPageReport]="true"
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [showCurrentPageReport]="showshowCurrentPageReport"
+  currentPageReportTemplate="currentPageReportTemplate"
   [rowsPerPageOptions]="[
     demiRows,
     rows,
@@ -28,8 +28,7 @@ responsiveLayout="stack"
   [selectionMode]="captionConfig.selectionType == 'single' ? 'single' : ''"
   [globalFilterFields]="globalFilterFields"
 >
-  <ng-template
-    pTemplate="caption"
+  <!-- <ng-template pTemplate="caption"
     *ngIf="
       captionConfig.addButton ||
       captionConfig.actions?.delete ||
@@ -43,8 +42,7 @@ responsiveLayout="stack"
       <div class="col-11">
         <s-card-contianer>
           <div class="topHeader d-flex position-relative">
-            <!-- <div class="c">
-            </div> -->
+
             <button
               type="button"
               *ngIf="
@@ -57,9 +55,6 @@ responsiveLayout="stack"
               class="me-2 p-button-success green"
               (click)="onAdd()"
             ></button>
-
-
-
             <div>
               <p-tieredMenu
                 #menu
@@ -68,8 +63,6 @@ responsiveLayout="stack"
                 [appendTo]="'body'"
               ></p-tieredMenu>
             </div>
-
-
             <button
               type="button"
               *ngIf="captionConfig.clearTable"
@@ -89,7 +82,6 @@ responsiveLayout="stack"
               icon="pi pi-filter-slash"
               (click)="clear(dt)"
             ></button>
-
             <span
               *ngIf="captionConfig.globalFilter"
               class="s-Search-span p-input-icon-left ms-2"
@@ -104,7 +96,6 @@ responsiveLayout="stack"
                 [placeholder]="'Search keyword' | translate | titlecase"
               />
             </span>
-
             <p-multiSelect
               [appendTo]="'body'"
               *ngIf="captionConfig.displayedColumns"
@@ -148,7 +139,7 @@ responsiveLayout="stack"
         </s-card-contianer>
       </div>
     </div>
-  </ng-template>
+  </ng-template> -->
   <ng-template pTemplate="header" let-columns>
     <tr class="s-tr-header s-header-bg">
       <th
@@ -184,7 +175,6 @@ responsiveLayout="stack"
         >
           {{ col.header | translate | titlecase }}
           <p-sortIcon [field]="col.field"></p-sortIcon>
-
           <p-columnFilter
             *ngIf="
               col.filter &&
@@ -195,7 +185,6 @@ responsiveLayout="stack"
             display="menu"
           >
           </p-columnFilter>
-
           <p-columnFilter
             [field]="col.field"
             matchMode="equals"
@@ -239,9 +228,7 @@ responsiveLayout="stack"
       </th>
     </tr>
   </ng-template>
-
-  <ng-template
-    pTemplate="body"
+  <ng-template pTemplate="body"
     let-rowData
     let-ri="rowIndex"
     let-columns="columns"
@@ -254,14 +241,18 @@ responsiveLayout="stack"
       [class.isOpened]="this.selected == rowData._id"
       [class.isBlacked]="this.selected != rowData._id && !firstTime"
     >
+
 <!-- #region start col -->
       <td
-        class="text-center"
+        class="text-center s-td-checkbox"
         *ngIf="
           columns.length &&
           (captionConfig.selectionType === 'multiple' || captionConfig.expanded)
         "
       >
+
+
+
         <div
           style="display: flex; justify-content: center; align-items: center"
         >
@@ -272,13 +263,13 @@ responsiveLayout="stack"
         </div>
       </td>
 <!-- #endregion -->
-
 <!-- #region  body content cols -->
-
       <td *ngFor="let col of columns"  class="text-center row-accessories">
          <span class="p-column-title">{{col?.header}}</span>
-          <ng-container *ngIf="col.filterType == 'file'">
+         <div class="s-next">
 
+
+          <ng-container *ngIf="col.filterType == 'file'">
           <img
             [lazyLoad]="rowData[col.field]"
             [defaultImage]="rowData[col.default]"
@@ -316,13 +307,12 @@ responsiveLayout="stack"
             }}
           </span>
         </ng-container>
+          </div>
       </td>
-
 <!-- #endregion -->
-
  <!-- #region   action col -->
       <td
-        class="text-center"
+        class="text-center s-action"
         *ngIf="
           columns.length &&
           (captionConfig.actions?.clone ||
@@ -330,7 +320,7 @@ responsiveLayout="stack"
             captionConfig.actions?.edit)
         "
       >
-        <div>
+        <div style="margin: auto" >
           <button
             type="button"
             *ngIf="captionConfig.expanded"
@@ -338,7 +328,7 @@ responsiveLayout="stack"
             pRipple
             type="button"
             [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
-            class="p-button-rounded me-2 mb-2 p-button-sm p-button-help action-button"
+            class="s-btn-action p-button-rounded me-2 mb-2 p-button-sm p-button-help action-button"
             [pRowToggler]="rowData"
             (click)="onClone(ri)"
           ></button>
@@ -348,38 +338,35 @@ responsiveLayout="stack"
             pButton
             type="button"
             icon="pi pi-copy"
-            class="p-button-rounded me-2 mb-2 p-button-sm p-button-success action-button"
+            class="s-btn-action p-button-rounded me-2 mb-2 p-button-sm p-button-success action-button"
             (click)="onClone(ri)"
           ></button>
-
           <button
             type="button"
             *ngIf="captionConfig.actions?.detail"
             pButton
             type="button"
             icon="pi pi-eye"
-            class="p-button-rounded me-2 mb-2 p-button-sm action-button"
+            class="s-btn-action p-button-rounded me-2 mb-2 p-button-sm action-button"
             (click)="onDetail(ri)"
           ></button>
-
           <button
             type="button"
             *ngIf="captionConfig.actions?.edit"
             pButton
             type="button"
             icon="pi pi-pencil"
-            class="p-button-rounded me-2 mb-2 p-button-warning p-button-sm action-button"
+            class="s-btn-action p-button-rounded me-2 mb-2 p-button-warning p-button-sm action-button"
             (click)="onEdit(ri)"
           ></button>
-
           <button
             *ngFor="let button of captionConfig.buttons"
             type="button"
             [label]="button.label || ''"
             [icon]="button.icon || ''"
             [class]="
-              'action-button ' +
-              (button.class || 'p-button-rounded p-button-sm')
+              ' s-btn-action action-button ' +
+              (button.class || 'p-button-rounded p-button-sm s-btn-action')
             "
             [ngStyle]="button.style || null"
             (click)="button?.command?.(ri,rowData)"
@@ -390,18 +377,15 @@ responsiveLayout="stack"
 <!-- #endregion -->
 
 
-
-
     </tr>
   </ng-template>
   <ng-template pTemplate="rowexpansion" let-rowData >
-
-
     <tr *ngIf="expandedRow"
-    class="expandedRow-tr  ">
+    class="expandedRow-tr">
       <td
+
          class="expandedRow-td "
-      [colSpan]="
+         [colSpan]="
               selectedColumns.length +
               (columns.length
                 ? (captionConfig.actions?.clone ||
@@ -415,14 +399,10 @@ responsiveLayout="stack"
                     : 0)
                 : 0)
             ">
-
-              <ng-container *ngTemplateOutlet="expandedRow; context: { $implicit: rowData }"></ng-container>
-
-      </td>
+              <ng-container *ngTemplateOutlet="expandedRow; context: { $implicit: rowData }">
+              </ng-container>
+              </td>
     </tr>
-
-
-
     <tr *ngIf="!expandedRow">
       <td
         [colSpan]="
@@ -452,15 +432,11 @@ responsiveLayout="stack"
         ></app-dynamic-table>
       </td>
     </tr>
-
-
-
-
   </ng-template>
-
   <ng-template pTemplate="emptymessage">
     <tr>
       <td
+
         [colSpan]="
           selectedColumns.length +
           (columns.length
@@ -480,10 +456,11 @@ responsiveLayout="stack"
       </td>
     </tr>
   </ng-template>
-
   <ng-template pTemplate="summary" *ngIf="captionConfig.summary?.enabled">
-    <div class="flex align-items-center justify-content-between">
+    <div class="flex align-items-center  footer-d  justify-content-between">
+
       {{
+
         $any(captionConfig).summary?.message?.replace(
           regex,
           data ? data.length : 0
@@ -493,9 +470,7 @@ responsiveLayout="stack"
       }}
     </div>
   </ng-template>
-
 </p-table>
-
 <div class="w-100 d-flex footer mt-4" *ngIf="captionConfig.actions?.close">
   <button
     type="button"

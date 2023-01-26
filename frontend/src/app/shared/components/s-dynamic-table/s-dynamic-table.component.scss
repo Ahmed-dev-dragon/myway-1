@@ -134,14 +134,156 @@ color:#998f8f ;
 
 
 
+@media screen and (max-width: 960px) {
+
+:host ::ng-deep .row-accessories{
+max-width: 100%;
+}
+ :host ::ng-deep .row-accessories:nth-child(2n+1) {
+   background-color: rgba(143, 143, 143, 0.12) !important;
+ }
+
+:host ::ng-deep .p-selectable-row:nth-child(2n+1){
+  background-color: rgb(221, 221, 221) !important;
+  color: #242424;
+  border: none;
+}
+
+.row-accessories
+{
+ overflow: auto;
+
+}
+
+.s-tr-body {
+
+margin-bottom:  200px !important;
+
+
+
+            .s-td-checkbox{
+             display: none !important;
+            }
+
+
+}
+  .s-tr-header {
+    display: none !important;
+
+  }
+  .p-column-title{
+   color: #333232;
+  }
+
+}
 
 
 
 
 
+@media screen and (max-width: 750px) {
+.footer-d{
+  background-color: #e4e1e1!important;
+  justify-content: center!important;
+  border-radius: 20px !important;
+  color: rgb(44, 44, 44);
+
+}
+
+.expandedRow-tr{
+  background-color: #25D366 !important;
+}
+
+}
+
+
+@media screen and (max-width: 390px) {
+  .footer-d {
+     display: none !important;
+
+  }
 
 
 
+}
+
+
+
+
+@media screen and (max-width: 421px) {
+
+.s-btn-action{
+  width: 6.2vw!important;
+  height: 6.2vw !important;
+  }
+
+  :host ::ng-deep .row-accessories {
+   .p-column-title{
+    min-width: 50%;
+    max-width: 50%;
+    border-right: 3px solid #333;
+        font-size: 3.2vw;
+         font-weight: 900;
+
+    }
+    .s-next{
+        font-size: 3.2vw;
+        padding:0  10px ;
+        text-align: start !important;
+        word-wrap: break-word !important;
+        display: inline-block !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        max-width: 50%;
+        min-width: 50%;
+
+      }
+  }
+
+  :host ::ng-deep .p-selectable-row:nth-child(2n+1) {
+    background-color: rgb(221, 221, 221) !important;
+    color: #242424;
+    border: none;
+  }
+
+  .row-accessories {
+    overflow: auto;
+
+  }
+
+  .s-tr-body {
+
+    margin-bottom: 200px !important;
+
+
+
+    .s-td-checkbox {
+      display: none !important;
+    }
+
+
+  }
+
+  .s-tr-header {
+    display: none !important;
+
+  }
+
+  .p-column-title {
+    color: #333232;
+  }
+
+
+
+
+
+.expandedRow-td{
+
+
+}
+
+
+}
 
 
 

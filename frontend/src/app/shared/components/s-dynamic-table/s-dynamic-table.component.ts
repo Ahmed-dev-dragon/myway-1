@@ -28,13 +28,13 @@ import {
   ListHeader,
   OnDeleteEvent,
 } from '../../models/List.model';
-
 @Component({
   selector: 's-dynamic-table',
   templateUrl: './s-dynamic-table.component.html',
   styleUrls: ['./s-dynamic-table.component.scss'],
 })
 export class SDynamicTableComponent implements OnInit, OnChanges {
+
   @Input() data: any = [];
   @Input() cols: ListHeader[] = [];
   @Input() selectedCols: any = [];
@@ -50,12 +50,9 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
       return val.includes(col);
     });
   }
-
   @ViewChild('dt') dataTable!: Table;
-
   @ContentChild('expandedRow', { static: false })
   public expandedRow!: TemplateRef<any>;
-
   @Output() onEditClick: EventEmitter<any> = new EventEmitter();
   @Output() onDetailClick: EventEmitter<any> = new EventEmitter();
   @Output() onCloneClick: EventEmitter<any> = new EventEmitter();
@@ -67,6 +64,9 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
   speedDialItems: any[] = [];
   selected: any;
   firstTime: any = true;
+  currentWidth: number = window.innerWidth;
+  showshowCurrentPageReport: boolean = true;
+  currentPageReportTemplate: string = '{first} to {last}';
   initSpeedDialItems: MenuItem[] = [
     {
       id: 'csv',
@@ -143,7 +143,6 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
       detail: false,
     },
   };
-
   constructor(
     private undoDialogService: UndoDeleteDialogService,
     public ref: DynamicDialogRef,
@@ -171,8 +170,17 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
         });
     }
   }
-
   ngOnChanges(changes: SimpleChanges): void {
+    this.currentWidth = window.innerWidth;
+
+    window.innerWidth < 600
+      ? (this.showshowCurrentPageReport = false)
+      : (this.showshowCurrentPageReport = true);
+    window.innerWidth > 960
+      ? (this.currentPageReportTemplate =
+          ' Showing {first} to {last} of {totalRecords} entries')
+      : (this.currentPageReportTemplate = '{first} to {last}');
+
     if (changes?.['cols'] || changes?.['captionConfig']) {
       this.changes = changes;
     }
@@ -181,7 +189,6 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
   ngDoCheck() {
     if (this.changes) {
       this.columns = [...this.cols];
-
       this.columns = [...this._selectedColumns] = this.columns.map(
         (col: any) => {
           let val = { ...col };
@@ -196,7 +203,6 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
           return val;
         }
       );
-
       if (this.changes.captionConfig) {
         const mergeCaptionConfigs = (
           newCaptionConfig: any,
@@ -218,10 +224,8 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
               }
             }
           });
-
           return initConfig;
         };
-
         this.captionConfig = mergeCaptionConfigs(
           this.captionConfig,
           this.helpers.newObject(this.initialCaptionConfig)
@@ -229,17 +233,13 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
       } else if (!this.captionConfig) {
         this.captionConfig = this.initialCaptionConfig;
       }
-
       this.speedDialItems = this.initSpeedDialItems.filter((item: any) => {
         // @ts-ignore
         return this.captionConfig[item.id];
       });
-
       this.globalFilterFields = this.cols.map((col) => col.field);
-
       this.changes = null;
     }
-
     if (this.dataTable && this.dataTable._columns) {
       this.selectedCols.splice(
         0,
@@ -248,33 +248,26 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
       );
     }
   }
-
   showColumnDtaills(index: number) {
     this.showColumn == 'up'
       ? (this.showColumn = 'down')
       : (this.showColumn = 'up');
   }
-
   onAdd() {
     this.onAddClick.emit();
   }
-
   onEdit(index: number) {
     this.onEditClick.emit(this.data[index]);
   }
-
   onDetail(index: number) {
     this.onDetailClick.emit(this.data[index]);
   }
-
   onClone(index: number) {
     this.onCloneClick.emit(this.data[index]);
   }
-
   test(event: any) {
     this._selectedColumns = event.value;
   }
-
   ngOnInit(): void {
     this.demiRows = Math.floor(this.rows / 2);
     this.columns = [];
@@ -285,19 +278,16 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
     this.columns.map((col: any) => {
       this._selectedColumns.push({ ...col });
     });
-
     this.exportColumns = this.columns?.map((col: any) => ({
       title: col.header,
       dataKey: col.field,
     }));
   }
-
   exportPdf() {
     const doc = new jsPDF();
     //@ts-ignore
     doc.autoTable(this.exportColumns, this.data);
     doc.save('table.pdf');
-
     // jsPDF.then((jsPDF:any) => {
     //   import("jspdf-autotable").then(x => {
     //     const doc = new jsPDF.default(0, 0);
@@ -306,7 +296,6 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
     //   })
     // })
   }
-
   exportExcel() {
     import('xlsx').then((xlsx) => {
       const worksheet = xlsx.utils.json_to_sheet(this.data);
@@ -318,7 +307,6 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
       this.saveAsExcelFile(excelBuffer, 'data');
     });
   }
-
   saveAsExcelFile(buffer: any, fileName: string): void {
     let EXCEL_TYPE =
       'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
@@ -331,7 +319,6 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
       fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
     );
   }
-
   changeState() {
     this.onDelete.emit({
       id: this.selectedItems.length
@@ -341,7 +328,6 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
     });
     this.selectedItems = [];
   }
-
   showUndoDialog() {
     this.undoDialogService.showDialog((event) => {
       if (event.result == 'timeout') {
@@ -349,17 +335,13 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
       }
     }, 2);
   }
-
   clear(table: Table) {
     this._selectedColumns = this.columns;
-
     table.clear();
   }
-
   saveSelectedItems() {
     this.ref.close(this.selectedItems);
   }
-
   onRowExpand(itemSelected: any) {
     console.log('itemSelected.data', itemSelected.data);
     this.firstTime = false;
@@ -367,7 +349,12 @@ export class SDynamicTableComponent implements OnInit, OnChanges {
     console.log('🚀 ~ ~  this.selected', this.selected);
   }
 
-
-
-
+  maxwidth(val: number) {
+    if (this.currentWidth < val) return true;
+    else return false;
+  }
+  minwidth(val: number) {
+    if (this.currentWidth > val) return true;
+    else return false;
+  }
 }
