@@ -8,9 +8,7 @@ responsiveLayout="stack"
   [value]="data"
   [rows]="rows"
   [paginator]="true"
-
   [showCurrentPageReport]="showshowCurrentPageReport"
-
   [rowsPerPageOptions]="[
     demiRows,
     rows,
@@ -41,9 +39,8 @@ responsiveLayout="stack"
   >
     <div class="row">
       <div class="col-11">
-        <s-card-contianer>
+        <s-container>
           <div class="topHeader d-flex position-relative">
-
             <button
               type="button"
               *ngIf="
@@ -111,10 +108,10 @@ responsiveLayout="stack"
             >
             </p-multiSelect>
           </div>
-        </s-card-contianer>
+        </s-container>
       </div>
       <div class="col-1" style=" margin: auto;">
-        <s-card-contianer>
+        <s-container>
           <div style="height: 48px ; margin: auto;" class="d-flex position-relative m-0 p-0">
             <div
               style="
@@ -137,7 +134,7 @@ responsiveLayout="stack"
               </p-speedDial>
             </div>
           </div>
-        </s-card-contianer>
+        </s-container>
       </div>
     </div>
   </ng-template>
@@ -242,7 +239,6 @@ responsiveLayout="stack"
       [class.isOpened]="this.selected == rowData._id"
       [class.isBlacked]="this.selected != rowData._id && !firstTime"
     >
-
 <!-- #region start col -->
       <td
         class="text-center s-td-checkbox"
@@ -251,9 +247,6 @@ responsiveLayout="stack"
           (captionConfig.selectionType === 'multiple' || captionConfig.expanded)
         "
       >
-
-
-
         <div
           style="display: flex; justify-content: center; align-items: center"
         >
@@ -268,8 +261,6 @@ responsiveLayout="stack"
       <td *ngFor="let col of columns"  class="text-center row-accessories">
          <span class="p-column-title">{{col?.header}}</span>
          <div class="s-next">
-
-
           <ng-container *ngIf="col.filterType == 'file'">
           <img
             [lazyLoad]="rowData[col.field]"
@@ -376,15 +367,12 @@ responsiveLayout="stack"
         </div>
       </td>
 <!-- #endregion -->
-
-
     </tr>
   </ng-template>
   <ng-template pTemplate="rowexpansion" let-rowData >
     <tr *ngIf="expandedRow"
     class="expandedRow-tr">
       <td
-
          class="expandedRow-td "
          [colSpan]="
               selectedColumns.length +
@@ -437,7 +425,6 @@ responsiveLayout="stack"
   <ng-template pTemplate="emptymessage">
     <tr>
       <td
-
         [colSpan]="
           selectedColumns.length +
           (columns.length
@@ -459,9 +446,7 @@ responsiveLayout="stack"
   </ng-template>
   <ng-template pTemplate="summary" *ngIf="captionConfig.summary?.enabled">
     <div class="flex align-items-center  footer-d  justify-content-between">
-
       {{
-
         $any(captionConfig).summary?.message?.replace(
           regex,
           data ? data.length : 0

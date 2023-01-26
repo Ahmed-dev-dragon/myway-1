@@ -10,6 +10,8 @@ import { MCardComponent } from './cards/m-card/m-card.component';
 import { TableContianerComponent } from './containers/table-contianer/table-contianer.component';
 import { STableCardComponent } from './cards/s-table-card/s-table-card.component';
 import { MapComponent } from './map/map.component';
+import { ScectionContainersComponent } from './containers/scection-container/scection-container.component';
+import { DommyFormComponent } from './form/dommy-form/dommy-form.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { MapComponent } from './map/map.component';
     TableContianerComponent,
     STableCardComponent,
     MapComponent,
+    ScectionContainersComponent,
+    DommyFormComponent,
   ],
   imports: [CommonModule],
   exports: [
@@ -37,6 +41,8 @@ import { MapComponent } from './map/map.component';
     TableContianerComponent,
     STableCardComponent,
     MapComponent,
+    ScectionContainersComponent,
+    DommyFormComponent,
   ],
 })
 export class LibModule {}

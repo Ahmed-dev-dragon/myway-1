@@ -7,13 +7,13 @@ import * as L from 'leaflet';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit, AfterViewInit {
-  @Input() lat: number;
-  @Input() lon: number;
-  @Input() zoom: number;
-  @Input() width: string
-  @Input() height: string
-  private mapEl: HTMLElement;
-  private map: L.Map;
+  @Input() lat!: number;
+  @Input() lon!: number;
+  @Input() zoom!: number;
+  @Input() width!: string
+  @Input() height!: string
+  private mapEl!: HTMLElement;
+  private map!: L.Map;
   private icon = new L.Icon({
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon.png',
     iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon-2x.png',
@@ -43,7 +43,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
     var lat: number = 24.2
 
-    this.map.addLayer(L.polyline([[lat, -15],[lat, -11.2],[lat-1.6, -11.2],[lat-1.6, -15],[lat, -15]], {color: 'red',fill: true,fillOpacity: true}).addTo(this.map));
+    this.map.addLayer(L.polyline([[lat, -15],[lat, -11.2],[lat-1.6, -11.2],[lat-1.6, -15],[lat, -15]], {color: 'red',fill: true,fillOpacity: 1}).addTo(this.map));
 
     var latlngs: [number, number][] = [
       [22.7, -13.95],
@@ -63,24 +63,23 @@ export class MapComponent implements OnInit, AfterViewInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(this.map);
     const descriptionWikipedia = `here the location`;
-    const popupOptions = {
+    const popupOptions:any = {
       coords: parcThabor,
       text: descriptionWikipedia,
       open: true
     };
     this.addMarker(popupOptions);
   }
-  private addMarker({ coords, text, open }) {
-  
-    const marker = L.marker([coords.lat, coords.lng], { icon: this.icon });
-    if (open) {
-      marker.addTo(this.map)
+  private addMarker(popupOptions:any) {
+    const marker = L.marker([popupOptions.coords.lat, popupOptions.coords.lng], {
+      icon: this.icon,
+    });
+    if (popupOptions.open) {
+      marker.addTo(this.map);
       // marker.addTo(this.map).bindPopup(text).openPopup();
-
     } else {
-      marker.addTo(this.map)
+      marker.addTo(this.map);
       // marker.addTo(this.map).bindPopup(text);
-
     }
   }
   private setSize(): void {
