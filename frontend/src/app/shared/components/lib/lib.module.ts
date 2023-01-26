@@ -8,7 +8,8 @@ import { SCardContentComponent } from './cards/s-card-content/s-card-content.com
 import { GridContianerComponent } from './containers/grid-contianer.component';
 import { MCardComponent } from './cards/m-card/m-card.component';
 import { TableContianerComponent } from './containers/table-contianer/table-contianer.component';
-import { STableCardComponent } from './table-cards/s-table-card/s-table-card.component';
+import { STableCardComponent } from './cards/s-table-card/s-table-card.component';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -22,10 +23,10 @@ import { STableCardComponent } from './table-cards/s-table-card/s-table-card.com
     MCardComponent,
     TableContianerComponent,
     STableCardComponent,
+    MapComponent,
   ],
   imports: [CommonModule],
   exports: [
-
     AccordionComponent,
     ConfigeUiComponent,
     SCardSIfnoComponent,
@@ -35,7 +36,7 @@ import { STableCardComponent } from './table-cards/s-table-card/s-table-card.com
     MCardComponent,
     TableContianerComponent,
     STableCardComponent,
-
+    MapComponent,
   ],
 })
 export class LibModule {}

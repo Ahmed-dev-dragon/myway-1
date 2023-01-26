@@ -8,8 +8,9 @@ responsiveLayout="stack"
   [value]="data"
   [rows]="rows"
   [paginator]="true"
+
   [showCurrentPageReport]="showshowCurrentPageReport"
-  currentPageReportTemplate="currentPageReportTemplate"
+
   [rowsPerPageOptions]="[
     demiRows,
     rows,
@@ -22,13 +23,13 @@ responsiveLayout="stack"
   [resizableColumns]="true"
   class="table table-striped"
   columnResizeMode="fit"
-  [styleClass]="grid ? 'p-datatable-gridlines' : ''"
+  [styleClass]="grid ? 'p-datatable-gridlines s-paginator' : 's-paginator'"
   [reorderableColumns]="true"
   [(selection)]="selectedItems"
   [selectionMode]="captionConfig.selectionType == 'single' ? 'single' : ''"
   [globalFilterFields]="globalFilterFields"
 >
-  <!-- <ng-template pTemplate="caption"
+  <ng-template pTemplate="caption"
     *ngIf="
       captionConfig.addButton ||
       captionConfig.actions?.delete ||
@@ -139,7 +140,7 @@ responsiveLayout="stack"
         </s-card-contianer>
       </div>
     </div>
-  </ng-template> -->
+  </ng-template>
   <ng-template pTemplate="header" let-columns>
     <tr class="s-tr-header s-header-bg">
       <th

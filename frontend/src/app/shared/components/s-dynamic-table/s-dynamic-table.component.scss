@@ -208,10 +208,40 @@ margin-bottom:  200px !important;
 }
 
 
+@media screen and (max-width: 238px) {
+  :host ::ng-deep .s-paginator {
+.p-paginator-prev{
+    display: none !important;
 
+}
+.p-paginator-next{
+     display: none !important;
+} }
+}
 
+@media screen and (max-width: 491px) {
+  :host ::ng-deep .s-paginator {
+
+    .p-paginator-rpp-options {
+      display: none !important;
+    }
+
+    .p-paginator-page-options {
+      display: none !important;
+    }
+  }
+}
 @media screen and (max-width: 421px) {
+:host ::ng-deep .s-paginator {
 
+.p-paginator-rpp-options	{
+ display: none !important;
+}
+.p-paginator-page-options{
+display: none !important;
+}
+
+  }
 .s-btn-action{
   width: 6.2vw!important;
   height: 6.2vw !important;
@@ -246,6 +276,15 @@ margin-bottom:  200px !important;
     border: none;
   }
 
+
+
+
+
+
+
+
+
+
   .row-accessories {
     overflow: auto;
 
@@ -274,22 +313,82 @@ margin-bottom:  200px !important;
   }
 
 
+ :host ::ng-deep .s-paginator{
 
-
-
-.expandedRow-td{
-
-
-}
-
+.p-paginator{
+ background-color: rgb(236, 236, 236) !important;
+ max-width: 100% !important;
+ overflow: hidden;
 
 }
 
 
 
 
+.p-paginator-prev{
 
 
+}
+.p-paginator-pages{
+
+    background-color: rgba(197, 26, 26, 0) !important;
+
+}
+.p-paginator-page{
+
+    background-color: rgba(197, 26, 26, 0) !important;
+
+}
+.p-paginator-next{
+
+
+
+}
+.p-paginator-last{
+
+
+
+}
+.p-paginator-rpp-options{
+display: none;
+}
+.p-paginator-page-options{
+display: none;
+}
+
+}
+
+
+
+
+
+}
+
+
+
+@media screen and (max-width: 395px) {
+:host ::ng-deep .s-paginator {
+      .p-paginator-first{
+      display: none !important;
+      }
+
+    .p-paginator-last {
+        display: none !important;}
+    }
+}
+
+@media screen and (max-width: 290px) {
+  :host ::ng-deep .s-paginator {
+
+.p-paginator-pages {
+display: none !important;
+
+  }
+  .p-paginator-page {
+ display: none !important;
+  }
+  }
+}
 
 
 
