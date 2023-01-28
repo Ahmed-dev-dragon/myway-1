@@ -27,7 +27,7 @@ responsiveLayout="stack"
   [selectionMode]="captionConfig.selectionType == 'single' ? 'single' : ''"
   [globalFilterFields]="globalFilterFields"
 >
-  <ng-template pTemplate="caption"
+  <!-- <ng-template pTemplate="caption"
     *ngIf="
       captionConfig.addButton ||
       captionConfig.actions?.delete ||
@@ -137,7 +137,7 @@ responsiveLayout="stack"
         </s-container>
       </div>
     </div>
-  </ng-template>
+  </ng-template> -->
   <ng-template pTemplate="header" let-columns>
     <tr class="s-tr-header s-header-bg">
       <th

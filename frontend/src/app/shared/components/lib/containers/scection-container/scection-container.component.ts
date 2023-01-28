@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tow-scection-containers',
@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./scection-container.component.scss'],
 })
 export class ScectionContainersComponent {
+  @Input() col: number[] = [];
+
   constructor() {}
   ngOnInit(): void {}
 }

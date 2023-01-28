@@ -31,7 +31,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { RatingModule } from 'primeng/rating';
-import { CalendarModule } from 'primeng/calendar';
+import { CalendarModule  } from 'primeng/calendar';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ChipsModule } from 'primeng/chips';
 import { AutoCompleteModule } from 'primeng/autocomplete';
@@ -71,6 +71,7 @@ import { TemplatesModule } from './components/templates/templates.module';
 import { LibModule } from './components/lib/lib.module';
 import { TestComponent } from './test/test.component';
 import { SDynamicTableComponent } from './components/s-dynamic-table/s-dynamic-table.component';
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 
 @NgModule({
@@ -95,6 +96,8 @@ import { SDynamicTableComponent } from './components/s-dynamic-table/s-dynamic-t
     SDynamicTableComponent,
   ],
   imports: [
+    FlatpickrModule.forRoot(),
+
     TemplatesModule,
     LibModule,
     CommonModule,
@@ -149,6 +152,7 @@ import { SDynamicTableComponent } from './components/s-dynamic-table/s-dynamic-t
     NgApexchartsModule,
     TieredMenuModule,
     SplitterModule,
+
   ],
   exports: [
     SidebarComponent,

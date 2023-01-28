@@ -12,7 +12,15 @@ import { STableCardComponent } from './cards/s-table-card/s-table-card.component
 import { MapComponent } from './map/map.component';
 import { ScectionContainersComponent } from './containers/scection-container/scection-container.component';
 import { DommyFormComponent } from './form/dommy-form/dommy-form.component';
-
+import { CalendarComponent } from './calendar/calendar.component';
+import { FormsModule } from '@angular/forms';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  DateAdapter,
+  CalendarModule as angularCalenders,
+} from 'angular-calendar';
 
 @NgModule({
   declarations: [
@@ -28,8 +36,17 @@ import { DommyFormComponent } from './form/dommy-form/dommy-form.component';
     MapComponent,
     ScectionContainersComponent,
     DommyFormComponent,
+    CalendarComponent,
   ],
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    NgbModalModule,
+    angularCalenders.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+  ],
   exports: [
     AccordionComponent,
     ConfigeUiComponent,
@@ -43,6 +60,17 @@ import { DommyFormComponent } from './form/dommy-form/dommy-form.component';
     MapComponent,
     ScectionContainersComponent,
     DommyFormComponent,
+    CalendarComponent,
+    angularCalenders
   ],
 })
 export class LibModule {}
+
+
+
+
+
+
+
+
+

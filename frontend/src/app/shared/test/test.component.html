@@ -1,4 +1,4 @@
-<!-- <s-container>
+<s-container>
   <s-dynamic-table
     [data]="dummyDate"
     [cols]="cols"
@@ -19,27 +19,36 @@
 
   </ng-template>
   </s-dynamic-table>
-</s-container> -->
+</s-container>
 
 
 
 
 
 
-
-<app-tow-scection-containers>
-            <app-map  right [lat]="32.90351434392532" [lon]="-117.2767614912517" [height]="'60vh'" [width]="''" [zoom]="16">
-            </app-map>
-            <div left >
-            </div>
-    </app-tow-scection-containers>
+<!-- <app-tow-scection-containers [col]="[4,4]">
+    <div class="div" one ></div>
+    <div class="div" tow ></div>
+</app-tow-scection-containers> -->
 
 
 
 
- <!-- <div class="mb-5"></div>
+<!-- <app-tow-scection-containers>
+    <app-map
+      left
+      [lat]="32.90351434392532"
+      [lon]="-117.2767614912517"
+      [height]="'100%'"
+      [width]="''"
+      [zoom]="16"
+      >
+      </app-map>
+      <app-dommy-form right></app-dommy-form>
+</app-tow-scection-containers> -->
 
-<app-dynamic-table
+<!-- div class="mb-5"></div> -->
+<!-- <app-dynamic-table
   [data]="dummyDate"
   [cols]="cols"
   [captionConfig]="captionConfig"
@@ -49,8 +58,6 @@
   (onAddClick)="onAddClick($event)"
   (onDelete)="onDelete($event)"
 >
-  <ng-template #expandedRow let-dattt>
 
+</app-dynamic-table>  -->
 
-  </ng-template>
-</app-dynamic-table> -->

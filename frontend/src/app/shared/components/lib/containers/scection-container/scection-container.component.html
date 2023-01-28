@@ -1,27 +1,70 @@
 
+
+
 <div class="m-5"></div>
 <s-container>
   <div class="body">
     <main class="s-c-main">
-      <!-- <section class="s-c-header">
-      <h1>customer's Orders</h1>
-    </section> -->
+      <section class="s-c-header">
+          <ng-content select="[header]"></ng-content>
+      </section>
       <section class="s-c-body">
-        <div class="row ">
-          <div class="col-md-6">
-            <ng-content #left></ng-content>
-
+        <div class=" row s-c-in-header">
+            <ng-content select="[inerHeader]"></ng-content>
+        </div>
+        <div class="row s-c-in-body">
+          <ng-container *ngIf="col.length == 1">
+              <div class="col-md-12">
+                <ng-content select=""></ng-content>
+              </div>
+          </ng-container>
+         <ng-container *ngIf="col.length == 2">
+            <ng-container *ngFor="let o of col">
+              <div class="col-md-{{o}}">
+                <ng-content select="[one]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                  <ng-content select="[tow]"></ng-content>
+              </div>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="col.length == 3">
+            <ng-container *ngFor="let o of col">
+              <div class="col-md-{{o}}">
+                <ng-content select="[one]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                <ng-content select="[tow]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                  <ng-content select="[three]"></ng-content>
+              </div>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="col.length == 4">
+            <ng-container *ngFor="let o of col">
+              <div class="col-md-{{o}}">
+                <ng-content select="[one]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                <ng-content select="[tow]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                <ng-content select="[three]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                <ng-content select="[four]"></ng-content>
+              </div>
+            </ng-container>
+          </ng-container>
           </div>
-          <div class="col-md-6">
-            <div class="div">
-              <ng-content #right></ng-content>
-            </div>
-          </div>
+        <div class="row s-c-in-footer">
+           <ng-content select="[inerFooter]"></ng-content>
         </div>
       </section>
-      <!-- <section class="s-c-footer">
-      <h6>footer</h6>
-    </section> -->
+      <section class="s-c-footer">
+         <ng-content select="[footer]"></ng-content>
+      </section>
     </main>
   </div>
 </s-container>
