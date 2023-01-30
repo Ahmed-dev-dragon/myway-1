@@ -45,7 +45,7 @@ const colors = {
 };
 
 @Component({
-  selector: 'mwl-demo-component',
+  selector: 's-calendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['calendar.component.scss'],
   templateUrl: 'calendar.component.html',

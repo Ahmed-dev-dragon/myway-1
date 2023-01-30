@@ -9,7 +9,7 @@
     width: 100%;
     margin-inline: auto;
 
-    .infos-container {
+    .infocontainer {
       width: 100%;
 
       > div {
@@ -88,7 +88,7 @@
         width: 100% !important;
         margin-bottom: 2rem;
 
-        & + .infos-container {
+        &+.infocontainer {
           padding-inline-start: 0;
         }
 
@@ -98,7 +98,7 @@
       }
     }
 
-    .infos-container {
+        .infocontainer {
       flex: 1 1 auto;
       padding-inline-start: 1rem;
       padding-bottom: 0.5rem;
@@ -143,7 +143,7 @@
       margin-bottom: 2rem;
     }
 
-    .infos-container > div > span {
+        .infocontainer>div>span {
       max-width: 400px;
     }
 

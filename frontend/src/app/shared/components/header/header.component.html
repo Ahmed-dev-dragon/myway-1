@@ -1,5 +1,6 @@
 <header class="header" [ngClass]="showSidebar ? 'open-sidebar' : ''">
   <div>
+
     <a
       class="sidebar-toggler left-sidebar-toggler nav-toggler"
       #st
@@ -30,6 +31,13 @@
     [ngClass]="showUserMenu && mobileSize ? 'open' : ''"
   >
     <ul class="navbar-nav">
+          <li class="nav-item fullscreen-icon-container">
+            <i class="fullscreen-icon bi">
+              <p-inputSwitch name="groupname" [trueValue]="true" [falseValue]="false"
+                (onChange)="darkModeFunction($event)"></p-inputSwitch>
+            </i>
+          </li>
+
       <li class="nav-item fullscreen-icon-container">
         <i
           class="fullscreen-icon bi"
@@ -41,6 +49,7 @@
           "
         ></i>
       </li>
+
       <!-- class="nav-item lang-container"
       #lang
       (click)="lang.classList.toggle('open')" -->
@@ -65,7 +74,7 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item notifications-container">
+      <li class="nav-item notificationcontainer">
         <i
           class="bi bi-bell"
           #bell

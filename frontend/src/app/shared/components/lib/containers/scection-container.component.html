@@ -1,0 +1,149 @@
+<div class="m-5"></div>
+<container>
+  <div class="body">
+    <main class="s-c-main">
+      <section class="s-c-header">
+          <ng-content select="[header]"></ng-content>
+      </section>
+      <section class="s-c-body">
+        <div class=" row s-c-in-header">
+            <ng-content select="[inerHeader]"></ng-content>
+        </div>
+        <div class="row s-c-in-body">
+          <ng-container *ngIf="col.length == 0">
+            <div class="col-md-12">
+              <ng-content></ng-content>
+              </div>
+          </ng-container>
+                <ng-container *ngIf="col.length == 1">
+                  <div class="col-md-{{col[0]}}">
+                    <ng-content select="one"></ng-content>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="col.length ==  2">
+            <ng-container *ngFor="let o of col">
+              <div class="col-md-{{o}}">
+                <ng-content select="[one]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                  <ng-content select="[tow]"></ng-content>
+              </div>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="col.length == 3">
+            <ng-container *ngFor="let o of col">
+              <div class="col-md-{{o}}">
+                <ng-content select="[one]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                <ng-content select="[tow]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                  <ng-content select="[three]"></ng-content>
+              </div>
+            </ng-container>
+          </ng-container>
+          <ng-container *ngIf="col.length == 4">
+            <ng-container *ngFor="let o of col">
+              <div class="col-md-{{o}}">
+                <ng-content select="[one]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                <ng-content select="[tow]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                <ng-content select="[three]"></ng-content>
+              </div>
+              <div class="col-md-{{o}}">
+                <ng-content select="[four]"></ng-content>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div class="row s-c-in-footer">
+           <ng-content select="[inerFooter]"></ng-content>
+        </div>
+      </section>
+      <section class="s-c-footer">
+         <ng-content select="[footer]"></ng-content>
+      </section>
+    </main>
+  </div>
+</container>
+<div class="m-5"></div>
+<div class="m-5"></div>
+<container>
+  <div class="body">
+    <main class="s-c-main">
+      <section class="s-c-header">
+        <ng-content select="[header]"></ng-content>
+         </section>
+          <section class="s-c-body">
+            <div class=" row s-c-in-header">
+              <ng-content select="[inerHeader]"></ng-content>
+            </div>
+                <div class="row s-c-in-body">
+                  <ng-container *ngIf="col.length == 0">
+                    <div class="col-md-12">
+                      <ng-content select=""></ng-content>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="col.length == 1">
+                    <div class="col-md-{{col[0]}}">
+                      <ng-content select="one"></ng-content>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="col.length == 2">
+                    <p-splitter [ngStyle]="{'width': '100%'}">
+                      <ng-template pTemplate styleClass="col-md-{{col[0]}}">
+                        <ng-content select="[one]"></ng-content>
+                      </ng-template>
+
+                      <ng-template pTemplate styleClass="col-md-{{col[1]}}">
+                      <div class="div">
+                         <ng-content select="[tow]"></ng-content>
+                      </div>
+                      </ng-template>
+                    </p-splitter>
+                  </ng-container>
+                  <ng-container *ngIf="col.length == 3">
+                    <p-splitter [ngStyle]="{'width': '100%'}">
+                      <ng-template pTemplate styleClass="col-md-{{col[0]}}">
+                        <ng-content select="[one]"></ng-content>
+                      </ng-template>
+                      <ng-template pTemplate styleClass="col-md-{{col[1]}}">
+                        <ng-content select="[tow]"></ng-content>
+                      </ng-template>
+                      <ng-template pTemplate styleClass="col-md-{{col[2]}}">
+                        <ng-content select="[three]"></ng-content>
+                      </ng-template>
+                    </p-splitter>
+                  </ng-container>
+                  <ng-container *ngIf="col.length == 4">
+                    <p-splitter [ngStyle]="{'width': '100%'}">
+                      <ng-template pTemplate styleClass="col-md-{{col[0]}}">
+                        <ng-content select="[one]"></ng-content>
+                      </ng-template>
+                      <ng-template pTemplate styleClass="col-md-{{col[1]}}">
+                        <ng-content select="[tow]"></ng-content>
+                      </ng-template>
+                      <ng-template pTemplate styleClass="col-md-{{col[2]}}">
+                        <ng-content select="[three]"></ng-content>
+                      </ng-template>
+                      <ng-template pTemplate styleClass="col-md-{{col[3]}}">
+                        <ng-content select="[four]"></ng-content>
+                      </ng-template>
+                    </p-splitter>
+                  </ng-container>
+                </div>
+            <div class="row s-c-in-footer">
+              <ng-content select="[inerFooter]"></ng-content>
+            </div>
+          </section>
+      <section class="s-c-footer">
+        <ng-content select="[footer]"></ng-content>
+      </section>
+    </main>
+  </div>
+</container>
+<div class="m-5"></div>

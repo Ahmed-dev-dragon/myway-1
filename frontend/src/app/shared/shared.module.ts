@@ -97,7 +97,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
   ],
   imports: [
     FlatpickrModule.forRoot(),
-
+  
     TemplatesModule,
     LibModule,
     CommonModule,
@@ -151,8 +151,6 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     NgbModule,
     NgApexchartsModule,
     TieredMenuModule,
-    SplitterModule,
-
   ],
   exports: [
     SidebarComponent,
@@ -215,7 +213,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     NgbModule,
     NgApexchartsModule,
     TieredMenuModule,
-    SplitterModule,
+
     GenericPipe,
     DynamicTableCellColorPipe,
     DynamicTableCellColorPipeStyle,

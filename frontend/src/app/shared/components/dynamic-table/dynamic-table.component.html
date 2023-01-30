@@ -282,7 +282,7 @@
           />
         </ng-container>
         <ng-container *ngIf="col.filterType == 'chips'">
-          <div class="dynamic-table-chips-container">
+          <div class="dynamic-table-chipcontainer">
             <span
               *ngFor="let item of rowData | readDataTable : col.field"
               [class]="item | dynamicTableCellColor : col.colorize"

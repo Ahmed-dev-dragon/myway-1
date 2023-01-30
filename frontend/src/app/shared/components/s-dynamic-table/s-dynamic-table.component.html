@@ -39,7 +39,7 @@ responsiveLayout="stack"
   >
     <div class="row">
       <div class="col-11">
-        <s-container>
+        <container>
           <div class="topHeader d-flex position-relative">
             <button
               type="button"
@@ -108,10 +108,10 @@ responsiveLayout="stack"
             >
             </p-multiSelect>
           </div>
-        </s-container>
+        </container>
       </div>
       <div class="col-1" style=" margin: auto;">
-        <s-container>
+        <container>
           <div style="height: 48px ; margin: auto;" class="d-flex position-relative m-0 p-0">
             <div
               style="
@@ -134,7 +134,7 @@ responsiveLayout="stack"
               </p-speedDial>
             </div>
           </div>
-        </s-container>
+        </container>
       </div>
     </div>
   </ng-template> -->
@@ -268,7 +268,7 @@ responsiveLayout="stack"
           />
         </ng-container>
         <ng-container *ngIf="col.filterType == 'chips'">
-          <div class="dynamic-table-chips-container">
+          <div class="dynamic-table-chipcontainer">
             <span
               *ngFor="let item of rowData | readDataTable : col.field"
               [class]="item | dynamicTableCellColor : col.colorize"

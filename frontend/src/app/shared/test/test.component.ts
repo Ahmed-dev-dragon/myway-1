@@ -1,5 +1,5 @@
 import { List, ListCaptionConfig } from './../models/List.model';
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { ListHeader } from '../models/List.model';
 import { filter } from 'rxjs';
 import { Action } from 'rxjs/internal/scheduler/Action';
@@ -10,7 +10,8 @@ import { SCardSInfoInterface } from '../components/lib/cards/s-card-s-ifno/s-car
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss'],
 })
-export class TestComponent {
+export class TestComponent implements DoCheck {
+  darkMode: boolean = false;
   cols: ListHeader[] = [
     {
       field: 'first_name',
@@ -375,10 +376,91 @@ export class TestComponent {
       saved: true,
       CnUnit: '$',
     },
+    {
+      title: 'new orefers ',
+      sideIcon: 'bi bi-bookmark',
+      CN: 84,
+      changeCN: 48.02,
+      changeCnUnit: '%',
+      changeCnIcon: 'bi bi-activity',
+      changeCnTime: 'Since last Mounth',
+      saved: true,
+      CnUnit: '$',
+    },
+    {
+      title: 'new orefers ',
+      sideIcon: 'bi bi-bookmark',
+      CN: 84,
+      changeCN: 48.02,
+      changeCnUnit: '%',
+      changeCnIcon: 'bi bi-activity',
+      changeCnTime: 'Since last Mounth',
+      saved: true,
+      CnUnit: '$',
+    },
+    {
+      title: 'new orefers ',
+      sideIcon: 'bi bi-bookmark',
+      CN: 84,
+      changeCN: 48.02,
+      changeCnUnit: '%',
+      changeCnIcon: 'bi bi-activity',
+      changeCnTime: 'Since last Mounth',
+      saved: true,
+      CnUnit: '$',
+    },
+    {
+      title: 'new orefers ',
+      sideIcon: 'bi bi-bookmark',
+      CN: 84,
+      changeCN: 48.02,
+      changeCnUnit: '%',
+      changeCnIcon: 'bi bi-activity',
+      changeCnTime: 'Since last Mounth',
+      saved: true,
+      CnUnit: '$',
+    },
+    {
+      title: 'new orefers ',
+      sideIcon: 'bi bi-bookmark',
+      CN: 84,
+      changeCN: 48.02,
+      changeCnUnit: '%',
+      changeCnIcon: 'bi bi-activity',
+      changeCnTime: 'Since last Mounth',
+      saved: true,
+      CnUnit: '$',
+    },
+    {
+      title: 'new orefers ',
+      sideIcon: 'bi bi-bookmark',
+      CN: 84,
+      changeCN: 48.02,
+      changeCnUnit: '%',
+      changeCnIcon: 'bi bi-activity',
+      changeCnTime: 'Since last Mounth',
+      saved: true,
+      CnUnit: '$',
+    },
+    {
+      title: 'new orefers ',
+      sideIcon: 'bi bi-bookmark',
+      CN: 84,
+      changeCN: 48.02,
+      changeCnUnit: '%',
+      changeCnIcon: 'bi bi-activity',
+      changeCnTime: 'Since last Mounth',
+      saved: true,
+      CnUnit: '$',
+    },
   ];
   onEditClick(i: any) {}
   onDetailClick(i: any) {}
   onCloneClick(i: any) {}
   onAddClick(i: any) {}
   onDelete(i: any) {}
+  ngDoCheck(): void {
+    this.darkMode = JSON.parse(sessionStorage.getItem('darkMode') || 'false');
+    console.log(this.darkMode);
+  }
 }

@@ -1,54 +1,100 @@
-<s-container>
-  <s-dynamic-table
-    [data]="dummyDate"
-    [cols]="cols"
-    [captionConfig]="captionConfig"
-    (onEditClick)="onEditClick($event)"
-    (onDetailClick)="onDetailClick($event)"
-    (onCloneClick)="onCloneClick($event)"
-    (onAddClick)="onAddClick($event)"
-    (onDelete)="onDelete($event)"
+
+
+
+<div class="mb-5"></div>
+  <app-time-line></app-time-line>
+<div class="mb-5"></div>
+
+
+
+
+
+<div class="mb-5"></div>
+<container>
+  <h1>maps modeles</h1>
+  <app-tow-scection-containers
+  [col]="[6,6]"
   >
-  <ng-template #expandedRow let-i>
-
-  <s-table-contianer>
-  <s-table-card [data]="i"></s-table-card>
-  </s-table-contianer>
-
-
-
-  </ng-template>
-  </s-dynamic-table>
-</s-container>
+    <app-map one [lat]="32.90351434392532" [lon]="-117.2767614912517" [height]="'100%'" [width]="''" [zoom]="16">
+    </app-map>
+    <app-dommy-form tow>
+    </app-dommy-form>
+  </app-tow-scection-containers>
+</container>
+<div class="mb-5"></div>
 
 
 
 
 
 
-<!-- <app-tow-scection-containers [col]="[4,4]">
-    <div class="div" one ></div>
-    <div class="div" tow ></div>
-</app-tow-scection-containers> -->
 
 
 
 
-<!-- <app-tow-scection-containers>
-    <app-map
-      left
-      [lat]="32.90351434392532"
-      [lon]="-117.2767614912517"
-      [height]="'100%'"
-      [width]="''"
-      [zoom]="16"
-      >
-      </app-map>
-      <app-dommy-form right></app-dommy-form>
-</app-tow-scection-containers> -->
 
-<!-- div class="mb-5"></div> -->
-<!-- <app-dynamic-table
+
+
+
+
+
+<div class="mb-5"></div>
+<container>
+  <h1>containers modeles</h1>
+  <app-tow-scection-containers [col]="[]">
+    <p>container</p>
+  </app-tow-scection-containers>
+   <p>s-d-container</p>
+
+   <card-container
+        [inerShadow]="true"
+        [shadow]="true"
+        [padding]="true"
+        [margin]="true"
+        [border]="true"
+        [hover]="true"
+        [darckMode]="darkMode"
+        [borderRadius]="'20px'"
+        [style]=""
+   >
+    <h1>init </h1>
+   </card-container>
+
+</container>
+<div class="mb-5"></div>
+
+<container>
+    <s-card [data]="passedDate"></s-card>
+</container>
+<container>
+  <h1>cards modeles</h1>
+  <s-table-card [data]=""  [col]=""></s-table-card>
+<div class="m-5 "></div>
+  <app-m-card></app-m-card>
+  <div class="m-5 "></div>
+  <container>
+  <s-card [data]="passedDate" ></s-card>
+  </container>
+</container>
+
+<div class="mb-5"></div>
+<container>
+  <h1>calendas modeles</h1>
+  <app-tow-scection-containers >
+      <s-calendar>
+      </s-calendar>
+  </app-tow-scection-containers>
+</container>
+<div class="mb-5"></div>
+
+
+
+
+
+<div class="mb-5"></div>
+<container>
+  <h1>tables modeles </h1>
+ <app-dynamic-table
   [data]="dummyDate"
   [cols]="cols"
   [captionConfig]="captionConfig"
@@ -58,6 +104,19 @@
   (onAddClick)="onAddClick($event)"
   (onDelete)="onDelete($event)"
 >
+</app-dynamic-table>
+<div class="mb-5"></div>
+<container>
+  <s-dynamic-table [data]="dummyDate" [cols]="cols" [captionConfig]="captionConfig" (onEditClick)="onEditClick($event)"
+    (onDetailClick)="onDetailClick($event)" (onCloneClick)="onCloneClick($event)" (onAddClick)="onAddClick($event)"
+    (onDelete)="onDelete($event)">
+    <ng-template #expandedRow let-i>
 
-</app-dynamic-table>  -->
-
+      <s-table-contianer>
+        <s-table-card [data]="i"></s-table-card>
+      </s-table-contianer>
+    </ng-template>
+  </s-dynamic-table>
+</container>
+</container>
+<div class="mb-5"></div>

@@ -1,0 +1,93 @@
+<card-container
+  [inerShadow]="false"
+  [shadow]="false"
+  [padding]="true"
+  [margin]="false"
+  [border]="false"
+  [hover]="true"
+  [darckMode]="false"
+  [borderRadius]="'20px'"
+  [style]="false"
+  [bg]="'#ffff'"
+>
+
+
+
+
+<div class="body">
+  <button class="s-button " id="toggleButton" (click)="toggleComplete()">Toggle</button>
+
+  <ul  class="timeline" id="timeline">
+  <ng-container *ngFor="let item of stipes ; let i = index" >
+    <li [ngClass]="item ?  'complete' :''" class="li">
+      <div class="timestamp">
+        <span class="author">{{item.title}}</span>
+        <span class="date"> {{item.sutitle}}</span>
+      </div>
+      <div class="status ">
+        <h4 class="mt-5"> {{item.title}} </h4>
+      </div>
+    </li>
+  </ng-container>
+
+  </ul>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</card-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

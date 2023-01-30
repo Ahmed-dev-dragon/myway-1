@@ -34,7 +34,10 @@ export class HeaderComponent implements OnInit {
   ];
 
   constructor(private authService: AuthService, private router: Router) {}
+  darkModeFunction({checked}:any){
 
+     sessionStorage['darkMode'] = checked
+  }
   toggleSidebar() {
     this.showSidebar = !this.showSidebar;
     this.showSidebarChange.emit(this.showSidebar);

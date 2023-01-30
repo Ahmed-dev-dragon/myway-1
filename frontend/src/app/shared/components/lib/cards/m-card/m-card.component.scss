@@ -1,42 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
-
-*,
-button,
-input {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-
-  font-family: 'Roboto', sans-serif;
-}
 
 :root {
-  --bg-shape-color: linear-gradient(120deg, #343A4F, #0F1620);
+  --bg-shape-color: linear-gradient(120deg, #555555, #262626);
   --lightblue: #3D9DEA;
   --darkblue: #4A4EEE;
   --text-color: #D5E1EF;
 }
 
-html,
-body {
-  width: 100%;
-  min-height: 100vh;
-  background-image: linear-gradient(90deg, #414850, #131720);
-  color: var(--text-color);
-}
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 0px;
+.mxx{
+ justify-content: space-around;
 }
-
 .wrapper {
+
   width: 350px;
-  border-radius: 40px;
+  border-radius: 20px;
   background-image: var(--bg-shape-color);
+    background-color: #e0e0e0;
   overflow: hidden;
+
+}
+.wrapper-d {
+
+  width: 350px;
+  border-radius: 20px;
+  background-image: var(--bg-shape-color);
+  background-color: #262626;
+  overflow: hidden;
+  color: #b4b4b4 ;
 }
 
 .overviewInfo,
@@ -105,7 +95,7 @@ body {
 
   width: 321px;
   height: auto;
-  transform: rotate(-90deg) translate(-56px, 66px);
+  transform: rotate(0deg) translate(-0px, 66px);
 
   // animation: updowncontroller infinite 3s alternate;
   img {
@@ -113,12 +103,14 @@ body {
     height: auto
   }
 
-  transition: ease 2s all;
+  transition: ease 3s all;
 
   &:hover {
-    transition: ease 2s all;
+
+    transition: ease 3s all;
     animation: none;
-    transform: rotate(-70deg) translate(10px, 66px);
+    width: 400px;
+    transform: rotate(0deg) translate(0px, 66px);
   }
 }
 
@@ -155,7 +147,8 @@ h1 {
 .productSpecifications {
 
   h1 {
-    margin-top: 10px;
+
+    margin-top:100px;
     margin-bottom: 16px;
     font-size: 32px;
   }

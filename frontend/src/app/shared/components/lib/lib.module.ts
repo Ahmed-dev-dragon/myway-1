@@ -10,7 +10,7 @@ import { MCardComponent } from './cards/m-card/m-card.component';
 import { TableContianerComponent } from './containers/table-contianer/table-contianer.component';
 import { STableCardComponent } from './cards/s-table-card/s-table-card.component';
 import { MapComponent } from './map/map.component';
-import { ScectionContainersComponent } from './containers/scection-container/scection-container.component';
+import { ScectionContainersComponent } from './containers/scection-container.component';
 import { DommyFormComponent } from './form/dommy-form/dommy-form.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +21,11 @@ import {
   DateAdapter,
   CalendarModule as angularCalenders,
 } from 'angular-calendar';
-
+import { SplitterModule } from 'primeng/splitter';
+import { TimeLineComponent as tl } from './time-line/time-line.component';
+import { ButtonModule } from 'primeng/button';
+import { TimelineModule } from 'primeng/timeline';
+import { ScrollerModule } from 'primeng/scroller';
 @NgModule({
   declarations: [
     AccordionComponent,
@@ -37,8 +41,13 @@ import {
     ScectionContainersComponent,
     DommyFormComponent,
     CalendarComponent,
+    tl,
   ],
   imports: [
+ScrollerModule,
+    FormsModule,
+    ButtonModule,
+    SplitterModule,
     CommonModule,
     FormsModule,
     NgbModalModule,
@@ -46,6 +55,7 @@ import {
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    TimelineModule,
   ],
   exports: [
     AccordionComponent,
@@ -61,10 +71,13 @@ import {
     ScectionContainersComponent,
     DommyFormComponent,
     CalendarComponent,
-    angularCalenders
+    angularCalenders,
+    tl,
   ],
 })
 export class LibModule {}
+
+
 
 
 
