@@ -2,8 +2,10 @@
   list-style-type: none;
   display: flex;
   align-items: center;
+
   justify-content: center;
 }
+
 
 .li {
   transition: all 200ms ease-in;
@@ -19,7 +21,7 @@
 }
 
 .status {
-  padding: 0px 180px;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   border-top: 2px solid #D6DCE0;
@@ -39,7 +41,7 @@
     border: 1px solid #ddd;
     position: absolute;
     top: -15px;
-    left: 42%;
+    left: 48%;
     transition: all 200ms ease-in;
   }
 }

@@ -1,0 +1,139 @@
+<card-container
+  [inerShadow]="false"
+  [shadow]="false"
+  [padding]="true"
+  [margin]="false"
+  [border]="false"
+  [hover]="true"
+  [darckMode]="false"
+  [borderRadius]="'20px'"
+  [style]="false"
+  [bg]="'#ffff'"
+>
+  <div class="body">
+    <div data-index="10" #options  [ngStyle]="{'height': height}" class="options">
+      <ng-container *ngFor="let item of data; let i = index">
+        <div
+          *ngIf="i == 0"
+          (click)="options.setAttribute('data-index', '1')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '1' }"
+          class="option"
+        >
+          <ng-content select="[one]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 1"
+          (click)="options.setAttribute('data-index', '2')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '2' }"
+          class="option"
+        >
+          <ng-content select="[two]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 2"
+          (click)="options.setAttribute('data-index', '3')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '3' }"
+          class="option"
+        >
+          <ng-content select="[three]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 3"
+          (click)="options.setAttribute('data-index', '4')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '4' }"
+          class="option"
+        >
+          <ng-content select="[four]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 4"
+          (click)="options.setAttribute('data-index', '5')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '5' }"
+          class="option"
+        >
+          <ng-content select="[five]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 5"
+          (click)="options.setAttribute('data-index', '6')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '6' }"
+          class="option"
+        >
+          <ng-content select="[six]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 6"
+          (click)="options.setAttribute('data-index', '7')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '7' }"
+          class="option"
+        >
+          <ng-content select="[seven]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 7"
+          (click)="options.setAttribute('data-index', '8')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '8' }"
+          class="option"
+        >
+          <ng-content select="[eight]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 8"
+          (click)="options.setAttribute('data-index', '9')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '9' }"
+          class="option"
+        >
+          <ng-content select="[nine]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 9"
+          (click)="options.setAttribute('data-index', '10')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '10' }"
+          class="option"
+        >
+          <ng-content select="[ten]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 10"
+          (click)="options.setAttribute('data-index', '11')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '11' }"
+          class="option"
+        >
+          <ng-content select="[eleven]"></ng-content>
+        </div>
+        <div
+          *ngIf="i== 11"
+          (click)="options.setAttribute('data-index', '12')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '12' }"
+          class="option"
+        >
+          <ng-content select="[twelve]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 12"
+          (click)="options.setAttribute('data-index', '13')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '13' }"
+          class="option"
+        >
+          <ng-content select="[thirteen]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 13"
+          (click)="options.setAttribute('data-index', '14')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '14' }"
+          class="option"
+        >
+          <ng-content select="[fourteen]"></ng-content>
+        </div>
+        <div
+          *ngIf="i == 14"
+          (click)="options.setAttribute('data-index', '15')"
+          [ngClass]="{ active: options.getAttribute('data-index') == '15' }"
+          class="option"
+        >
+          <ng-content select="[fifteen]"></ng-content>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</card-container>

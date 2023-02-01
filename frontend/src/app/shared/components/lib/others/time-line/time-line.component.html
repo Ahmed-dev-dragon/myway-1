@@ -1,0 +1,103 @@
+<card-container
+  [inerShadow]="false"
+  [shadow]="false"
+  [padding]="true"
+  [margin]="false"
+  [border]="false"
+  [hover]="true"
+  [darckMode]="false"
+  [borderRadius]="'20px'"
+  [style]="false"
+  [bg]="'#ffff'"
+>
+
+
+
+
+
+<div class="body">
+  <!-- <button class="s-button " id="toggleButton" (click)="toggleComplete()">Toggle</button> -->
+  <ul  class="timeline" id="timeline">
+  <ng-container *ngFor="let item of itoms ; let i = index" >
+    <li [ngClass]="item.valid ?  'complete' :''" class="li">
+      <!-- <div *ngIf="item?.show" class="timestamp">
+       <span class="author">{{item.title}}</span>
+        <span class="date"> {{item.sutitle}}</span>
+      </div> -->
+      <div  *ngIf="item?.show" class="status mt-5 " [style]="{'padding': '0px {{between}}'}">
+        <h4 class="mt-5"> {{item.title}} </h4>
+      </div>
+      <div  *ngIf="item?.show" class="m-3" >
+
+        <card-container
+        [borderRadius]="'20px'" >
+          <app-dommy-form
+          (timeLineUpdate)="timeLineUpdateF($event,i)"
+          [i]="i"
+          [itoms]="itoms.length"
+          ></app-dommy-form>
+    movemonet:{{debuging  |json}}
+
+
+        <ng-content></ng-content>
+        </card-container>
+      </div>
+    </li>
+  </ng-container>
+  </ul>
+</div>
+
+<div #ref><ng-content></ng-content></div>
+<span *ngIf=" ! ref.children.length">
+  Display this if ng-content is empty!
+</span>
+
+
+
+
+
+
+
+
+<!-- <app-dinamic-col></app-dinamic-col> -->
+
+
+
+
+</card-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

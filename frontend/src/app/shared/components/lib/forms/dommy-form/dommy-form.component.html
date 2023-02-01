@@ -1,8 +1,9 @@
+
 <main class="page payment-page">
   <section class="payment-form dark">
     <div class="container">
       <div class="block-heading">
-        <h2>dommy form</h2>
+        <h2>    dommy form number {{i+1}} of {{itoms}}</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis
           vitae leo.</p>
       </div>
@@ -49,9 +50,22 @@
               <input id="cvc" type="text" class="form-control" placeholder="CVC" aria-label="Card Holder"
                 aria-describedby="basic-addon1">
             </div>
-            <div class="form-group col-sm-12">
-              <button type="button" class="btn btn-primary btn-block">Proceed</button>
-            </div>
+                                  <div class="form-group col-sm-6">
+                                  <button (click)="add()"
+                                  type="button" class="btn btn-primary btn-block">add</button>
+                                  </div>
+                                  <div class="form-group col-sm-6">
+                                  <button type="button" class="btn btn-primary btn-block">edit</button>
+                                  </div>
+                                  <div class="form-group col-sm-6">
+                                  <button (click)="per()" type="button" class="btn btn-primary btn-block">per</button>
+                                  </div>
+                                  <div class="form-group col-sm-6">
+
+
+                        
+                                    <button (click)="next()" type="button" class="btn btn-primary btn-block">next</button>
+                                    </div>
           </div>
         </div>
       </form>

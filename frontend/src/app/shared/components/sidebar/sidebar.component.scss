@@ -1,20 +1,29 @@
 
 @import '../../../../assets/scss/variables';
-
+::-webkit-scrollbar {
+  display: none;
+}
  .s-btn-info{
   background-color: #f1f1f1;
 
  }
  .sidebar-cta-content{
+
+ &::-webkit-scrollbar{
+  display:  none;
+ }
     .s-t{
       color: rgb(226, 226, 226) !important;
 
     }
+
    .text-sm{
      color: rgb(194, 188, 188)!important;
 
    }
  }
+
+
 
 
 

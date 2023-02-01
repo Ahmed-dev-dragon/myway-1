@@ -43,63 +43,219 @@ export class SidebarComponent implements OnInit {
 
     this.model = [
       {
-        label: 'File',
-        icon: 'pi pi-pw pi-file',
+        label: 'tables',
+        icon: '',
         items: [
           {
-            label: 'New',
-            icon: 'pi pi-fw pi-plus',
-            items: [
-              {
-                label: 'User',
-                icon: 'pi pi-fw pi-user-plus',
-                items: [
-                  {
-                    label: 'User',
-                    icon: 'pi pi-fw pi-user-plus',
-                  },
-                  {
-                    label: 'Filter',
-                    icon: 'pi pi-fw pi-filter',
-                  },
-                ],
-              },
-              {
-                label: 'Filter',
-                icon: 'pi pi-fw pi-filter',
-              },
-            ],
+            label: 'ng dafulte table',
+            icon: '',
           },
-          { label: 'Open', icon: 'pi pi-fw pi-external-link' },
-          { label: 'Quit', icon: 'pi pi-fw pi-times' },
-        ],
-      },
-      {
-        label: 'Edit',
-        icon: 'pi pi-fw pi-pencil',
-        items: [
-          { label: 'Delete', icon: 'pi pi-fw pi-trash' },
           {
-            label: 'Refresh',
-            icon: 'pi pi-fw pi-refresh',
-            items: [
-              {
-                label: 'User',
-                icon: 'pi pi-fw pi-user-plus',
-              },
-              {
-                label: 'Filter',
-                icon: 'pi pi-fw pi-filter',
-              },
-            ],
+            label: 'ng table v2',
+            icon: '',
+          },
+          {
+            label: 'ng table v3',
+            icon: '',
+          },
+          {
+            label: 'native table v1 ',
+            icon: '',
           },
         ],
       },
       {
-        label: 'User',
-        icon: 'pi pi-fw pi-user-plus',
+        label: 'cards',
+        icon: '',
+        items: [
+          {
+            label: 'unic',
+            icon: '',
+          },
+
+          {
+            label: 'generique',
+            icon: '',
+          },
+        ],
+      },
+
+      {
+        label: 'templetes',
+        icon: '',
+        items: [
+          {
+            label: 'card list',
+            icon: '',
+          },
+        ],
+      },
+      {
+        label: 'chates',
+        icon: '',
+        items: [],
+      },
+      {
+        label: 'Skeletons',
+        icon: '',
+        items: [
+          {
+            label: 'cards',
+            icon: '',
+          },
+          {
+            label: 'continers',
+            icon: '',
+          },
+          {
+            label: 'map',
+            icon: '',
+          },
+          {
+            label: 'form',
+            icon: '',
+          },
+          {
+            label: 'acorditions',
+            icon: '',
+          },
+          {
+            label: 'calinder',
+            icon: '',
+          },
+          {
+            label: 'tables',
+            icon: '',
+          },
+
+          {
+            label: 'config',
+            icon: '',
+          },
+          {
+            label: 'uploud file',
+            icon: '',
+          },
+          {
+            label: 'sliders',
+            icon: '',
+          },
+          {
+            label: 'progress ',
+            icon: '',
+          },
+          {
+            label: 'timeline ',
+            icon: '',
+          },
+        ],
+      },
+
+      {
+        label: 'calinders',
+        icon: '',
+        items: [
+          {
+            label: 'moble size calendar ',
+            icon: '',
+          },
+          {
+            label: 'day calinder',
+            icon: '',
+          },
+          {
+            label: ' week calinder',
+            icon: '',
+          },
+          {
+            label: 'month calendar',
+            icon: '',
+          },
+          {
+            label: 'dynamic calendar',
+            icon: '',
+          },
+          {
+            label: ' read only calendar',
+            icon: '',
+          },
+        ],
+      },
+      {
+        label: 'components',
+        icon: '',
+        items: [
+          {
+            label: 'map',
+            icon: '',
+            items: [
+              {
+                label: 'read only map',
+                icon: '',
+              },
+              {
+                label: 'live map',
+                icon: '',
+              },
+              {
+                label: 'boostrapt map',
+                icon: '',
+              },
+              {
+                label: 'other map',
+                icon: '',
+              },
+            ],
+          },
+
+          {
+            label: 'acorditions',
+            icon: '',
+          },
+
+          {
+            label: 'config',
+            icon: '',
+          },
+          {
+            label: 'uploud file',
+            icon: '',
+          },
+          {
+            label: 'sliders',
+            icon: '',
+          },
+          {
+            label: 'progress ',
+            icon: '',
+          },
+          {
+            label: 'timeline ',
+            icon: '',
+          },
+        ],
+      },
+      {
+        label: 'form items',
+        icon: '',
+        items: [],
+      },
+      {
+        label: 'others items ',
+        icon: '',
+        items: [],
       },
     ];
+
+
+
+
+
+
+
+
+
+
     this.sidebarNavItems = this.model;
   }
 

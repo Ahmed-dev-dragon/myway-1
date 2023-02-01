@@ -67,7 +67,7 @@ import { GenericPipe } from './pipes/generic.pipe';
 import { DynamicTableCellColorPipe } from './pipes/dynamic-table-cell-color.pipe';
 import { DynamicTableCellColorPipeStyle } from './pipes/dynamic-table-cell-color-style.pipe';
 import { TaxonomieTreeComponent } from './components/taxonomie-tree/taxonomie-tree.component';
-import { TemplatesModule } from './components/templates/templates.module';
+
 import { LibModule } from './components/lib/lib.module';
 import { TestComponent } from './test/test.component';
 import { SDynamicTableComponent } from './components/s-dynamic-table/s-dynamic-table.component';
@@ -97,8 +97,8 @@ import { FlatpickrModule } from 'angularx-flatpickr';
   ],
   imports: [
     FlatpickrModule.forRoot(),
+
   
-    TemplatesModule,
     LibModule,
     CommonModule,
     TranslateModule,

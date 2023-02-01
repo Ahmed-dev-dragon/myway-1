@@ -20,7 +20,7 @@ import { AfterViewInit, Component, Input} from '@angular/core';
         'a-s-hover': hover
       }"
       style="border-radius :{{ borderRadius }} !important; bag-border-radius :{{ borderRadius }} ;
-      background-color:{{bg}} !important;"
+      background-color:{{bg}} !important; overflow: hidden !important;"
     >
       <ng-content></ng-content>
     </div>
@@ -38,6 +38,5 @@ export class GridContianerComponent implements AfterViewInit {
   @Input() borderRadius?: string = '7px';
   @Input() style: any;
   @Input() bg :string = '#fff'
-
   ngAfterViewInit(): void {}
 }
