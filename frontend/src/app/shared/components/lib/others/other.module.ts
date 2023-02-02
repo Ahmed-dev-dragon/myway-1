@@ -10,7 +10,7 @@ import { ConfigeUiComponent } from './confige-ui/confige-ui.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { TimelineModule } from 'primeng/timeline';
 import { LayoutComponent } from './layout/layout.component';
-import { SFormModule } from '../forms/form.module';
+import { SFormModule } from '../calendars/forms/form.module';
 
 
 @NgModule({

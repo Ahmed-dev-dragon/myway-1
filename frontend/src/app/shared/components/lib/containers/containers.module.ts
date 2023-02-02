@@ -24,6 +24,6 @@ import { LayoutComponent } from './layout/layout.component';
     CardContianerComponent,
     LayoutComponent,
   ],
-  exports: [GridContianerComponent, ContainersRoutingModule],
+  exports: [GridContianerComponent],
 })
 export class ContainersModule {}

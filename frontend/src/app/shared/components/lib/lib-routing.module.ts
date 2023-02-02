@@ -40,14 +40,14 @@ const routes: Routes = [
   },
   {
     path: 'others',
-      loadChildren: () =>
+    loadChildren: () =>
       import('./others/other.module').then((m) => m.OtherModule),
-      data: {},
+    data: {},
   },
   {
     path: 'forms',
     loadChildren: () =>
-      import('./forms/form.module').then((m) => m.SFormModule),
+      import('./calendars/forms/form.module').then((m) => m.SFormModule),
     data: {},
   },
   {

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LibErrorComponent } from '../lib-error.component';
+import { LibErrorComponent } from '../../lib-error.component';
+import { DommyFormComponent } from './dommy-form/dommy-form.component';
 import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
@@ -12,6 +13,11 @@ const routes: Routes = [
   {
     path: 'layout',
     component: LayoutComponent,
+    data: {},
+  },
+  {
+    path: 'dommy-form',
+    component: DommyFormComponent,
     data: {},
   },
   {
@@ -28,6 +34,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ContainersRoutingModule { }
+export class FormRoutingModule {}
