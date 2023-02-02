@@ -6,29 +6,66 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'dashboard',
+    redirectTo: 'cards',
   },
-
-  // {
-  //   path: 'configuration',
-  //   loadChildren: () =>
-  //     import('').then(
-  //       (m) => m.ConfigurationModule
-  //     ),
-  //   data: {
-  //     title: 'menu.configuration',
-  //     type: 'module',
-  //     menu: true,
-  //   },
-  // },
-
+  {
+    path: 'cards',
+    loadChildren: () =>
+      import('./cards/cards.module').then((m) => m.CardsModule),
+    data: {},
+  },
+  {
+    path: 'tables',
+    loadChildren: () =>
+      import('./tables/tables.module').then((m) => m.TablesModule),
+    data: {},
+  },
+  {
+    path: 'calendars',
+    loadChildren: () =>
+      import('./calendars/calendar.module').then((m) => m.SCalendarModule),
+    data: {},
+  },
+  {
+    path: 'chates',
+    loadChildren: () =>
+      import('./chates/chates.module').then((m) => m.ChatesModule),
+    data: {},
+  },
+  {
+    path: 'templates',
+    loadChildren: () =>
+      import('./templates/templates.module').then((m) => m.TemplatesModule),
+    data: {},
+  },
+  {
+    path: 'others',
+      loadChildren: () =>
+      import('./others/other.module').then((m) => m.OtherModule),
+      data: {},
+  },
+  {
+    path: 'forms',
+    loadChildren: () =>
+      import('./forms/form.module').then((m) => m.SFormModule),
+    data: {},
+  },
+  {
+    path: 'containers',
+    loadChildren: () =>
+      import('./containers/containers.module').then((m) => m.ContainersModule),
+    data: {},
+  },
+  {
+    path: 'sections',
+    loadChildren: () =>
+      import('./sections/sections.module').then((m) => m.SectionsModule),
+    data: {},
+  },
   {
     path: 'NotFoundInlib',
     component: LibErrorComponent,
-
-    data: {
-      title: '',
-    },
+    data: {},
   },
   {
     path: '**',

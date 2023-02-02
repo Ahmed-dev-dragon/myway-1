@@ -50,7 +50,7 @@ const colors = {
   styleUrls: ['calendar.component.scss'],
   templateUrl: 'calendar.component.html',
 })
-export class CalendarComponent {
+export class SCalendarComponent {
   @ViewChild('modalContent', { static: true }) modalContent!: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;

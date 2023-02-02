@@ -4,11 +4,7 @@ import { AuthGuard } from '../guards/auth.guard';
 import { Page404Component } from 'src/app/shared/components/page404/page404.component';
 
 export const content: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'dashboard',
-  },
+
   {
     path: 'dashboard',
     component: DashboardComponent,

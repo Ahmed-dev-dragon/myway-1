@@ -1,7 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { ListHeader } from 'src/app/shared/models/List.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { SCardSInfoInterface } from '../../lib/cards/cards1/s-card-s-ifno/s-card-s-info-Interfaces';
+import { SCardSInfoInterface } from '../../lib/cards/unic/s-card-s-ifno/s-card-s-info-Interfaces';
 
 @Component({
   selector: 'app-content-layout',

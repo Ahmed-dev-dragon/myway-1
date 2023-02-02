@@ -8,7 +8,6 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
-
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { CardModule } from 'primeng/card';
@@ -51,7 +50,6 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TieredMenuModule } from 'primeng/tieredmenu';
-import { SplitterModule } from 'primeng/splitter';
 
 import { TaxonomieInputComponent } from './components/taxonomie-input/taxonomie-input.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -67,17 +65,13 @@ import { GenericPipe } from './pipes/generic.pipe';
 import { DynamicTableCellColorPipe } from './pipes/dynamic-table-cell-color.pipe';
 import { DynamicTableCellColorPipeStyle } from './pipes/dynamic-table-cell-color-style.pipe';
 import { TaxonomieTreeComponent } from './components/taxonomie-tree/taxonomie-tree.component';
-
 import { LibModule } from './components/lib/lib.module';
 import { TestComponent } from './test/test.component';
-import { SDynamicTableComponent } from './components/s-dynamic-table/s-dynamic-table.component';
+
 import { FlatpickrModule } from 'angularx-flatpickr';
-
-
 @NgModule({
   declarations: [
     SidebarComponent,
-
     TaxonomieInputComponent,
     HeaderComponent,
     FooterComponent,
@@ -93,12 +87,10 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     DynamicTableCellColorPipe,
     DynamicTableCellColorPipeStyle,
     TestComponent,
-    SDynamicTableComponent,
+
   ],
   imports: [
     FlatpickrModule.forRoot(),
-
-  
     LibModule,
     CommonModule,
     TranslateModule,
@@ -213,11 +205,10 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     NgbModule,
     NgApexchartsModule,
     TieredMenuModule,
-
     GenericPipe,
     DynamicTableCellColorPipe,
     DynamicTableCellColorPipeStyle,
-    SDynamicTableComponent,
+
   ],
   providers: [ConfirmationService, MessageService],
 })

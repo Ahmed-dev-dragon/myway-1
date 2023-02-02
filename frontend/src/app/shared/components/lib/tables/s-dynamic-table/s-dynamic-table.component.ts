@@ -1,4 +1,4 @@
-import { UndoDeleteDialogService } from '../../services/undo-delete-dialog.service';
+import { UndoDeleteDialogService } from '../../../../services/undo-delete-dialog.service';
 import { HelpersService } from 'src/app/shared/services/helpers.service';
 import {
   Component,
@@ -27,14 +27,13 @@ import {
   ListCaptionConfig,
   ListHeader,
   OnDeleteEvent,
-} from '../../models/List.model';
+} from '../../../../models/List.model';
 @Component({
   selector: 's-dynamic-table',
   templateUrl: './s-dynamic-table.component.html',
   styleUrls: ['./s-dynamic-table.component.scss'],
 })
 export class SDynamicTableComponent implements OnInit, OnChanges {
-
   @Input() data: any = [];
   @Input() cols: ListHeader[] = [];
   @Input() selectedCols: any = [];

@@ -2,13 +2,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ContainersRoutingModule } from './containers-routing.module';
+import { TableContianerComponent } from './table-contianer/table-contianer.component';
+import { GridContianerComponent } from './grid-contianer.component';
+import { ScectionContainersComponent } from './scection-container.component';
+import { CardContianerComponent } from './card-contianer.component';
+import { LayoutComponent } from './layout/layout.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TableContianerComponent,
+    GridContianerComponent,
+    ScectionContainersComponent,
+    CardContianerComponent,
+    LayoutComponent,
+  ],
   imports: [
-    CommonModule,
-    ContainersRoutingModule
-  ]
+    TableContianerComponent,
+    GridContianerComponent,
+    ScectionContainersComponent,
+    CardContianerComponent,
+    LayoutComponent,
+  ],
+  exports: [GridContianerComponent, ContainersRoutingModule],
 })
-export class ContainersModule { }
+export class ContainersModule {}

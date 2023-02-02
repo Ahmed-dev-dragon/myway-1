@@ -3,7 +3,7 @@ import { Component, DoCheck } from '@angular/core';
 import { ListHeader } from '../models/List.model';
 import { filter } from 'rxjs';
 import { Action } from 'rxjs/internal/scheduler/Action';
-import { SCardSInfoInterface } from '../components/lib/cards/cards1/s-card-s-ifno/s-card-s-info-Interfaces';
+import { SCardSInfoInterface } from '../components/lib/cards/unic/s-card-s-ifno/s-card-s-info-Interfaces';
 
 @Component({
   selector: 'app-test',

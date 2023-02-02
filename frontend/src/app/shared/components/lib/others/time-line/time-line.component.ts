@@ -10,8 +10,8 @@ export class TimeLineComponent implements OnInit {
   events!: any[];
   s_events!: any[];
   passedDate!: any[];
-
   debuging: any;
+
   curontLine: number = 0;
   @Input() itoms: any[] = [];
   @Input() valide: boolean = false;
